@@ -13,13 +13,23 @@ class FoodRepositoryTest extends TestCase
     {
         $this->repository = new FoodRepository();
 
+        // Reset table to ensure isolation
+        $db = $this->getDb();
+        $db->exec('DELETE FROM aliments');
+        $db->exec('DELETE FROM sqlite_sequence WHERE name="aliments"');
+
         // Insert test data into in-memory DB
         $this->insertTestFoods();
     }
 
+    private function getDb(): \PDO
+    {
+        return \App\Model\Database::getInstance();
+    }
+
     private function insertTestFoods(): void
     {
-        $db = \App\Model\Database::getInstance();
+        $db = $this->getDb();
 
         $foods = [
             ['nom' => 'Pomme', 'calories_100g' => 52, 'proteines_100g' => 0.2, 'glucides_100g' => 14, 'lipides_100g' => 0.2, 'fibres_100g' => 2.4],
@@ -51,6 +61,15 @@ class FoodRepositoryTest extends TestCase
         $this->assertEmpty($result);
     }
 
+    public function testSearchSavedFoodsIsCaseInsensitive()
+    {
+        $result = $this->repository->searchSavedFoods('POMME');
+
+        $this->assertIsArray($result);
+        $this->assertCount(1, $result);
+        $this->assertEquals('Pomme', $result[0]['nom']);
+    }
+
     public function testSearchSavedFoodsLimitsTo20Results()
     {
         // Insert more foods to exceed limit
@@ -63,7 +82,7 @@ class FoodRepositoryTest extends TestCase
         $result = $this->repository->searchSavedFoods('Test');
 
         $this->assertIsArray($result);
-        $this->assertLessThanOrEqual(20, count($result));
+        $this->assertCount(20, $result);
     }
 
     public function testGetSavedFoodsReturnsAllWithoutLimit()
@@ -134,5 +153,25 @@ class FoodRepositoryTest extends TestCase
         // Should not duplicate
         $saved = $this->repository->searchSavedFoods('Existing Unique Food');
         $this->assertCount(1, $saved);
+    }
+
+    public function testSaveFoodFromAPIHandlesMissingData()
+    {
+        $initialCount = $this->repository->countSavedFoods();
+
+        // Test with missing product_name
+        $data = [
+            'code' => '111111111',
+            'nutriments' => ['energy-kcal_100g' => 50],
+        ];
+
+        $result = $this->repository->saveFoodFromAPI($data);
+
+        // It returns true but with empty name
+        $this->assertTrue($result);
+
+        // Verify it was inserted (count increased)
+        $newCount = $this->repository->countSavedFoods();
+        $this->assertEquals($initialCount + 1, $newCount);
     }
 }
