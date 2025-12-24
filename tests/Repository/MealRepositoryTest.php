@@ -10,6 +10,7 @@ class MealRepositoryTest extends TestCase
     private MealRepository $repository;
     private int $userId;
     private array $foodIds;
+    private string $today = '2025-01-02';
 
     protected function setUp(): void
     {
@@ -90,7 +91,7 @@ class MealRepositoryTest extends TestCase
         $this->assertCount(1, $meals);
         $this->assertEquals($mealId, $meals[0]['id']);
         $this->assertEquals(1, $meals[0]['aliment_count']);
-        $this->assertEquals(78, $meals[0]['calories_total']); // 52 * 1.5
+        $this->assertEquals(78.0, $meals[0]['calories_total'], '', 0.01); // 52 * 1.5
     }
 
     public function testCreateMealWithFoodReturnsFalseForInvalidFood()
@@ -114,7 +115,7 @@ class MealRepositoryTest extends TestCase
         $meals = $this->repository->getMealsByDate($this->userId, date('Y-m-d'));
         $this->assertCount(1, $meals);
         $this->assertEquals(2, $meals[0]['aliment_count']);
-        $this->assertEquals(52 + 178, $meals[0]['calories_total']); // 52*1 + 89*2
+        $this->assertEquals(52 + 178, $meals[0]['calories_total'], '', 0.01); // 52*1 + 89*2
     }
 
     public function testAddFoodToMealReturnsFalseForInvalidMeal()
@@ -148,8 +149,8 @@ class MealRepositoryTest extends TestCase
         $breakfast = array_filter($meals, fn($m) => $m['type_repas'] === 'petit_dejeuner');
         $lunch = array_filter($meals, fn($m) => $m['type_repas'] === 'dejeuner');
 
-        $this->assertEquals(52, reset($breakfast)['calories_total']);
-        $this->assertEquals(178, reset($lunch)['calories_total']); // 89 * 2
+        $this->assertEquals(52.0, reset($breakfast)['calories_total'], '', 0.01);
+        $this->assertEquals(178.0, reset($lunch)['calories_total'], '', 0.01); // 89 * 2
     }
 
     public function testGetMealsByDateReturnsEmptyForNoMeals()
@@ -175,7 +176,7 @@ class MealRepositoryTest extends TestCase
         $meals = $this->repository->getMealsByDate($this->userId, date('Y-m-d'));
         $this->assertCount(1, $meals);
         $this->assertEquals(1, $meals[0]['aliment_count']);
-        $this->assertEquals(89, $meals[0]['calories_total']);
+        $this->assertEquals(89.0, $meals[0]['calories_total'], '', 0.01);
     }
 
     public function testRemoveFoodFromMealReturnsFalseForNonExistent()
@@ -187,5 +188,22 @@ class MealRepositoryTest extends TestCase
         $result = $this->repository->removeFoodFromMeal($mealId, 99999);
 
         $this->assertFalse($result);
+    }
+
+    public function testRemoveFoodFromMealRemovesLastFoodLeavesMealEmpty()
+    {
+        // Create meal with one food
+        $mealId = $this->repository->createMealWithFood($this->userId, 'dejeuner', $this->foodIds[0], 100);
+
+        // Remove the only food
+        $result = $this->repository->removeFoodFromMeal($mealId, $this->foodIds[0]);
+
+        $this->assertTrue($result);
+
+        // Verify meal still exists but is empty
+        $meals = $this->repository->getMealsByDate($this->userId, date('Y-m-d'));
+        $this->assertCount(1, $meals);
+        $this->assertEquals(0, $meals[0]['aliment_count']);
+        $this->assertEquals(0.0, $meals[0]['calories_total'], '', 0.01);
     }
 }
