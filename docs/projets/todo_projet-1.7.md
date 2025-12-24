@@ -62,6 +62,7 @@ Déjà là tu fais monter la couverture sans t'embarquer dans des mocks HTTP dé
 
 - [x] NAFLDAdviceService (0.55% → couvert) - Tests pour génération conseils, cas limites, conditions médicales
 - [x] FoodRepository (1.25% → couvert) - Tests pour recherche, pagination, sauvegarde API, isolation DB, casse insensible, données manquantes
+- [x] MealRepository (1.45% → couvert) - Tests pour récupération repas, création avec aliments, ajouts/suppressions, totaux nutritionnels
 
 ## Phase 2 — Auth : tester le comportement, pas le "hash interne" (3–5h)
 
