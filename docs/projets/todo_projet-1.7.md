@@ -68,11 +68,11 @@ Déjà là tu fais monter la couverture sans t'embarquer dans des mocks HTTP dé
 
 AuthServiceTest
 
-- [ ] login OK (user existant + mdp OK)
-- [ ] login KO (mdp KO / user inconnu)
-- [ ] logout (session clear)
-- [ ] "remember"/token si tu en as (validation + expiration)
-- [ ] protection anti session fixation (si tu regénères l'id)
+- [x] login OK (user existant + mdp OK)
+- [x] login KO (mdp KO / user inconnu)
+- [x] logout (session clear)
+- [x] "remember"/token si tu en as (validation + expiration)
+- [x] protection anti session fixation (si tu regénères l'id)
 
 ⚠️ Si ton auth est fortement couplée à $_SESSION / headers : tu testes via wrapper Session (recommandé) ou tu fais des tests d'intégration légers.
 
