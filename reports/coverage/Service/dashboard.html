@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/src/Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/billboard.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/var/www/html/src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Service</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AuthService.php.html#15">App\Service\AuthService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CsrfService.php.html#12">App\Service\CsrfService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#12">App\Service\ExportService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#10">App\Service\GamificationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#16">App\Service\MealManager</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealService.php.html#13">App\Service\MealService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#8">App\Service\MedicamentService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#16">App\Service\PhysicalActivityService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileApiService.php.html#13">App\Service\ProfileApiService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#17">App\Service\ProfileDataService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#13">App\Service\RateLimitService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#13">App\Service\ServiceContainer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#18">App\Service\SettingsDataService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UploadService.php.html#12">App\Service\UploadService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserValidationService.php.html#13">App\Service\UserValidationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#12">App\Service\ValidationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#13">App\Service\OpenFoodFactsService</a></td><td class="text-right">6%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#13">App\Service\PerformanceMetrics</a></td><td class="text-right">11%</td></tr>
+       <tr><td><a href="ActivityService.php.html#14">App\Service\ActivityService</a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="CacheService.php.html#14">App\Service\CacheService</a></td><td class="text-right">48%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#18">App\Service\FoodSaveService</a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#11">App\Service\FoodQualityService</a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="DashboardService.php.html#18">App\Service\DashboardService</a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#9">App\Service\NAFLDAdviceService</a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="FoodManager.php.html#16">App\Service\FoodManager</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="NutritionService.php.html#15">App\Service\NutritionService</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="ImcDataService.php.html#15">App\Service\ImcDataService</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MealManager.php.html#16">App\Service\MealManager</a></td><td class="text-right">0.0%</td><td class="text-right">54</td><td class="text-right">2970</td></tr>
+       <tr><td><a href="ExportService.php.html#12">App\Service\ExportService</a></td><td class="text-right">0.0%</td><td class="text-right">47</td><td class="text-right">2256</td></tr>
+       <tr><td><a href="ValidationService.php.html#12">App\Service\ValidationService</a></td><td class="text-right">0.0%</td><td class="text-right">32</td><td class="text-right">1056</td></tr>
+       <tr><td><a href="DashboardService.php.html#18">App\Service\DashboardService</a></td><td class="text-right">59.0%</td><td class="text-right">99</td><td class="text-right">773</td></tr>
+       <tr><td><a href="GamificationService.php.html#10">App\Service\GamificationService</a></td><td class="text-right">0.0%</td><td class="text-right">27</td><td class="text-right">756</td></tr>
+       <tr><td><a href="MedicamentService.php.html#8">App\Service\MedicamentService</a></td><td class="text-right">0.0%</td><td class="text-right">26</td><td class="text-right">702</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#13">App\Service\OpenFoodFactsService</a></td><td class="text-right">6.7%</td><td class="text-right">27</td><td class="text-right">619</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#16">App\Service\PhysicalActivityService</a></td><td class="text-right">0.0%</td><td class="text-right">22</td><td class="text-right">506</td></tr>
+       <tr><td><a href="RateLimitService.php.html#13">App\Service\RateLimitService</a></td><td class="text-right">0.0%</td><td class="text-right">15</td><td class="text-right">240</td></tr>
+       <tr><td><a href="AuthService.php.html#15">App\Service\AuthService</a></td><td class="text-right">0.0%</td><td class="text-right">14</td><td class="text-right">210</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#17">App\Service\ProfileDataService</a></td><td class="text-right">0.0%</td><td class="text-right">14</td><td class="text-right">210</td></tr>
+       <tr><td><a href="FoodManager.php.html#16">App\Service\FoodManager</a></td><td class="text-right">60.6%</td><td class="text-right">48</td><td class="text-right">189</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#13">App\Service\ServiceContainer</a></td><td class="text-right">0.0%</td><td class="text-right">13</td><td class="text-right">182</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#18">App\Service\SettingsDataService</a></td><td class="text-right">0.0%</td><td class="text-right">12</td><td class="text-right">156</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#13">App\Service\PerformanceMetrics</a></td><td class="text-right">11.8%</td><td class="text-right">13</td><td class="text-right">129</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#9">App\Service\NAFLDAdviceService</a></td><td class="text-right">59.9%</td><td class="text-right">36</td><td class="text-right">119</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#18">App\Service\FoodSaveService</a></td><td class="text-right">55.3%</td><td class="text-right">31</td><td class="text-right">116</td></tr>
+       <tr><td><a href="CsrfService.php.html#12">App\Service\CsrfService</a></td><td class="text-right">0.0%</td><td class="text-right">9</td><td class="text-right">90</td></tr>
+       <tr><td><a href="CacheService.php.html#14">App\Service\CacheService</a></td><td class="text-right">48.7%</td><td class="text-right">22</td><td class="text-right">87</td></tr>
+       <tr><td><a href="MealService.php.html#13">App\Service\MealService</a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="UploadService.php.html#12">App\Service\UploadService</a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#11">App\Service\FoodQualityService</a></td><td class="text-right">58.3%</td><td class="text-right">24</td><td class="text-right">65</td></tr>
+       <tr><td><a href="UserValidationService.php.html#13">App\Service\UserValidationService</a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="NutritionService.php.html#15">App\Service\NutritionService</a></td><td class="text-right">71.7%</td><td class="text-right">17</td><td class="text-right">23</td></tr>
+       <tr><td><a href="ActivityService.php.html#14">App\Service\ActivityService</a></td><td class="text-right">45.5%</td><td class="text-right">9</td><td class="text-right">22</td></tr>
+       <tr><td><a href="ImcDataService.php.html#15">App\Service\ImcDataService</a></td><td class="text-right">89.5%</td><td class="text-right">7</td><td class="text-right">7</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivityService.php.html#115"><abbr title="App\Service\ActivityService::getCaloriesBurnedByDate">getCaloriesBurnedByDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#19"><abbr title="App\Service\AuthService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#27"><abbr title="App\Service\AuthService::login">login</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#47"><abbr title="App\Service\AuthService::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#55"><abbr title="App\Service\AuthService::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#76"><abbr title="App\Service\AuthService::handleRememberMe">handleRememberMe</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#86"><abbr title="App\Service\AuthService::getRememberedEmail">getRememberedEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthService.php.html#94"><abbr title="App\Service\AuthService::createUserSession">createUserSession</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#67"><abbr title="App\Service\CacheService::isEnabled">isEnabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#75"><abbr title="App\Service\CacheService::setEnabled">setEnabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#128"><abbr title="App\Service\CacheService::set">set</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#146"><abbr title="App\Service\CacheService::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#164"><abbr title="App\Service\CacheService::clearAll">clearAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CacheService.php.html#201"><abbr title="App\Service\CacheService::notifyCacheMiss">notifyCacheMiss</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CsrfService.php.html#18"><abbr title="App\Service\CsrfService::getToken">getToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CsrfService.php.html#34"><abbr title="App\Service\CsrfService::validateToken">validateToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CsrfService.php.html#44"><abbr title="App\Service\CsrfService::validatePostToken">validatePostToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CsrfService.php.html#55"><abbr title="App\Service\CsrfService::regenerateToken">regenerateToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#425"><abbr title="App\Service\DashboardService::getCaloriesConsumedToday">getCaloriesConsumedToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#463"><abbr title="App\Service\DashboardService::getProteinesConsumedToday">getProteinesConsumedToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#501"><abbr title="App\Service\DashboardService::getFibresConsumedToday">getFibresConsumedToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#539"><abbr title="App\Service\DashboardService::getGlucidesConsumedToday">getGlucidesConsumedToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#582"><abbr title="App\Service\DashboardService::getLipidesConsumedToday">getLipidesConsumedToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardService.php.html#670"><abbr title="App\Service\DashboardService::getActivityMinutesToday">getActivityMinutesToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#18"><abbr title="App\Service\ExportService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#27"><abbr title="App\Service\ExportService::exportToPDF">exportToPDF</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#113"><abbr title="App\Service\ExportService::exportToCSV">exportToCSV</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#186"><abbr title="App\Service\ExportService::getExportData">getExportData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#200"><abbr title="App\Service\ExportService::getPeriodDays">getPeriodDays</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#214"><abbr title="App\Service\ExportService::generatePDFHTML">generatePDFHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#584"><abbr title="App\Service\ExportService::generatePDFCoverHTML">generatePDFCoverHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExportService.php.html#625"><abbr title="App\Service\ExportService::getPeriodLabel">getPeriodLabel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#358"><abbr title="App\Service\FoodManager::addFoodFromAPI">addFoodFromAPI</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#409"><abbr title="App\Service\FoodManager::deleteFood">deleteFood</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#433"><abbr title="App\Service\FoodManager::getOrCreateMeal">getOrCreateMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#477"><abbr title="App\Service\FoodManager::getSavedFoods">getSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#493"><abbr title="App\Service\FoodManager::countSavedFoods">countSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodManager.php.html#509"><abbr title="App\Service\FoodManager::searchSavedFoods">searchSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#42"><abbr title="App\Service\FoodQualityService::getFoodGrade">getFoodGrade</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#68"><abbr title="App\Service\FoodQualityService::getFoodsGrades">getFoodsGrades</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#204"><abbr title="App\Service\FoodQualityService::getDefaultGrade">getDefaultGrade</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#238"><abbr title="App\Service\FoodQualityService::invalidateFoodGrade">invalidateFoodGrade</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#246"><abbr title="App\Service\FoodQualityService::clearAllGrades">clearAllGrades</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#169"><abbr title="App\Service\FoodSaveService::checkFoodExists">checkFoodExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#183"><abbr title="App\Service\FoodSaveService::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#229"><abbr title="App\Service\FoodSaveService::addFoodManually">addFoodManually</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#19"><abbr title="App\Service\GamificationService::computeStreak">computeStreak</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#44"><abbr title="App\Service\GamificationService::computeWeeklyScore">computeWeeklyScore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#85"><abbr title="App\Service\GamificationService::getWeeklyGrade">getWeeklyGrade</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#125"><abbr title="App\Service\GamificationService::countDaysWithGoal">countDaysWithGoal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#147"><abbr title="App\Service\GamificationService::computeStreakBadges">computeStreakBadges</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#227"><abbr title="App\Service\GamificationService::addBadge">addBadge</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#246"><abbr title="App\Service\GamificationService::mergeBadges">mergeBadges</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#273"><abbr title="App\Service\GamificationService::computeWalkTrackBadges">computeWalkTrackBadges</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="GamificationService.php.html#472"><abbr title="App\Service\GamificationService::computeLevel">computeLevel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#22"><abbr title="App\Service\MealManager::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#31"><abbr title="App\Service\MealManager::addFoodToMeal">addFoodToMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#79"><abbr title="App\Service\MealManager::getOrCreateMealForToday">getOrCreateMealForToday</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#87"><abbr title="App\Service\MealManager::getOrCreateTodayMeal">getOrCreateTodayMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#137"><abbr title="App\Service\MealManager::getMealsByDate">getMealsByDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#216"><abbr title="App\Service\MealManager::getMealDetails">getMealDetails</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#229"><abbr title="App\Service\MealManager::getAlimentsForRepas">getAlimentsForRepas</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#249"><abbr title="App\Service\MealManager::removeFoodFromMeal">removeFoodFromMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#266"><abbr title="App\Service\MealManager::deleteMeal">deleteMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#282"><abbr title="App\Service\MealManager::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#367"><abbr title="App\Service\MealManager::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealManager.php.html#449"><abbr title="App\Service\MealManager::saveToDatabase">saveToDatabase</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealService.php.html#17"><abbr title="App\Service\MealService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealService.php.html#25"><abbr title="App\Service\MealService::validateMealData">validateMealData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealService.php.html#45"><abbr title="App\Service\MealService::calculateMealNutrition">calculateMealNutrition</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#13"><abbr title="App\Service\MedicamentService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#24"><abbr title="App\Service\MedicamentService::getAllActiveMedicaments">getAllActiveMedicaments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#39"><abbr title="App\Service\MedicamentService::getMedicamentById">getMedicamentById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#54"><abbr title="App\Service\MedicamentService::getMedicamentsWithPrisesForDate">getMedicamentsWithPrisesForDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#76"><abbr title="App\Service\MedicamentService::marquerPrise">marquerPrise</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#94"><abbr title="App\Service\MedicamentService::annulerPrise">annulerPrise</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#112"><abbr title="App\Service\MedicamentService::createMedicament">createMedicament</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#126"><abbr title="App\Service\MedicamentService::updateMedicament">updateMedicament</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#145"><abbr title="App\Service\MedicamentService::deleteMedicament">deleteMedicament</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#158"><abbr title="App\Service\MedicamentService::getHistoriquePrises">getHistoriquePrises</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#172"><abbr title="App\Service\MedicamentService::getMedicamentsJour">getMedicamentsJour</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#190"><abbr title="App\Service\MedicamentService::validatePeriode">validatePeriode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentService.php.html#200"><abbr title="App\Service\MedicamentService::validateMedicamentExistsAndActive">validateMedicamentExistsAndActive</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#227"><abbr title="App\Service\OpenFoodFactsService::normalizeNutriments">normalizeNutriments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#27"><abbr title="App\Service\PerformanceMetrics::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#48"><abbr title="App\Service\PerformanceMetrics::startTimer">startTimer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#56"><abbr title="App\Service\PerformanceMetrics::getElapsedTime">getElapsedTime</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#80"><abbr title="App\Service\PerformanceMetrics::incrementCacheMiss">incrementCacheMiss</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#88"><abbr title="App\Service\PerformanceMetrics::updateCacheStats">updateCacheStats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#96"><abbr title="App\Service\PerformanceMetrics::getReport">getReport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#117"><abbr title="App\Service\PerformanceMetrics::getMemoryUsage">getMemoryUsage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#131"><abbr title="App\Service\PerformanceMetrics::reset">reset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#34"><abbr title="App\Service\PhysicalActivityService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#42"><abbr title="App\Service\PhysicalActivityService::calculerCaloriesEstimees">calculerCaloriesEstimees</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#52"><abbr title="App\Service\PhysicalActivityService::validerActivite">validerActivite</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#81"><abbr title="App\Service\PhysicalActivityService::calculerSurplusCalorique">calculerSurplusCalorique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#95"><abbr title="App\Service\PhysicalActivityService::genererRecommandations">genererRecommandations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#132"><abbr title="App\Service\PhysicalActivityService::calculerStatistiquesHebdomadaires">calculerStatistiquesHebdomadaires</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#177"><abbr title="App\Service\PhysicalActivityService::verifierObjectifsHebdomadaires">verifierObjectifsHebdomadaires</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileApiService.php.html#17"><abbr title="App\Service\ProfileApiService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileApiService.php.html#25"><abbr title="App\Service\ProfileApiService::getRecentActivitiesData">getRecentActivitiesData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#27"><abbr title="App\Service\ProfileDataService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#38"><abbr title="App\Service\ProfileDataService::getOptimizedProfileData">getOptimizedProfileData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#171"><abbr title="App\Service\ProfileDataService::calculateRealScore">calculateRealScore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#205"><abbr title="App\Service\ProfileDataService::calculateObjectifsCompletion">calculateObjectifsCompletion</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#242"><abbr title="App\Service\ProfileDataService::getProfileData">getProfileData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#19"><abbr title="App\Service\RateLimitService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#32"><abbr title="App\Service\RateLimitService::checkRateLimit">checkRateLimit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#58"><abbr title="App\Service\RateLimitService::getRetryAfter">getRetryAfter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#66"><abbr title="App\Service\RateLimitService::normalizeIpForFilename">normalizeIpForFilename</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#74"><abbr title="App\Service\RateLimitService::ensureCacheDirExists">ensureCacheDirExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#86"><abbr title="App\Service\RateLimitService::loadTimestamps">loadTimestamps</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RateLimitService.php.html#109"><abbr title="App\Service\RateLimitService::saveTimestamps">saveTimestamps</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#23"><abbr title="App\Service\ServiceContainer::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#28"><abbr title="App\Service\ServiceContainer::getInstance">getInstance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#49"><abbr title="App\Service\ServiceContainer::make">make</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#57"><abbr title="App\Service\ServiceContainer::reset">reset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#65"><abbr title="App\Service\ServiceContainer::registerDefaults">registerDefaults</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#81"><abbr title="App\Service\ServiceContainer::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#103"><abbr title="App\Service\ServiceContainer::set">set</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#113"><abbr title="App\Service\ServiceContainer::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#124"><abbr title="App\Service\ServiceContainer::has">has</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#25"><abbr title="App\Service\SettingsDataService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#44"><abbr title="App\Service\SettingsDataService::getSettingsData">getSettingsData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#89"><abbr title="App\Service\SettingsDataService::getCachedUser">getCachedUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#105"><abbr title="App\Service\SettingsDataService::getCachedUserStats">getCachedUserStats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#121"><abbr title="App\Service\SettingsDataService::getCachedHistoriqueObjectifs">getCachedHistoriqueObjectifs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#137"><abbr title="App\Service\SettingsDataService::getCachedAllHistoriqueMesures">getCachedAllHistoriqueMesures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#153"><abbr title="App\Service\SettingsDataService::getCachedUserConfig">getCachedUserConfig</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UploadService.php.html#17"><abbr title="App\Service\UploadService::handleImageUpload">handleImageUpload</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UploadService.php.html#58"><abbr title="App\Service\UploadService::deleteImage">deleteImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserValidationService.php.html#17"><abbr title="App\Service\UserValidationService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserValidationService.php.html#25"><abbr title="App\Service\UserValidationService::isEmailTaken">isEmailTaken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserValidationService.php.html#35"><abbr title="App\Service\UserValidationService::isPseudoTaken">isPseudoTaken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserValidationService.php.html#45"><abbr title="App\Service\UserValidationService::checkUniqueness">checkUniqueness</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#20"><abbr title="App\Service\ValidationService::validateUserRegistration">validateUserRegistration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#57"><abbr title="App\Service\ValidationService::validateUserLogin">validateUserLogin</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#80"><abbr title="App\Service\ValidationService::validateEmail">validateEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#98"><abbr title="App\Service\ValidationService::validatePseudo">validatePseudo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#116"><abbr title="App\Service\ValidationService::validatePasswordChange">validatePasswordChange</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#144"><abbr title="App\Service\ValidationService::validateDeleteAccount">validateDeleteAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#167"><abbr title="App\Service\ValidationService::validateFoodAddition">validateFoodAddition</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#195"><abbr title="App\Service\ValidationService::validateNutritionGoals">validateNutritionGoals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ValidationService.php.html#239"><abbr title="App\Service\ValidationService::validateField">validateField</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#149"><abbr title="App\Service\OpenFoodFactsService::getProduct">getProduct</abbr></a></td><td class="text-right">6%</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#29"><abbr title="App\Service\OpenFoodFactsService::search">search</abbr></a></td><td class="text-right">7%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#226"><abbr title="App\Service\NAFLDAdviceService::getNutritionBasedAdvice">getNutritionBasedAdvice</abbr></a></td><td class="text-right">17%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#164"><abbr title="App\Service\NAFLDAdviceService::getIMCBasedAdvice">getIMCBasedAdvice</abbr></a></td><td class="text-right">35%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#322"><abbr title="App\Service\NAFLDAdviceService::getAgeBasedAdvice">getAgeBasedAdvice</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="DashboardService.php.html#736"><abbr title="App\Service\DashboardService::getRecentActivity">getRecentActivity</abbr></a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="CacheService.php.html#83"><abbr title="App\Service\CacheService::ensureCacheDirectory">ensureCacheDirectory</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="CacheService.php.html#172"><abbr title="App\Service\CacheService::remember">remember</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#79"><abbr title="App\Service\FoodSaveService::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="NutritionService.php.html#104"><abbr title="App\Service\NutritionService::getWeeklyNutrition">getWeeklyNutrition</abbr></a></td><td class="text-right">51%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#268"><abbr title="App\Service\FoodSaveService::normalizeApiFoodData">normalizeApiFoodData</abbr></a></td><td class="text-right">52%</td></tr>
+       <tr><td><a href="FoodManager.php.html#286"><abbr title="App\Service\FoodManager::saveFoodFromAPI">saveFoodFromAPI</abbr></a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#37"><abbr title="App\Service\FoodSaveService::saveFoodFromAPI">saveFoodFromAPI</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="DashboardService.php.html#313"><abbr title="App\Service\DashboardService::isInQuietHours">isInQuietHours</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#288"><abbr title="App\Service\NAFLDAdviceService::getActivityAdvice">getActivityAdvice</abbr></a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#141"><abbr title="App\Service\FoodQualityService::percentageToGrade">percentageToGrade</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#200"><abbr title="App\Service\FoodSaveService::deleteFood">deleteFood</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="NutritionService.php.html#58"><abbr title="App\Service\NutritionService::getCurrentNutrition">getCurrentNutrition</abbr></a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="CacheService.php.html#102"><abbr title="App\Service\CacheService::get">get</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#35"><abbr title="App\Service\PerformanceMetrics::getInstance">getInstance</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#91"><abbr title="App\Service\NAFLDAdviceService::getIMCCategory">getIMCCategory</abbr></a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="FoodManager.php.html#458"><abbr title="App\Service\FoodManager::searchFoodsInDatabase">searchFoodsInDatabase</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="ActivityService.php.html#29"><abbr title="App\Service\ActivityService::getRecentActivitiesCount">getRecentActivitiesCount</abbr></a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="ActivityService.php.html#62"><abbr title="App\Service\ActivityService::getRecentActivities">getRecentActivities</abbr></a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="DashboardService.php.html#48"><abbr title="App\Service\DashboardService::getDashboardData">getDashboardData</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="FoodManager.php.html#132"><abbr title="App\Service\FoodManager::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="DashboardService.php.html#125"><abbr title="App\Service\DashboardService::computeHealthScore">computeHealthScore</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="DashboardService.php.html#233"><abbr title="App\Service\DashboardService::generateToasts">generateToasts</abbr></a></td><td class="text-right">86%</td></tr>
+       <tr><td><a href="ImcDataService.php.html#27"><abbr title="App\Service\ImcDataService::getImcData">getImcData</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="FoodManager.php.html#37"><abbr title="App\Service\FoodManager::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ExportService.php.html#214"><abbr title="App\Service\ExportService::generatePDFHTML">generatePDFHTML</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">18</td><td class="text-right">342</td></tr>
+       <tr><td><a href="MealManager.php.html#137"><abbr title="App\Service\MealManager::getMealsByDate">getMealsByDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">18</td><td class="text-right">342</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#29"><abbr title="App\Service\OpenFoodFactsService::search">search</abbr></a></td><td class="text-right">7.6%</td><td class="text-right">16</td><td class="text-right">218</td></tr>
+       <tr><td><a href="ExportService.php.html#113"><abbr title="App\Service\ExportService::exportToCSV">exportToCSV</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#52"><abbr title="App\Service\PhysicalActivityService::validerActivite">validerActivite</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="MealManager.php.html#282"><abbr title="App\Service\MealManager::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="MealManager.php.html#367"><abbr title="App\Service\MealManager::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="ValidationService.php.html#195"><abbr title="App\Service\ValidationService::validateNutritionGoals">validateNutritionGoals</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#149"><abbr title="App\Service\OpenFoodFactsService::getProduct">getProduct</abbr></a></td><td class="text-right">6.7%</td><td class="text-right">7</td><td class="text-right">46</td></tr>
+       <tr><td><a href="GamificationService.php.html#85"><abbr title="App\Service\GamificationService::getWeeklyGrade">getWeeklyGrade</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#205"><abbr title="App\Service\ProfileDataService::calculateObjectifsCompletion">calculateObjectifsCompletion</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="ExportService.php.html#27"><abbr title="App\Service\ExportService::exportToPDF">exportToPDF</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="ExportService.php.html#200"><abbr title="App\Service\ExportService::getPeriodDays">getPeriodDays</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="ExportService.php.html#625"><abbr title="App\Service\ExportService::getPeriodLabel">getPeriodLabel</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="GamificationService.php.html#44"><abbr title="App\Service\GamificationService::computeWeeklyScore">computeWeeklyScore</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="MealManager.php.html#31"><abbr title="App\Service\MealManager::addFoodToMeal">addFoodToMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="UploadService.php.html#17"><abbr title="App\Service\UploadService::handleImageUpload">handleImageUpload</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="ValidationService.php.html#20"><abbr title="App\Service\ValidationService::validateUserRegistration">validateUserRegistration</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#79"><abbr title="App\Service\FoodSaveService::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">50.8%</td><td class="text-right">11</td><td class="text-right">25</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#226"><abbr title="App\Service\NAFLDAdviceService::getNutritionBasedAdvice">getNutritionBasedAdvice</abbr></a></td><td class="text-right">17.9%</td><td class="text-right">6</td><td class="text-right">25</td></tr>
+       <tr><td><a href="DashboardService.php.html#125"><abbr title="App\Service\DashboardService::computeHealthScore">computeHealthScore</abbr></a></td><td class="text-right">85.5%</td><td class="text-right">21</td><td class="text-right">22</td></tr>
+       <tr><td><a href="AuthService.php.html#27"><abbr title="App\Service\AuthService::login">login</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="DashboardService.php.html#539"><abbr title="App\Service\DashboardService::getGlucidesConsumedToday">getGlucidesConsumedToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="DashboardService.php.html#582"><abbr title="App\Service\DashboardService::getLipidesConsumedToday">getLipidesConsumedToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="DashboardService.php.html#670"><abbr title="App\Service\DashboardService::getActivityMinutesToday">getActivityMinutesToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="ExportService.php.html#584"><abbr title="App\Service\ExportService::generatePDFCoverHTML">generatePDFCoverHTML</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="FoodManager.php.html#358"><abbr title="App\Service\FoodManager::addFoodFromAPI">addFoodFromAPI</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="FoodManager.php.html#409"><abbr title="App\Service\FoodManager::deleteFood">deleteFood</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="GamificationService.php.html#472"><abbr title="App\Service\GamificationService::computeLevel">computeLevel</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="MealManager.php.html#87"><abbr title="App\Service\MealManager::getOrCreateTodayMeal">getOrCreateTodayMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="MealService.php.html#25"><abbr title="App\Service\MealService::validateMealData">validateMealData</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#132"><abbr title="App\Service\PhysicalActivityService::calculerStatistiquesHebdomadaires">calculerStatistiquesHebdomadaires</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="RateLimitService.php.html#74"><abbr title="App\Service\RateLimitService::ensureCacheDirExists">ensureCacheDirExists</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="RateLimitService.php.html#86"><abbr title="App\Service\RateLimitService::loadTimestamps">loadTimestamps</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="ValidationService.php.html#116"><abbr title="App\Service\ValidationService::validatePasswordChange">validatePasswordChange</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="ValidationService.php.html#167"><abbr title="App\Service\ValidationService::validateFoodAddition">validateFoodAddition</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#164"><abbr title="App\Service\NAFLDAdviceService::getIMCBasedAdvice">getIMCBasedAdvice</abbr></a></td><td class="text-right">35.9%</td><td class="text-right">6</td><td class="text-right">15</td></tr>
+       <tr><td><a href="DashboardService.php.html#736"><abbr title="App\Service\DashboardService::getRecentActivity">getRecentActivity</abbr></a></td><td class="text-right">46.8%</td><td class="text-right">7</td><td class="text-right">14</td></tr>
+       <tr><td><a href="DashboardService.php.html#233"><abbr title="App\Service\DashboardService::generateToasts">generateToasts</abbr></a></td><td class="text-right">86.4%</td><td class="text-right">13</td><td class="text-right">13</td></tr>
+       <tr><td><a href="ActivityService.php.html#115"><abbr title="App\Service\ActivityService::getCaloriesBurnedByDate">getCaloriesBurnedByDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="AuthService.php.html#55"><abbr title="App\Service\AuthService::logout">logout</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="AuthService.php.html#76"><abbr title="App\Service\AuthService::handleRememberMe">handleRememberMe</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="CsrfService.php.html#18"><abbr title="App\Service\CsrfService::getToken">getToken</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="DashboardService.php.html#425"><abbr title="App\Service\DashboardService::getCaloriesConsumedToday">getCaloriesConsumedToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="DashboardService.php.html#463"><abbr title="App\Service\DashboardService::getProteinesConsumedToday">getProteinesConsumedToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="DashboardService.php.html#501"><abbr title="App\Service\DashboardService::getFibresConsumedToday">getFibresConsumedToday</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="FoodManager.php.html#433"><abbr title="App\Service\FoodManager::getOrCreateMeal">getOrCreateMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#42"><abbr title="App\Service\FoodQualityService::getFoodGrade">getFoodGrade</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="GamificationService.php.html#19"><abbr title="App\Service\GamificationService::computeStreak">computeStreak</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="GamificationService.php.html#125"><abbr title="App\Service\GamificationService::countDaysWithGoal">countDaysWithGoal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MealManager.php.html#449"><abbr title="App\Service\MealManager::saveToDatabase">saveToDatabase</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MealService.php.html#45"><abbr title="App\Service\MealService::calculateMealNutrition">calculateMealNutrition</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MedicamentService.php.html#126"><abbr title="App\Service\MedicamentService::updateMedicament">updateMedicament</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MedicamentService.php.html#200"><abbr title="App\Service\MedicamentService::validateMedicamentExistsAndActive">validateMedicamentExistsAndActive</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="OpenFoodFactsService.php.html#227"><abbr title="App\Service\OpenFoodFactsService::normalizeNutriments">normalizeNutriments</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#95"><abbr title="App\Service\PhysicalActivityService::genererRecommandations">genererRecommandations</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#177"><abbr title="App\Service\PhysicalActivityService::verifierObjectifsHebdomadaires">verifierObjectifsHebdomadaires</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#242"><abbr title="App\Service\ProfileDataService::getProfileData">getProfileData</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#81"><abbr title="App\Service\ServiceContainer::get">get</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="UploadService.php.html#58"><abbr title="App\Service\UploadService::deleteImage">deleteImage</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="UserValidationService.php.html#45"><abbr title="App\Service\UserValidationService::checkUniqueness">checkUniqueness</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ValidationService.php.html#57"><abbr title="App\Service\ValidationService::validateUserLogin">validateUserLogin</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ValidationService.php.html#144"><abbr title="App\Service\ValidationService::validateDeleteAccount">validateDeleteAccount</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="NutritionService.php.html#104"><abbr title="App\Service\NutritionService::getWeeklyNutrition">getWeeklyNutrition</abbr></a></td><td class="text-right">51.0%</td><td class="text-right">6</td><td class="text-right">10</td></tr>
+       <tr><td><a href="FoodManager.php.html#37"><abbr title="App\Service\FoodManager::addFoodFromCatalog">addFoodFromCatalog</abbr></a></td><td class="text-right">89.4%</td><td class="text-right">8</td><td class="text-right">8</td></tr>
+       <tr><td><a href="FoodManager.php.html#132"><abbr title="App\Service\FoodManager::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">81.8%</td><td class="text-right">8</td><td class="text-right">8</td></tr>
+       <tr><td><a href="DashboardService.php.html#48"><abbr title="App\Service\DashboardService::getDashboardData">getDashboardData</abbr></a></td><td class="text-right">77.8%</td><td class="text-right">7</td><td class="text-right">7</td></tr>
+       <tr><td><a href="CacheService.php.html#128"><abbr title="App\Service\CacheService::set">set</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="CacheService.php.html#201"><abbr title="App\Service\CacheService::notifyCacheMiss">notifyCacheMiss</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="CsrfService.php.html#34"><abbr title="App\Service\CsrfService::validateToken">validateToken</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="CsrfService.php.html#44"><abbr title="App\Service\CsrfService::validatePostToken">validatePostToken</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="CsrfService.php.html#55"><abbr title="App\Service\CsrfService::regenerateToken">regenerateToken</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="DashboardService.php.html#313"><abbr title="App\Service\DashboardService::isInQuietHours">isInQuietHours</abbr></a></td><td class="text-right">60.0%</td><td class="text-right">5</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodManager.php.html#477"><abbr title="App\Service\FoodManager::getSavedFoods">getSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodManager.php.html#493"><abbr title="App\Service\FoodManager::countSavedFoods">countSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodManager.php.html#509"><abbr title="App\Service\FoodManager::searchSavedFoods">searchSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#68"><abbr title="App\Service\FoodQualityService::getFoodsGrades">getFoodsGrades</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodQualityService.php.html#141"><abbr title="App\Service\FoodQualityService::percentageToGrade">percentageToGrade</abbr></a></td><td class="text-right">63.3%</td><td class="text-right">5</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#169"><abbr title="App\Service\FoodSaveService::checkFoodExists">checkFoodExists</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#183"><abbr title="App\Service\FoodSaveService::addFoodFromSearch">addFoodFromSearch</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#229"><abbr title="App\Service\FoodSaveService::addFoodManually">addFoodManually</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="GamificationService.php.html#227"><abbr title="App\Service\GamificationService::addBadge">addBadge</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="GamificationService.php.html#246"><abbr title="App\Service\GamificationService::mergeBadges">mergeBadges</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ImcDataService.php.html#27"><abbr title="App\Service\ImcDataService::getImcData">getImcData</abbr></a></td><td class="text-right">88.9%</td><td class="text-right">6</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealManager.php.html#216"><abbr title="App\Service\MealManager::getMealDetails">getMealDetails</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealManager.php.html#229"><abbr title="App\Service\MealManager::getAlimentsForRepas">getAlimentsForRepas</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealManager.php.html#249"><abbr title="App\Service\MealManager::removeFoodFromMeal">removeFoodFromMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealManager.php.html#266"><abbr title="App\Service\MealManager::deleteMeal">deleteMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#24"><abbr title="App\Service\MedicamentService::getAllActiveMedicaments">getAllActiveMedicaments</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#39"><abbr title="App\Service\MedicamentService::getMedicamentById">getMedicamentById</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#54"><abbr title="App\Service\MedicamentService::getMedicamentsWithPrisesForDate">getMedicamentsWithPrisesForDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#76"><abbr title="App\Service\MedicamentService::marquerPrise">marquerPrise</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#94"><abbr title="App\Service\MedicamentService::annulerPrise">annulerPrise</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#112"><abbr title="App\Service\MedicamentService::createMedicament">createMedicament</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#145"><abbr title="App\Service\MedicamentService::deleteMedicament">deleteMedicament</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#172"><abbr title="App\Service\MedicamentService::getMedicamentsJour">getMedicamentsJour</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MedicamentService.php.html#190"><abbr title="App\Service\MedicamentService::validatePeriode">validatePeriode</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#96"><abbr title="App\Service\PerformanceMetrics::getReport">getReport</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="PhysicalActivityService.php.html#81"><abbr title="App\Service\PhysicalActivityService::calculerSurplusCalorique">calculerSurplusCalorique</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#38"><abbr title="App\Service\ProfileDataService::getOptimizedProfileData">getOptimizedProfileData</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ProfileDataService.php.html#171"><abbr title="App\Service\ProfileDataService::calculateRealScore">calculateRealScore</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="RateLimitService.php.html#32"><abbr title="App\Service\RateLimitService::checkRateLimit">checkRateLimit</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="RateLimitService.php.html#109"><abbr title="App\Service\RateLimitService::saveTimestamps">saveTimestamps</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#28"><abbr title="App\Service\ServiceContainer::getInstance">getInstance</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ServiceContainer.php.html#124"><abbr title="App\Service\ServiceContainer::has">has</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#89"><abbr title="App\Service\SettingsDataService::getCachedUser">getCachedUser</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#105"><abbr title="App\Service\SettingsDataService::getCachedUserStats">getCachedUserStats</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#121"><abbr title="App\Service\SettingsDataService::getCachedHistoriqueObjectifs">getCachedHistoriqueObjectifs</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#137"><abbr title="App\Service\SettingsDataService::getCachedAllHistoriqueMesures">getCachedAllHistoriqueMesures</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="SettingsDataService.php.html#153"><abbr title="App\Service\SettingsDataService::getCachedUserConfig">getCachedUserConfig</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ValidationService.php.html#80"><abbr title="App\Service\ValidationService::validateEmail">validateEmail</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ValidationService.php.html#98"><abbr title="App\Service\ValidationService::validatePseudo">validatePseudo</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ValidationService.php.html#239"><abbr title="App\Service\ValidationService::validateField">validateField</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="FoodManager.php.html#286"><abbr title="App\Service\FoodManager::saveFoodFromAPI">saveFoodFromAPI</abbr></a></td><td class="text-right">54.3%</td><td class="text-right">4</td><td class="text-right">5</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#37"><abbr title="App\Service\FoodSaveService::saveFoodFromAPI">saveFoodFromAPI</abbr></a></td><td class="text-right">58.3%</td><td class="text-right">4</td><td class="text-right">5</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#91"><abbr title="App\Service\NAFLDAdviceService::getIMCCategory">getIMCCategory</abbr></a></td><td class="text-right">70.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#322"><abbr title="App\Service\NAFLDAdviceService::getAgeBasedAdvice">getAgeBasedAdvice</abbr></a></td><td class="text-right">40.0%</td><td class="text-right">3</td><td class="text-right">4</td></tr>
+       <tr><td><a href="ActivityService.php.html#62"><abbr title="App\Service\ActivityService::getRecentActivities">getRecentActivities</abbr></a></td><td class="text-right">76.9%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="CacheService.php.html#102"><abbr title="App\Service\CacheService::get">get</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#200"><abbr title="App\Service\FoodSaveService::deleteFood">deleteFood</abbr></a></td><td class="text-right">64.7%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="NAFLDAdviceService.php.html#288"><abbr title="App\Service\NAFLDAdviceService::getActivityAdvice">getActivityAdvice</abbr></a></td><td class="text-right">61.1%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="ActivityService.php.html#29"><abbr title="App\Service\ActivityService::getRecentActivitiesCount">getRecentActivitiesCount</abbr></a></td><td class="text-right">72.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="CacheService.php.html#83"><abbr title="App\Service\CacheService::ensureCacheDirectory">ensureCacheDirectory</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="CacheService.php.html#172"><abbr title="App\Service\CacheService::remember">remember</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="FoodManager.php.html#458"><abbr title="App\Service\FoodManager::searchFoodsInDatabase">searchFoodsInDatabase</abbr></a></td><td class="text-right">71.4%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="FoodSaveService.php.html#268"><abbr title="App\Service\FoodSaveService::normalizeApiFoodData">normalizeApiFoodData</abbr></a></td><td class="text-right">52.9%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="NutritionService.php.html#58"><abbr title="App\Service\NutritionService::getCurrentNutrition">getCurrentNutrition</abbr></a></td><td class="text-right">65.2%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="PerformanceMetrics.php.html#35"><abbr title="App\Service\PerformanceMetrics::getInstance">getInstance</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.1</a> using <a href="https://www.php.net/" target="_top">PHP 8.3.29</a> and <a href="https://phpunit.de/">PHPUnit 12.4.4</a> at Wed Dec 24 9:55:13 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/billboard.pkgd.min.js?v=12.5.1" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[0,14,"AuthService.php.html#15","App\\Service\\AuthService","210"],[0,9,"CsrfService.php.html#12","App\\Service\\CsrfService","90"],[0,47,"ExportService.php.html#12","App\\Service\\ExportService","2256"],[0,27,"GamificationService.php.html#10","App\\Service\\GamificationService","756"],[0,54,"MealManager.php.html#16","App\\Service\\MealManager","2970"],[0,8,"MealService.php.html#13","App\\Service\\MealService","72"],[0,26,"MedicamentService.php.html#8","App\\Service\\MedicamentService","702"],[0,22,"PhysicalActivityService.php.html#16","App\\Service\\PhysicalActivityService","506"],[0,2,"ProfileApiService.php.html#13","App\\Service\\ProfileApiService","6"],[0,14,"ProfileDataService.php.html#17","App\\Service\\ProfileDataService","210"],[0,15,"RateLimitService.php.html#13","App\\Service\\RateLimitService","240"],[0,13,"ServiceContainer.php.html#13","App\\Service\\ServiceContainer","182"],[0,12,"SettingsDataService.php.html#18","App\\Service\\SettingsDataService","156"],[0,8,"UploadService.php.html#12","App\\Service\\UploadService","72"],[0,6,"UserValidationService.php.html#13","App\\Service\\UserValidationService","42"],[0,32,"ValidationService.php.html#12","App\\Service\\ValidationService","1056"],[6.666666666666667,27,"OpenFoodFactsService.php.html#13","App\\Service\\OpenFoodFactsService","619.70"],[11.76470588235294,13,"PerformanceMetrics.php.html#13","App\\Service\\PerformanceMetrics","129.10"],[45.45454545454545,9,"ActivityService.php.html#14","App\\Service\\ActivityService","22.15"],[48.717948717948715,22,"CacheService.php.html#14","App\\Service\\CacheService","87.27"],[55.27950310559007,31,"FoodSaveService.php.html#18","App\\Service\\FoodSaveService","116.95"],[58.333333333333336,24,"FoodQualityService.php.html#11","App\\Service\\FoodQualityService","65.67"],[59.01639344262295,99,"DashboardService.php.html#18","App\\Service\\DashboardService","773.68"],[59.89010989010989,36,"NAFLDAdviceService.php.html#9","App\\Service\\NAFLDAdviceService","119.63"],[60.58091286307054,48,"FoodManager.php.html#16","App\\Service\\FoodManager","189.12"],[71.68141592920354,17,"NutritionService.php.html#15","App\\Service\\NutritionService","23.56"],[89.47368421052632,7,"ImcDataService.php.html#15","App\\Service\\ImcDataService","7.06"],[100,8,"FoodApiService.php.html#15","App\\Service\\FoodApiService","8"],[100,6,"FoodDataService.php.html#15","App\\Service\\FoodDataService","6"],[100,1,"ImcApiService.php.html#11","App\\Service\\ImcApiService","1"],[100,4,"ImcSaveService.php.html#17","App\\Service\\ImcSaveService","4"]]</script>
+  <script type="application/json" id="complexity_method">[[0,3,"ActivityService.php.html#115","App\\Service\\ActivityService::getCaloriesBurnedByDate","12"],[0,1,"AuthService.php.html#19","App\\Service\\AuthService::__construct","2"],[0,4,"AuthService.php.html#27","App\\Service\\AuthService::login","20"],[0,1,"AuthService.php.html#47","App\\Service\\AuthService::register","2"],[0,3,"AuthService.php.html#55","App\\Service\\AuthService::logout","12"],[0,3,"AuthService.php.html#76","App\\Service\\AuthService::handleRememberMe","12"],[0,1,"AuthService.php.html#86","App\\Service\\AuthService::getRememberedEmail","2"],[0,1,"AuthService.php.html#94","App\\Service\\AuthService::createUserSession","2"],[0,1,"CacheService.php.html#67","App\\Service\\CacheService::isEnabled","2"],[0,1,"CacheService.php.html#75","App\\Service\\CacheService::setEnabled","2"],[0,2,"CacheService.php.html#128","App\\Service\\CacheService::set","6"],[0,1,"CacheService.php.html#146","App\\Service\\CacheService::delete","2"],[0,1,"CacheService.php.html#164","App\\Service\\CacheService::clearAll","2"],[0,2,"CacheService.php.html#201","App\\Service\\CacheService::notifyCacheMiss","6"],[0,3,"CsrfService.php.html#18","App\\Service\\CsrfService::getToken","12"],[0,2,"CsrfService.php.html#34","App\\Service\\CsrfService::validateToken","6"],[0,2,"CsrfService.php.html#44","App\\Service\\CsrfService::validatePostToken","6"],[0,2,"CsrfService.php.html#55","App\\Service\\CsrfService::regenerateToken","6"],[0,3,"DashboardService.php.html#425","App\\Service\\DashboardService::getCaloriesConsumedToday","12"],[0,3,"DashboardService.php.html#463","App\\Service\\DashboardService::getProteinesConsumedToday","12"],[0,3,"DashboardService.php.html#501","App\\Service\\DashboardService::getFibresConsumedToday","12"],[0,4,"DashboardService.php.html#539","App\\Service\\DashboardService::getGlucidesConsumedToday","20"],[0,4,"DashboardService.php.html#582","App\\Service\\DashboardService::getLipidesConsumedToday","20"],[0,4,"DashboardService.php.html#670","App\\Service\\DashboardService::getActivityMinutesToday","20"],[0,1,"ExportService.php.html#18","App\\Service\\ExportService::__construct","2"],[0,5,"ExportService.php.html#27","App\\Service\\ExportService::exportToPDF","30"],[0,8,"ExportService.php.html#113","App\\Service\\ExportService::exportToCSV","72"],[0,1,"ExportService.php.html#186","App\\Service\\ExportService::getExportData","2"],[0,5,"ExportService.php.html#200","App\\Service\\ExportService::getPeriodDays","30"],[0,18,"ExportService.php.html#214","App\\Service\\ExportService::generatePDFHTML","342"],[0,4,"ExportService.php.html#584","App\\Service\\ExportService::generatePDFCoverHTML","20"],[0,5,"ExportService.php.html#625","App\\Service\\ExportService::getPeriodLabel","30"],[0,4,"FoodManager.php.html#358","App\\Service\\FoodManager::addFoodFromAPI","20"],[0,4,"FoodManager.php.html#409","App\\Service\\FoodManager::deleteFood","20"],[0,3,"FoodManager.php.html#433","App\\Service\\FoodManager::getOrCreateMeal","12"],[0,2,"FoodManager.php.html#477","App\\Service\\FoodManager::getSavedFoods","6"],[0,2,"FoodManager.php.html#493","App\\Service\\FoodManager::countSavedFoods","6"],[0,2,"FoodManager.php.html#509","App\\Service\\FoodManager::searchSavedFoods","6"],[0,3,"FoodQualityService.php.html#42","App\\Service\\FoodQualityService::getFoodGrade","12"],[0,2,"FoodQualityService.php.html#68","App\\Service\\FoodQualityService::getFoodsGrades","6"],[0,1,"FoodQualityService.php.html#204","App\\Service\\FoodQualityService::getDefaultGrade","2"],[0,1,"FoodQualityService.php.html#238","App\\Service\\FoodQualityService::invalidateFoodGrade","2"],[0,1,"FoodQualityService.php.html#246","App\\Service\\FoodQualityService::clearAllGrades","2"],[0,2,"FoodSaveService.php.html#169","App\\Service\\FoodSaveService::checkFoodExists","6"],[0,2,"FoodSaveService.php.html#183","App\\Service\\FoodSaveService::addFoodFromSearch","6"],[0,2,"FoodSaveService.php.html#229","App\\Service\\FoodSaveService::addFoodManually","6"],[0,3,"GamificationService.php.html#19","App\\Service\\GamificationService::computeStreak","12"],[0,5,"GamificationService.php.html#44","App\\Service\\GamificationService::computeWeeklyScore","30"],[0,6,"GamificationService.php.html#85","App\\Service\\GamificationService::getWeeklyGrade","42"],[0,3,"GamificationService.php.html#125","App\\Service\\GamificationService::countDaysWithGoal","12"],[0,1,"GamificationService.php.html#147","App\\Service\\GamificationService::computeStreakBadges","2"],[0,2,"GamificationService.php.html#227","App\\Service\\GamificationService::addBadge","6"],[0,2,"GamificationService.php.html#246","App\\Service\\GamificationService::mergeBadges","6"],[0,1,"GamificationService.php.html#273","App\\Service\\GamificationService::computeWalkTrackBadges","2"],[0,4,"GamificationService.php.html#472","App\\Service\\GamificationService::computeLevel","20"],[0,1,"MealManager.php.html#22","App\\Service\\MealManager::__construct","2"],[0,5,"MealManager.php.html#31","App\\Service\\MealManager::addFoodToMeal","30"],[0,1,"MealManager.php.html#79","App\\Service\\MealManager::getOrCreateMealForToday","2"],[0,4,"MealManager.php.html#87","App\\Service\\MealManager::getOrCreateTodayMeal","20"],[0,18,"MealManager.php.html#137","App\\Service\\MealManager::getMealsByDate","342"],[0,2,"MealManager.php.html#216","App\\Service\\MealManager::getMealDetails","6"],[0,2,"MealManager.php.html#229","App\\Service\\MealManager::getAlimentsForRepas","6"],[0,2,"MealManager.php.html#249","App\\Service\\MealManager::removeFoodFromMeal","6"],[0,2,"MealManager.php.html#266","App\\Service\\MealManager::deleteMeal","6"],[0,7,"MealManager.php.html#282","App\\Service\\MealManager::addFoodFromCatalog","56"],[0,7,"MealManager.php.html#367","App\\Service\\MealManager::addFoodFromSearch","56"],[0,3,"MealManager.php.html#449","App\\Service\\MealManager::saveToDatabase","12"],[0,1,"MealService.php.html#17","App\\Service\\MealService::__construct","2"],[0,4,"MealService.php.html#25","App\\Service\\MealService::validateMealData","20"],[0,3,"MealService.php.html#45","App\\Service\\MealService::calculateMealNutrition","12"],[0,1,"MedicamentService.php.html#13","App\\Service\\MedicamentService::__construct","2"],[0,2,"MedicamentService.php.html#24","App\\Service\\MedicamentService::getAllActiveMedicaments","6"],[0,2,"MedicamentService.php.html#39","App\\Service\\MedicamentService::getMedicamentById","6"],[0,2,"MedicamentService.php.html#54","App\\Service\\MedicamentService::getMedicamentsWithPrisesForDate","6"],[0,2,"MedicamentService.php.html#76","App\\Service\\MedicamentService::marquerPrise","6"],[0,2,"MedicamentService.php.html#94","App\\Service\\MedicamentService::annulerPrise","6"],[0,2,"MedicamentService.php.html#112","App\\Service\\MedicamentService::createMedicament","6"],[0,3,"MedicamentService.php.html#126","App\\Service\\MedicamentService::updateMedicament","12"],[0,2,"MedicamentService.php.html#145","App\\Service\\MedicamentService::deleteMedicament","6"],[0,1,"MedicamentService.php.html#158","App\\Service\\MedicamentService::getHistoriquePrises","2"],[0,2,"MedicamentService.php.html#172","App\\Service\\MedicamentService::getMedicamentsJour","6"],[0,2,"MedicamentService.php.html#190","App\\Service\\MedicamentService::validatePeriode","6"],[0,3,"MedicamentService.php.html#200","App\\Service\\MedicamentService::validateMedicamentExistsAndActive","12"],[0,3,"OpenFoodFactsService.php.html#227","App\\Service\\OpenFoodFactsService::normalizeNutriments","12"],[0,1,"PerformanceMetrics.php.html#27","App\\Service\\PerformanceMetrics::__construct","2"],[0,1,"PerformanceMetrics.php.html#48","App\\Service\\PerformanceMetrics::startTimer","2"],[0,1,"PerformanceMetrics.php.html#56","App\\Service\\PerformanceMetrics::getElapsedTime","2"],[0,1,"PerformanceMetrics.php.html#80","App\\Service\\PerformanceMetrics::incrementCacheMiss","2"],[0,1,"PerformanceMetrics.php.html#88","App\\Service\\PerformanceMetrics::updateCacheStats","2"],[0,2,"PerformanceMetrics.php.html#96","App\\Service\\PerformanceMetrics::getReport","6"],[0,1,"PerformanceMetrics.php.html#117","App\\Service\\PerformanceMetrics::getMemoryUsage","2"],[0,1,"PerformanceMetrics.php.html#131","App\\Service\\PerformanceMetrics::reset","2"],[0,1,"PhysicalActivityService.php.html#34","App\\Service\\PhysicalActivityService::__construct","2"],[0,1,"PhysicalActivityService.php.html#42","App\\Service\\PhysicalActivityService::calculerCaloriesEstimees","2"],[0,8,"PhysicalActivityService.php.html#52","App\\Service\\PhysicalActivityService::validerActivite","72"],[0,2,"PhysicalActivityService.php.html#81","App\\Service\\PhysicalActivityService::calculerSurplusCalorique","6"],[0,3,"PhysicalActivityService.php.html#95","App\\Service\\PhysicalActivityService::genererRecommandations","12"],[0,4,"PhysicalActivityService.php.html#132","App\\Service\\PhysicalActivityService::calculerStatistiquesHebdomadaires","20"],[0,3,"PhysicalActivityService.php.html#177","App\\Service\\PhysicalActivityService::verifierObjectifsHebdomadaires","12"],[0,1,"ProfileApiService.php.html#17","App\\Service\\ProfileApiService::__construct","2"],[0,1,"ProfileApiService.php.html#25","App\\Service\\ProfileApiService::getRecentActivitiesData","2"],[0,1,"ProfileDataService.php.html#27","App\\Service\\ProfileDataService::__construct","2"],[0,2,"ProfileDataService.php.html#38","App\\Service\\ProfileDataService::getOptimizedProfileData","6"],[0,2,"ProfileDataService.php.html#171","App\\Service\\ProfileDataService::calculateRealScore","6"],[0,6,"ProfileDataService.php.html#205","App\\Service\\ProfileDataService::calculateObjectifsCompletion","42"],[0,3,"ProfileDataService.php.html#242","App\\Service\\ProfileDataService::getProfileData","12"],[0,1,"RateLimitService.php.html#19","App\\Service\\RateLimitService::__construct","2"],[0,2,"RateLimitService.php.html#32","App\\Service\\RateLimitService::checkRateLimit","6"],[0,1,"RateLimitService.php.html#58","App\\Service\\RateLimitService::getRetryAfter","2"],[0,1,"RateLimitService.php.html#66","App\\Service\\RateLimitService::normalizeIpForFilename","2"],[0,4,"RateLimitService.php.html#74","App\\Service\\RateLimitService::ensureCacheDirExists","20"],[0,4,"RateLimitService.php.html#86","App\\Service\\RateLimitService::loadTimestamps","20"],[0,2,"RateLimitService.php.html#109","App\\Service\\RateLimitService::saveTimestamps","6"],[0,1,"ServiceContainer.php.html#23","App\\Service\\ServiceContainer::__construct","2"],[0,2,"ServiceContainer.php.html#28","App\\Service\\ServiceContainer::getInstance","6"],[0,1,"ServiceContainer.php.html#49","App\\Service\\ServiceContainer::make","2"],[0,1,"ServiceContainer.php.html#57","App\\Service\\ServiceContainer::reset","2"],[0,1,"ServiceContainer.php.html#65","App\\Service\\ServiceContainer::registerDefaults","2"],[0,3,"ServiceContainer.php.html#81","App\\Service\\ServiceContainer::get","12"],[0,1,"ServiceContainer.php.html#103","App\\Service\\ServiceContainer::set","2"],[0,1,"ServiceContainer.php.html#113","App\\Service\\ServiceContainer::register","2"],[0,2,"ServiceContainer.php.html#124","App\\Service\\ServiceContainer::has","6"],[0,1,"SettingsDataService.php.html#25","App\\Service\\SettingsDataService::__construct","2"],[0,1,"SettingsDataService.php.html#44","App\\Service\\SettingsDataService::getSettingsData","2"],[0,2,"SettingsDataService.php.html#89","App\\Service\\SettingsDataService::getCachedUser","6"],[0,2,"SettingsDataService.php.html#105","App\\Service\\SettingsDataService::getCachedUserStats","6"],[0,2,"SettingsDataService.php.html#121","App\\Service\\SettingsDataService::getCachedHistoriqueObjectifs","6"],[0,2,"SettingsDataService.php.html#137","App\\Service\\SettingsDataService::getCachedAllHistoriqueMesures","6"],[0,2,"SettingsDataService.php.html#153","App\\Service\\SettingsDataService::getCachedUserConfig","6"],[0,5,"UploadService.php.html#17","App\\Service\\UploadService::handleImageUpload","30"],[0,3,"UploadService.php.html#58","App\\Service\\UploadService::deleteImage","12"],[0,1,"UserValidationService.php.html#17","App\\Service\\UserValidationService::__construct","2"],[0,1,"UserValidationService.php.html#25","App\\Service\\UserValidationService::isEmailTaken","2"],[0,1,"UserValidationService.php.html#35","App\\Service\\UserValidationService::isPseudoTaken","2"],[0,3,"UserValidationService.php.html#45","App\\Service\\UserValidationService::checkUniqueness","12"],[0,5,"ValidationService.php.html#20","App\\Service\\ValidationService::validateUserRegistration","30"],[0,3,"ValidationService.php.html#57","App\\Service\\ValidationService::validateUserLogin","12"],[0,2,"ValidationService.php.html#80","App\\Service\\ValidationService::validateEmail","6"],[0,2,"ValidationService.php.html#98","App\\Service\\ValidationService::validatePseudo","6"],[0,4,"ValidationService.php.html#116","App\\Service\\ValidationService::validatePasswordChange","20"],[0,3,"ValidationService.php.html#144","App\\Service\\ValidationService::validateDeleteAccount","12"],[0,4,"ValidationService.php.html#167","App\\Service\\ValidationService::validateFoodAddition","20"],[0,7,"ValidationService.php.html#195","App\\Service\\ValidationService::validateNutritionGoals","56"],[0,2,"ValidationService.php.html#239","App\\Service\\ValidationService::validateField","6"],[6.666666666666667,7,"OpenFoodFactsService.php.html#149","App\\Service\\OpenFoodFactsService::getProduct","46.84"],[7.575757575757576,16,"OpenFoodFactsService.php.html#29","App\\Service\\OpenFoodFactsService::search","218.11"],[17.94871794871795,6,"NAFLDAdviceService.php.html#226","App\\Service\\NAFLDAdviceService::getNutritionBasedAdvice","25.89"],[35.8974358974359,6,"NAFLDAdviceService.php.html#164","App\\Service\\NAFLDAdviceService::getIMCBasedAdvice","15.48"],[40,3,"NAFLDAdviceService.php.html#322","App\\Service\\NAFLDAdviceService::getAgeBasedAdvice","4.94"],[46.808510638297875,7,"DashboardService.php.html#736","App\\Service\\DashboardService::getRecentActivity","14.37"],[50,2,"CacheService.php.html#83","App\\Service\\CacheService::ensureCacheDirectory","2.50"],[50,2,"CacheService.php.html#172","App\\Service\\CacheService::remember","2.50"],[50.81967213114754,11,"FoodSaveService.php.html#79","App\\Service\\FoodSaveService::addFoodFromCatalog","25.39"],[51.02040816326531,6,"NutritionService.php.html#104","App\\Service\\NutritionService::getWeeklyNutrition","10.23"],[52.94117647058824,2,"FoodSaveService.php.html#268","App\\Service\\FoodSaveService::normalizeApiFoodData","2.42"],[54.347826086956516,4,"FoodManager.php.html#286","App\\Service\\FoodManager::saveFoodFromAPI","5.52"],[58.333333333333336,4,"FoodSaveService.php.html#37","App\\Service\\FoodSaveService::saveFoodFromAPI","5.16"],[60,5,"DashboardService.php.html#313","App\\Service\\DashboardService::isInQuietHours","6.60"],[61.111111111111114,3,"NAFLDAdviceService.php.html#288","App\\Service\\NAFLDAdviceService::getActivityAdvice","3.53"],[63.26530612244898,5,"FoodQualityService.php.html#141","App\\Service\\FoodQualityService::percentageToGrade","6.24"],[64.70588235294117,3,"FoodSaveService.php.html#200","App\\Service\\FoodSaveService::deleteFood","3.40"],[65.21739130434783,2,"NutritionService.php.html#58","App\\Service\\NutritionService::getCurrentNutrition","2.17"],[66.66666666666666,3,"CacheService.php.html#102","App\\Service\\CacheService::get","3.33"],[66.66666666666666,2,"PerformanceMetrics.php.html#35","App\\Service\\PerformanceMetrics::getInstance","2.15"],[70,4,"NAFLDAdviceService.php.html#91","App\\Service\\NAFLDAdviceService::getIMCCategory","4.43"],[71.42857142857143,2,"FoodManager.php.html#458","App\\Service\\FoodManager::searchFoodsInDatabase","2.09"],[72.72727272727273,2,"ActivityService.php.html#29","App\\Service\\ActivityService::getRecentActivitiesCount","2.08"],[76.92307692307693,3,"ActivityService.php.html#62","App\\Service\\ActivityService::getRecentActivities","3.11"],[77.77777777777779,7,"DashboardService.php.html#48","App\\Service\\DashboardService::getDashboardData","7.54"],[81.81818181818183,8,"FoodManager.php.html#132","App\\Service\\FoodManager::addFoodFromSearch","8.38"],[85.45454545454545,21,"DashboardService.php.html#125","App\\Service\\DashboardService::computeHealthScore","22.36"],[86.36363636363636,13,"DashboardService.php.html#233","App\\Service\\DashboardService::generateToasts","13.43"],[88.88888888888889,6,"ImcDataService.php.html#27","App\\Service\\ImcDataService::getImcData","6.05"],[89.36170212765957,8,"FoodManager.php.html#37","App\\Service\\FoodManager::addFoodFromCatalog","8.08"],[90,3,"DashboardService.php.html#344","App\\Service\\DashboardService::getDashboardStats","3.01"],[91.66666666666666,8,"DashboardService.php.html#625","App\\Service\\DashboardService::getDailyGoals","8.04"],[92,9,"FoodQualityService.php.html#82","App\\Service\\FoodQualityService::calculateGrade","9.04"],[97.14285714285714,8,"FoodManager.php.html#221","App\\Service\\FoodManager::addFoodManually","8"],[100,1,"ActivityService.php.html#20","App\\Service\\ActivityService::__construct","1"],[100,2,"CacheService.php.html#42","App\\Service\\CacheService::__construct","2"],[100,1,"CacheService.php.html#58","App\\Service\\CacheService::isDevEnvironment","1"],[100,1,"CacheService.php.html#94","App\\Service\\CacheService::generateKey","1"],[100,1,"CacheService.php.html#156","App\\Service\\CacheService::clearNamespace","1"],[100,2,"CacheService.php.html#190","App\\Service\\CacheService::notifyCacheHit","2"],[100,3,"DashboardService.php.html#26","App\\Service\\DashboardService::__construct","3"],[100,1,"DashboardService.php.html#328","App\\Service\\DashboardService::allowToast","1"],[100,1,"DashboardService.php.html#336","App\\Service\\DashboardService::markToast","1"],[100,6,"DashboardService.php.html#385","App\\Service\\DashboardService::calculateObjectifsCompletion","6"],[100,3,"DashboardService.php.html#712","App\\Service\\DashboardService::createGoal","3"],[100,1,"FoodApiService.php.html#19","App\\Service\\FoodApiService::__construct","1"],[100,2,"FoodApiService.php.html#27","App\\Service\\FoodApiService::formatSearchResults","2"],[100,1,"FoodApiService.php.html#45","App\\Service\\FoodApiService::formatCatalogData","1"],[100,1,"FoodApiService.php.html#66","App\\Service\\FoodApiService::formatSaveResult","1"],[100,1,"FoodApiService.php.html#79","App\\Service\\FoodApiService::formatAddToMealResult","1"],[100,1,"FoodApiService.php.html#92","App\\Service\\FoodApiService::formatDeleteResult","1"],[100,1,"FoodApiService.php.html#104","App\\Service\\FoodApiService::enrichFoodWithQuality","1"],[100,1,"FoodDataService.php.html#20","App\\Service\\FoodDataService::__construct","1"],[100,1,"FoodDataService.php.html#29","App\\Service\\FoodDataService::getSavedFoods","1"],[100,1,"FoodDataService.php.html#41","App\\Service\\FoodDataService::searchSavedFoods","1"],[100,1,"FoodDataService.php.html#53","App\\Service\\FoodDataService::countSavedFoods","1"],[100,1,"FoodDataService.php.html#63","App\\Service\\FoodDataService::getCatalogData","1"],[100,1,"FoodDataService.php.html#83","App\\Service\\FoodDataService::invalidateCache","1"],[100,1,"FoodManager.php.html#26","App\\Service\\FoodManager::__construct","1"],[100,1,"FoodQualityService.php.html#30","App\\Service\\FoodQualityService::__construct","1"],[100,1,"FoodQualityService.php.html#221","App\\Service\\FoodQualityService::calculateGradeFromNutriments","1"],[100,1,"FoodSaveService.php.html#24","App\\Service\\FoodSaveService::__construct","1"],[100,2,"FoodSaveService.php.html#252","App\\Service\\FoodSaveService::validateApiFoodData","2"],[100,1,"FoodSaveService.php.html#296","App\\Service\\FoodSaveService::normalizeMealType","1"],[100,1,"FoodSaveService.php.html#320","App\\Service\\FoodSaveService::invalidateCaches","1"],[100,1,"ImcApiService.php.html#16","App\\Service\\ImcApiService::getChartData","1"],[100,1,"ImcDataService.php.html#19","App\\Service\\ImcDataService::__construct","1"],[100,1,"ImcSaveService.php.html#19","App\\Service\\ImcSaveService::__construct","1"],[100,3,"ImcSaveService.php.html#29","App\\Service\\ImcSaveService::saveImcData","3"],[100,1,"NAFLDAdviceService.php.html#13","App\\Service\\NAFLDAdviceService::__construct","1"],[100,3,"NAFLDAdviceService.php.html#21","App\\Service\\NAFLDAdviceService::hasMedicalConditions","3"],[100,3,"NAFLDAdviceService.php.html#39","App\\Service\\NAFLDAdviceService::generatePersonalizedAdvice","3"],[100,2,"NAFLDAdviceService.php.html#116","App\\Service\\NAFLDAdviceService::calculateAge","2"],[100,1,"NAFLDAdviceService.php.html#132","App\\Service\\NAFLDAdviceService::analyzeObjectives","1"],[100,2,"NAFLDAdviceService.php.html#149","App\\Service\\NAFLDAdviceService::analyzePhysicalActivity","2"],[100,1,"NAFLDAdviceService.php.html#345","App\\Service\\NAFLDAdviceService::getGeneralNAFLDAdvice","1"],[100,1,"NAFLDAdviceService.php.html#366","App\\Service\\NAFLDAdviceService::sortAdviceByPriority","1"],[100,1,"NutritionService.php.html#49","App\\Service\\NutritionService::__construct","1"],[100,8,"NutritionService.php.html#192","App\\Service\\NutritionService::calculateHealthScore","8"],[100,1,"OpenFoodFactsService.php.html#21","App\\Service\\OpenFoodFactsService::__construct","1"],[100,1,"PerformanceMetrics.php.html#64","App\\Service\\PerformanceMetrics::incrementDbQueries","1"],[100,1,"PerformanceMetrics.php.html#72","App\\Service\\PerformanceMetrics::incrementCacheHit","1"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [16,1,1,0,0,2,4,1,1,1,0,4])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [144,2,1,0,1,2,7,7,5,5,4,48])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>

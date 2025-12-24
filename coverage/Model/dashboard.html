@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/src/Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/billboard.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/var/www/html/src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Model</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivityModel.php.html#15">App\Model\ActivityModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseModel.php.html#9">App\Model\BaseModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#5">App\Model\MedicamentModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#5">App\Model\PriseMedicamentModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#8">App\Model\ReportsModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#14">App\Model\User</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#12">App\Model\UserModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#18">App\Model\WalkModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#14">App\Model\Database</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#82">App\Model\DatabaseWrapper</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#16">App\Model\MealModel</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#5">App\Model\ObjectifsModel</a></td><td class="text-right">6%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#10">App\Model\UserConfigModel</a></td><td class="text-right">37%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#9">App\Model\HistoriqueMesuresModel</a></td><td class="text-right">42%</td></tr>
+       <tr><td><a href="NaflAlerts.php.html#5">App\Model\NaflAlerts</a></td><td class="text-right">78%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="WalkModel.php.html#18">App\Model\WalkModel</a></td><td class="text-right">0.0%</td><td class="text-right">77</td><td class="text-right">6006</td></tr>
+       <tr><td><a href="MealModel.php.html#16">App\Model\MealModel</a></td><td class="text-right">0.4%</td><td class="text-right">63</td><td class="text-right">3987</td></tr>
+       <tr><td><a href="UserModel.php.html#12">App\Model\UserModel</a></td><td class="text-right">0.0%</td><td class="text-right">29</td><td class="text-right">870</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#5">App\Model\ObjectifsModel</a></td><td class="text-right">6.5%</td><td class="text-right">27</td><td class="text-right">623</td></tr>
+       <tr><td><a href="User.php.html#14">App\Model\User</a></td><td class="text-right">0.0%</td><td class="text-right">20</td><td class="text-right">420</td></tr>
+       <tr><td><a href="ActivityModel.php.html#15">App\Model\ActivityModel</a></td><td class="text-right">0.0%</td><td class="text-right">18</td><td class="text-right">342</td></tr>
+       <tr><td><a href="ReportsModel.php.html#8">App\Model\ReportsModel</a></td><td class="text-right">0.0%</td><td class="text-right">14</td><td class="text-right">210</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#5">App\Model\PriseMedicamentModel</a></td><td class="text-right">0.0%</td><td class="text-right">11</td><td class="text-right">132</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#10">App\Model\UserConfigModel</a></td><td class="text-right">37.8%</td><td class="text-right">20</td><td class="text-right">116</td></tr>
+       <tr><td><a href="database.php.html#82">App\Model\DatabaseWrapper</a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#9">App\Model\HistoriqueMesuresModel</a></td><td class="text-right">42.3%</td><td class="text-right">14</td><td class="text-right">51</td></tr>
+       <tr><td><a href="database.php.html#14">App\Model\Database</a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="NaflAlerts.php.html#5">App\Model\NaflAlerts</a></td><td class="text-right">78.3%</td><td class="text-right">18</td><td class="text-right">21</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivityModel.php.html#33"><abbr title="App\Model\ActivityModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#41"><abbr title="App\Model\ActivityModel::ajouterActivite">ajouterActivite</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#82"><abbr title="App\Model\ActivityModel::calculerCaloriesEstimees">calculerCaloriesEstimees</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#92"><abbr title="App\Model\ActivityModel::getActivitesAujourdhui">getActivitesAujourdhui</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#125"><abbr title="App\Model\ActivityModel::getTotalCaloriesDepenseesAujourdhui">getTotalCaloriesDepenseesAujourdhui</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#154"><abbr title="App\Model\ActivityModel::supprimerActivite">supprimerActivite</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#188"><abbr title="App\Model\ActivityModel::calculerBonusCalories">calculerBonusCalories</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityModel.php.html#205"><abbr title="App\Model\ActivityModel::getHistoriqueActivites">getHistoriqueActivites</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseModel.php.html#13"><abbr title="App\Model\BaseModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#86"><abbr title="App\Model\HistoriqueMesuresModel::getMesuresPeriode">getMesuresPeriode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#130"><abbr title="App\Model\HistoriqueMesuresModel::getTotalMesures">getTotalMesures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#28"><abbr title="App\Model\MealModel::downloadAndSaveImage">downloadAndSaveImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#84"><abbr title="App\Model\MealModel::updateFoodImage">updateFoodImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#130"><abbr title="App\Model\MealModel::addFoodFromOpenFoodFacts">addFoodFromOpenFoodFacts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#232"><abbr title="App\Model\MealModel::addFoodManually">addFoodManually</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#274"><abbr title="App\Model\MealModel::addFoodToMeal">addFoodToMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#317"><abbr title="App\Model\MealModel::createMealWithFood">createMealWithFood</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#357"><abbr title="App\Model\MealModel::createMeal">createMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#390"><abbr title="App\Model\MealModel::getMealByDateAndType">getMealByDateAndType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#411"><abbr title="App\Model\MealModel::getMealsByDate">getMealsByDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#447"><abbr title="App\Model\MealModel::getAlimentsForRepas">getAlimentsForRepas</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#471"><abbr title="App\Model\MealModel::getMealDetails">getMealDetails</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#498"><abbr title="App\Model\MealModel::removeFoodFromMeal">removeFoodFromMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#521"><abbr title="App\Model\MealModel::deleteFood">deleteFood</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#552"><abbr title="App\Model\MealModel::updateFoodName">updateFoodName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#571"><abbr title="App\Model\MealModel::deleteMeal">deleteMeal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#610"><abbr title="App\Model\MealModel::searchFoods">searchFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#635"><abbr title="App\Model\MealModel::getFoodById">getFoodById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#654"><abbr title="App\Model\MealModel::getSavedFoods">getSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#682"><abbr title="App\Model\MealModel::countSavedFoods">countSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MealModel.php.html#703"><abbr title="App\Model\MealModel::searchSavedFoods">searchSavedFoods</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#9"><abbr title="App\Model\MedicamentModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#14"><abbr title="App\Model\MedicamentModel::getAllActifs">getAllActifs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#22"><abbr title="App\Model\MedicamentModel::getById">getById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#30"><abbr title="App\Model\MedicamentModel::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#49"><abbr title="App\Model\MedicamentModel::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#70"><abbr title="App\Model\MedicamentModel::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MedicamentModel.php.html#78"><abbr title="App\Model\MedicamentModel::toggleActif">toggleActif</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#14"><abbr title="App\Model\ObjectifsModel::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#172"><abbr title="App\Model\ObjectifsModel::getHistoriqueByUser">getHistoriqueByUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#204"><abbr title="App\Model\ObjectifsModel::getByUserAtDate">getByUserAtDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#9"><abbr title="App\Model\PriseMedicamentModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#14"><abbr title="App\Model\PriseMedicamentModel::getPrisesForDate">getPrisesForDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#26"><abbr title="App\Model\PriseMedicamentModel::getPrisesForMedicamentsDate">getPrisesForMedicamentsDate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#51"><abbr title="App\Model\PriseMedicamentModel::marquerPris">marquerPris</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#81"><abbr title="App\Model\PriseMedicamentModel::annulerPris">annulerPris</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#92"><abbr title="App\Model\PriseMedicamentModel::getHistorique">getHistorique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#107"><abbr title="App\Model\PriseMedicamentModel::getStats">getStats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#12"><abbr title="App\Model\ReportsModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#26"><abbr title="App\Model\ReportsModel::getReportData">getReportData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#54"><abbr title="App\Model\ReportsModel::getUserInfo">getUserInfo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#62"><abbr title="App\Model\ReportsModel::getTodayMeals">getTodayMeals</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#86"><abbr title="App\Model\ReportsModel::getSavedObjectifs">getSavedObjectifs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ReportsModel.php.html#94"><abbr title="App\Model\ReportsModel::calculateTodayCalories">calculateTodayCalories</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#18"><abbr title="App\Model\User::getDb">getDb</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#23"><abbr title="App\Model\User::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#28"><abbr title="App\Model\User::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#71"><abbr title="App\Model\User::createUser">createUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="User.php.html#98"><abbr title="App\Model\User::login">login</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#142"><abbr title="App\Model\UserConfigModel::set">set</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#196"><abbr title="App\Model\UserConfigModel::reset">reset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#214"><abbr title="App\Model\UserConfigModel::castValue">castValue</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#228"><abbr title="App\Model\UserConfigModel::initializeDefaults">initializeDefaults</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#16"><abbr title="App\Model\UserModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#27"><abbr title="App\Model\UserModel::getById">getById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#52"><abbr title="App\Model\UserModel::emailExists">emailExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#84"><abbr title="App\Model\UserModel::pseudoExists">pseudoExists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#116"><abbr title="App\Model\UserModel::updateEmail">updateEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#155"><abbr title="App\Model\UserModel::updatePseudo">updatePseudo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#195"><abbr title="App\Model\UserModel::updatePassword">updatePassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#251"><abbr title="App\Model\UserModel::deleteAccount">deleteAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserModel.php.html#308"><abbr title="App\Model\UserModel::getUserStats">getUserStats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#32"><abbr title="App\Model\WalkModel::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#44"><abbr title="App\Model\WalkModel::ajouterMarche">ajouterMarche</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#108"><abbr title="App\Model\WalkModel::modifierMarche">modifierMarche</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#179"><abbr title="App\Model\WalkModel::supprimerMarche">supprimerMarche</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#205"><abbr title="App\Model\WalkModel::getMarchesAujourdhui">getMarchesAujourdhui</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#254"><abbr title="App\Model\WalkModel::getHistorique">getHistorique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#292"><abbr title="App\Model\WalkModel::getObjectifs">getObjectifs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#326"><abbr title="App\Model\WalkModel::updateObjectifs">updateObjectifs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#375"><abbr title="App\Model\WalkModel::getProgression">getProgression</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#445"><abbr title="App\Model\WalkModel::sauvegarderParcours">sauvegarderParcours</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#476"><abbr title="App\Model\WalkModel::getParcoursFavoris">getParcoursFavoris</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#510"><abbr title="App\Model\WalkModel::supprimerParcours">supprimerParcours</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#540"><abbr title="App\Model\WalkModel::getPoidsUtilisateur">getPoidsUtilisateur</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#549"><abbr title="App\Model\WalkModel::getUserWeight">getUserWeight</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#593"><abbr title="App\Model\WalkModel::calculerCalories">calculerCalories</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#606"><abbr title="App\Model\WalkModel::getStreak">getStreak</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#656"><abbr title="App\Model\WalkModel::getTotalJoursMarche">getTotalJoursMarche</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#675"><abbr title="App\Model\WalkModel::getTotalMarches">getTotalMarches</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#692"><abbr title="App\Model\WalkModel::getTotalKilometres">getTotalKilometres</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#709"><abbr title="App\Model\WalkModel::countParcoursFavoris">countParcoursFavoris</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="WalkModel.php.html#726"><abbr title="App\Model\WalkModel::getGamificationStats">getGamificationStats</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#24"><abbr title="App\Model\Database::getInstance">getInstance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#65"><abbr title="App\Model\Database::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#73"><abbr title="App\Model\Database::resetInstance">resetInstance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#86"><abbr title="App\Model\DatabaseWrapper::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#94"><abbr title="App\Model\DatabaseWrapper::prepare">prepare</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#104"><abbr title="App\Model\DatabaseWrapper::query">query</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#114"><abbr title="App\Model\DatabaseWrapper::exec">exec</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#124"><abbr title="App\Model\DatabaseWrapper::incrementQueryCount">incrementQueryCount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#136"><abbr title="App\Model\DatabaseWrapper::getQueryCount">getQueryCount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="database.php.html#144"><abbr title="App\Model\DatabaseWrapper::resetQueryCount">resetQueryCount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#110"><abbr title="App\Model\HistoriqueMesuresModel::deleteMesure">deleteMesure</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#151"><abbr title="App\Model\HistoriqueMesuresModel::mesureExists">mesureExists</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#22"><abbr title="App\Model\HistoriqueMesuresModel::saveMesure">saveMesure</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#61"><abbr title="App\Model\HistoriqueMesuresModel::getHistorique">getHistorique</abbr></a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#140"><abbr title="App\Model\ObjectifsModel::getByUser">getByUser</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#117"><abbr title="App\Model\UserConfigModel::get">get</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="NaflAlerts.php.html#7"><abbr title="App\Model\NaflAlerts::generate">generate</abbr></a></td><td class="text-right">78%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ObjectifsModel.php.html#14"><abbr title="App\Model\ObjectifsModel::save">save</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">18</td><td class="text-right">342</td></tr>
+       <tr><td><a href="WalkModel.php.html#44"><abbr title="App\Model\WalkModel::ajouterMarche">ajouterMarche</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">9</td><td class="text-right">90</td></tr>
+       <tr><td><a href="MealModel.php.html#28"><abbr title="App\Model\MealModel::downloadAndSaveImage">downloadAndSaveImage</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="User.php.html#28"><abbr title="App\Model\User::register">register</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="WalkModel.php.html#108"><abbr title="App\Model\WalkModel::modifierMarche">modifierMarche</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">8</td><td class="text-right">72</td></tr>
+       <tr><td><a href="WalkModel.php.html#326"><abbr title="App\Model\WalkModel::updateObjectifs">updateObjectifs</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="MealModel.php.html#84"><abbr title="App\Model\MealModel::updateFoodImage">updateFoodImage</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="WalkModel.php.html#375"><abbr title="App\Model\WalkModel::getProgression">getProgression</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="WalkModel.php.html#549"><abbr title="App\Model\WalkModel::getUserWeight">getUserWeight</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="WalkModel.php.html#606"><abbr title="App\Model\WalkModel::getStreak">getStreak</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">6</td><td class="text-right">42</td></tr>
+       <tr><td><a href="MealModel.php.html#130"><abbr title="App\Model\MealModel::addFoodFromOpenFoodFacts">addFoodFromOpenFoodFacts</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="User.php.html#71"><abbr title="App\Model\User::createUser">createUser</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="User.php.html#98"><abbr title="App\Model\User::login">login</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#214"><abbr title="App\Model\UserConfigModel::castValue">castValue</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="UserModel.php.html#195"><abbr title="App\Model\UserModel::updatePassword">updatePassword</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="NaflAlerts.php.html#7"><abbr title="App\Model\NaflAlerts::generate">generate</abbr></a></td><td class="text-right">78.3%</td><td class="text-right">18</td><td class="text-right">21</td></tr>
+       <tr><td><a href="ActivityModel.php.html#41"><abbr title="App\Model\ActivityModel::ajouterActivite">ajouterActivite</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="MealModel.php.html#274"><abbr title="App\Model\MealModel::addFoodToMeal">addFoodToMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="MealModel.php.html#317"><abbr title="App\Model\MealModel::createMealWithFood">createMealWithFood</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="MealModel.php.html#571"><abbr title="App\Model\MealModel::deleteMeal">deleteMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="ReportsModel.php.html#94"><abbr title="App\Model\ReportsModel::calculateTodayCalories">calculateTodayCalories</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#142"><abbr title="App\Model\UserConfigModel::set">set</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="UserModel.php.html#116"><abbr title="App\Model\UserModel::updateEmail">updateEmail</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="UserModel.php.html#155"><abbr title="App\Model\UserModel::updatePseudo">updatePseudo</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="UserModel.php.html#251"><abbr title="App\Model\UserModel::deleteAccount">deleteAccount</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="WalkModel.php.html#205"><abbr title="App\Model\WalkModel::getMarchesAujourdhui">getMarchesAujourdhui</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="WalkModel.php.html#445"><abbr title="App\Model\WalkModel::sauvegarderParcours">sauvegarderParcours</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="database.php.html#24"><abbr title="App\Model\Database::getInstance">getInstance</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="ActivityModel.php.html#154"><abbr title="App\Model\ActivityModel::supprimerActivite">supprimerActivite</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActivityModel.php.html#188"><abbr title="App\Model\ActivityModel::calculerBonusCalories">calculerBonusCalories</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MealModel.php.html#357"><abbr title="App\Model\MealModel::createMeal">createMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MealModel.php.html#521"><abbr title="App\Model\MealModel::deleteFood">deleteFood</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="MealModel.php.html#654"><abbr title="App\Model\MealModel::getSavedFoods">getSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#172"><abbr title="App\Model\ObjectifsModel::getHistoriqueByUser">getHistoriqueByUser</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#204"><abbr title="App\Model\ObjectifsModel::getByUserAtDate">getByUserAtDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#26"><abbr title="App\Model\PriseMedicamentModel::getPrisesForMedicamentsDate">getPrisesForMedicamentsDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="PriseMedicamentModel.php.html#51"><abbr title="App\Model\PriseMedicamentModel::marquerPris">marquerPris</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ReportsModel.php.html#26"><abbr title="App\Model\ReportsModel::getReportData">getReportData</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ReportsModel.php.html#62"><abbr title="App\Model\ReportsModel::getTodayMeals">getTodayMeals</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="UserModel.php.html#27"><abbr title="App\Model\UserModel::getById">getById</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="UserModel.php.html#52"><abbr title="App\Model\UserModel::emailExists">emailExists</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="UserModel.php.html#84"><abbr title="App\Model\UserModel::pseudoExists">pseudoExists</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="WalkModel.php.html#179"><abbr title="App\Model\WalkModel::supprimerMarche">supprimerMarche</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="WalkModel.php.html#292"><abbr title="App\Model\WalkModel::getObjectifs">getObjectifs</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="WalkModel.php.html#476"><abbr title="App\Model\WalkModel::getParcoursFavoris">getParcoursFavoris</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="WalkModel.php.html#510"><abbr title="App\Model\WalkModel::supprimerParcours">supprimerParcours</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActivityModel.php.html#92"><abbr title="App\Model\ActivityModel::getActivitesAujourdhui">getActivitesAujourdhui</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActivityModel.php.html#125"><abbr title="App\Model\ActivityModel::getTotalCaloriesDepenseesAujourdhui">getTotalCaloriesDepenseesAujourdhui</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActivityModel.php.html#205"><abbr title="App\Model\ActivityModel::getHistoriqueActivites">getHistoriqueActivites</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#86"><abbr title="App\Model\HistoriqueMesuresModel::getMesuresPeriode">getMesuresPeriode</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#130"><abbr title="App\Model\HistoriqueMesuresModel::getTotalMesures">getTotalMesures</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#232"><abbr title="App\Model\MealModel::addFoodManually">addFoodManually</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#390"><abbr title="App\Model\MealModel::getMealByDateAndType">getMealByDateAndType</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#411"><abbr title="App\Model\MealModel::getMealsByDate">getMealsByDate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#447"><abbr title="App\Model\MealModel::getAlimentsForRepas">getAlimentsForRepas</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#471"><abbr title="App\Model\MealModel::getMealDetails">getMealDetails</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#498"><abbr title="App\Model\MealModel::removeFoodFromMeal">removeFoodFromMeal</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#552"><abbr title="App\Model\MealModel::updateFoodName">updateFoodName</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#610"><abbr title="App\Model\MealModel::searchFoods">searchFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#635"><abbr title="App\Model\MealModel::getFoodById">getFoodById</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#682"><abbr title="App\Model\MealModel::countSavedFoods">countSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="MealModel.php.html#703"><abbr title="App\Model\MealModel::searchSavedFoods">searchSavedFoods</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="ReportsModel.php.html#12"><abbr title="App\Model\ReportsModel::__construct">__construct</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#196"><abbr title="App\Model\UserConfigModel::reset">reset</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#228"><abbr title="App\Model\UserConfigModel::initializeDefaults">initializeDefaults</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserModel.php.html#308"><abbr title="App\Model\UserModel::getUserStats">getUserStats</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#254"><abbr title="App\Model\WalkModel::getHistorique">getHistorique</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#593"><abbr title="App\Model\WalkModel::calculerCalories">calculerCalories</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#656"><abbr title="App\Model\WalkModel::getTotalJoursMarche">getTotalJoursMarche</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#675"><abbr title="App\Model\WalkModel::getTotalMarches">getTotalMarches</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#692"><abbr title="App\Model\WalkModel::getTotalKilometres">getTotalKilometres</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="WalkModel.php.html#709"><abbr title="App\Model\WalkModel::countParcoursFavoris">countParcoursFavoris</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="database.php.html#124"><abbr title="App\Model\DatabaseWrapper::incrementQueryCount">incrementQueryCount</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#22"><abbr title="App\Model\HistoriqueMesuresModel::saveMesure">saveMesure</abbr></a></td><td class="text-right">60.0%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="ObjectifsModel.php.html#140"><abbr title="App\Model\ObjectifsModel::getByUser">getByUser</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="UserConfigModel.php.html#117"><abbr title="App\Model\UserConfigModel::get">get</abbr></a></td><td class="text-right">77.8%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#61"><abbr title="App\Model\HistoriqueMesuresModel::getHistorique">getHistorique</abbr></a></td><td class="text-right">62.5%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#110"><abbr title="App\Model\HistoriqueMesuresModel::deleteMesure">deleteMesure</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="HistoriqueMesuresModel.php.html#151"><abbr title="App\Model\HistoriqueMesuresModel::mesureExists">mesureExists</abbr></a></td><td class="text-right">57.1%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.1</a> using <a href="https://www.php.net/" target="_top">PHP 8.3.29</a> and <a href="https://phpunit.de/">PHPUnit 12.4.4</a> at Wed Dec 24 10:06:43 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/billboard.pkgd.min.js?v=12.5.1" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[0,18,"ActivityModel.php.html#15","App\\Model\\ActivityModel","342"],[0,1,"BaseModel.php.html#9","App\\Model\\BaseModel","2"],[0,7,"MedicamentModel.php.html#5","App\\Model\\MedicamentModel","56"],[0,11,"PriseMedicamentModel.php.html#5","App\\Model\\PriseMedicamentModel","132"],[0,14,"ReportsModel.php.html#8","App\\Model\\ReportsModel","210"],[0,20,"User.php.html#14","App\\Model\\User","420"],[0,29,"UserModel.php.html#12","App\\Model\\UserModel","870"],[0,77,"WalkModel.php.html#18","App\\Model\\WalkModel","6006"],[0,6,"database.php.html#14","App\\Model\\Database","42"],[0,8,"database.php.html#82","App\\Model\\DatabaseWrapper","72"],[0.3731343283582089,63,"MealModel.php.html#16","App\\Model\\MealModel","3987.74"],[6.451612903225806,27,"ObjectifsModel.php.html#5","App\\Model\\ObjectifsModel","623.81"],[37.77777777777778,20,"UserConfigModel.php.html#10","App\\Model\\UserConfigModel","116.36"],[42.30769230769231,14,"HistoriqueMesuresModel.php.html#9","App\\Model\\HistoriqueMesuresModel","51.64"],[78.26086956521739,18,"NaflAlerts.php.html#5","App\\Model\\NaflAlerts","21.33"],[95.17241379310344,32,"ImcModel.php.html#9","App\\Model\\ImcModel","32"],[100,0,"Exception.php.html#8","App\\Model\\Exception","0"]]</script>
+  <script type="application/json" id="complexity_method">[[0,1,"ActivityModel.php.html#33","App\\Model\\ActivityModel::__construct","2"],[0,4,"ActivityModel.php.html#41","App\\Model\\ActivityModel::ajouterActivite","20"],[0,1,"ActivityModel.php.html#82","App\\Model\\ActivityModel::calculerCaloriesEstimees","2"],[0,2,"ActivityModel.php.html#92","App\\Model\\ActivityModel::getActivitesAujourdhui","6"],[0,2,"ActivityModel.php.html#125","App\\Model\\ActivityModel::getTotalCaloriesDepenseesAujourdhui","6"],[0,3,"ActivityModel.php.html#154","App\\Model\\ActivityModel::supprimerActivite","12"],[0,3,"ActivityModel.php.html#188","App\\Model\\ActivityModel::calculerBonusCalories","12"],[0,2,"ActivityModel.php.html#205","App\\Model\\ActivityModel::getHistoriqueActivites","6"],[0,1,"BaseModel.php.html#13","App\\Model\\BaseModel::__construct","2"],[0,2,"HistoriqueMesuresModel.php.html#86","App\\Model\\HistoriqueMesuresModel::getMesuresPeriode","6"],[0,2,"HistoriqueMesuresModel.php.html#130","App\\Model\\HistoriqueMesuresModel::getTotalMesures","6"],[0,8,"MealModel.php.html#28","App\\Model\\MealModel::downloadAndSaveImage","72"],[0,6,"MealModel.php.html#84","App\\Model\\MealModel::updateFoodImage","42"],[0,5,"MealModel.php.html#130","App\\Model\\MealModel::addFoodFromOpenFoodFacts","30"],[0,2,"MealModel.php.html#232","App\\Model\\MealModel::addFoodManually","6"],[0,4,"MealModel.php.html#274","App\\Model\\MealModel::addFoodToMeal","20"],[0,4,"MealModel.php.html#317","App\\Model\\MealModel::createMealWithFood","20"],[0,3,"MealModel.php.html#357","App\\Model\\MealModel::createMeal","12"],[0,2,"MealModel.php.html#390","App\\Model\\MealModel::getMealByDateAndType","6"],[0,2,"MealModel.php.html#411","App\\Model\\MealModel::getMealsByDate","6"],[0,2,"MealModel.php.html#447","App\\Model\\MealModel::getAlimentsForRepas","6"],[0,2,"MealModel.php.html#471","App\\Model\\MealModel::getMealDetails","6"],[0,2,"MealModel.php.html#498","App\\Model\\MealModel::removeFoodFromMeal","6"],[0,3,"MealModel.php.html#521","App\\Model\\MealModel::deleteFood","12"],[0,2,"MealModel.php.html#552","App\\Model\\MealModel::updateFoodName","6"],[0,4,"MealModel.php.html#571","App\\Model\\MealModel::deleteMeal","20"],[0,2,"MealModel.php.html#610","App\\Model\\MealModel::searchFoods","6"],[0,2,"MealModel.php.html#635","App\\Model\\MealModel::getFoodById","6"],[0,3,"MealModel.php.html#654","App\\Model\\MealModel::getSavedFoods","12"],[0,2,"MealModel.php.html#682","App\\Model\\MealModel::countSavedFoods","6"],[0,2,"MealModel.php.html#703","App\\Model\\MealModel::searchSavedFoods","6"],[0,1,"MedicamentModel.php.html#9","App\\Model\\MedicamentModel::__construct","2"],[0,1,"MedicamentModel.php.html#14","App\\Model\\MedicamentModel::getAllActifs","2"],[0,1,"MedicamentModel.php.html#22","App\\Model\\MedicamentModel::getById","2"],[0,1,"MedicamentModel.php.html#30","App\\Model\\MedicamentModel::create","2"],[0,1,"MedicamentModel.php.html#49","App\\Model\\MedicamentModel::update","2"],[0,1,"MedicamentModel.php.html#70","App\\Model\\MedicamentModel::delete","2"],[0,1,"MedicamentModel.php.html#78","App\\Model\\MedicamentModel::toggleActif","2"],[0,18,"ObjectifsModel.php.html#14","App\\Model\\ObjectifsModel::save","342"],[0,3,"ObjectifsModel.php.html#172","App\\Model\\ObjectifsModel::getHistoriqueByUser","12"],[0,3,"ObjectifsModel.php.html#204","App\\Model\\ObjectifsModel::getByUserAtDate","12"],[0,1,"PriseMedicamentModel.php.html#9","App\\Model\\PriseMedicamentModel::__construct","2"],[0,1,"PriseMedicamentModel.php.html#14","App\\Model\\PriseMedicamentModel::getPrisesForDate","2"],[0,3,"PriseMedicamentModel.php.html#26","App\\Model\\PriseMedicamentModel::getPrisesForMedicamentsDate","12"],[0,3,"PriseMedicamentModel.php.html#51","App\\Model\\PriseMedicamentModel::marquerPris","12"],[0,1,"PriseMedicamentModel.php.html#81","App\\Model\\PriseMedicamentModel::annulerPris","2"],[0,1,"PriseMedicamentModel.php.html#92","App\\Model\\PriseMedicamentModel::getHistorique","2"],[0,1,"PriseMedicamentModel.php.html#107","App\\Model\\PriseMedicamentModel::getStats","2"],[0,2,"ReportsModel.php.html#12","App\\Model\\ReportsModel::__construct","6"],[0,3,"ReportsModel.php.html#26","App\\Model\\ReportsModel::getReportData","12"],[0,1,"ReportsModel.php.html#54","App\\Model\\ReportsModel::getUserInfo","2"],[0,3,"ReportsModel.php.html#62","App\\Model\\ReportsModel::getTodayMeals","12"],[0,1,"ReportsModel.php.html#86","App\\Model\\ReportsModel::getSavedObjectifs","2"],[0,4,"ReportsModel.php.html#94","App\\Model\\ReportsModel::calculateTodayCalories","20"],[0,1,"User.php.html#18","App\\Model\\User::getDb","2"],[0,1,"User.php.html#23","App\\Model\\User::__construct","2"],[0,8,"User.php.html#28","App\\Model\\User::register","72"],[0,5,"User.php.html#71","App\\Model\\User::createUser","30"],[0,5,"User.php.html#98","App\\Model\\User::login","30"],[0,4,"UserConfigModel.php.html#142","App\\Model\\UserConfigModel::set","20"],[0,2,"UserConfigModel.php.html#196","App\\Model\\UserConfigModel::reset","6"],[0,5,"UserConfigModel.php.html#214","App\\Model\\UserConfigModel::castValue","30"],[0,2,"UserConfigModel.php.html#228","App\\Model\\UserConfigModel::initializeDefaults","6"],[0,1,"UserModel.php.html#16","App\\Model\\UserModel::__construct","2"],[0,3,"UserModel.php.html#27","App\\Model\\UserModel::getById","12"],[0,3,"UserModel.php.html#52","App\\Model\\UserModel::emailExists","12"],[0,3,"UserModel.php.html#84","App\\Model\\UserModel::pseudoExists","12"],[0,4,"UserModel.php.html#116","App\\Model\\UserModel::updateEmail","20"],[0,4,"UserModel.php.html#155","App\\Model\\UserModel::updatePseudo","20"],[0,5,"UserModel.php.html#195","App\\Model\\UserModel::updatePassword","30"],[0,4,"UserModel.php.html#251","App\\Model\\UserModel::deleteAccount","20"],[0,2,"UserModel.php.html#308","App\\Model\\UserModel::getUserStats","6"],[0,1,"WalkModel.php.html#32","App\\Model\\WalkModel::__construct","2"],[0,9,"WalkModel.php.html#44","App\\Model\\WalkModel::ajouterMarche","90"],[0,8,"WalkModel.php.html#108","App\\Model\\WalkModel::modifierMarche","72"],[0,3,"WalkModel.php.html#179","App\\Model\\WalkModel::supprimerMarche","12"],[0,4,"WalkModel.php.html#205","App\\Model\\WalkModel::getMarchesAujourdhui","20"],[0,2,"WalkModel.php.html#254","App\\Model\\WalkModel::getHistorique","6"],[0,3,"WalkModel.php.html#292","App\\Model\\WalkModel::getObjectifs","12"],[0,7,"WalkModel.php.html#326","App\\Model\\WalkModel::updateObjectifs","56"],[0,6,"WalkModel.php.html#375","App\\Model\\WalkModel::getProgression","42"],[0,4,"WalkModel.php.html#445","App\\Model\\WalkModel::sauvegarderParcours","20"],[0,3,"WalkModel.php.html#476","App\\Model\\WalkModel::getParcoursFavoris","12"],[0,3,"WalkModel.php.html#510","App\\Model\\WalkModel::supprimerParcours","12"],[0,1,"WalkModel.php.html#540","App\\Model\\WalkModel::getPoidsUtilisateur","2"],[0,6,"WalkModel.php.html#549","App\\Model\\WalkModel::getUserWeight","42"],[0,2,"WalkModel.php.html#593","App\\Model\\WalkModel::calculerCalories","6"],[0,6,"WalkModel.php.html#606","App\\Model\\WalkModel::getStreak","42"],[0,2,"WalkModel.php.html#656","App\\Model\\WalkModel::getTotalJoursMarche","6"],[0,2,"WalkModel.php.html#675","App\\Model\\WalkModel::getTotalMarches","6"],[0,2,"WalkModel.php.html#692","App\\Model\\WalkModel::getTotalKilometres","6"],[0,2,"WalkModel.php.html#709","App\\Model\\WalkModel::countParcoursFavoris","6"],[0,1,"WalkModel.php.html#726","App\\Model\\WalkModel::getGamificationStats","2"],[0,4,"database.php.html#24","App\\Model\\Database::getInstance","20"],[0,1,"database.php.html#65","App\\Model\\Database::getConnection","2"],[0,1,"database.php.html#73","App\\Model\\Database::resetInstance","2"],[0,1,"database.php.html#86","App\\Model\\DatabaseWrapper::__construct","2"],[0,1,"database.php.html#94","App\\Model\\DatabaseWrapper::prepare","2"],[0,1,"database.php.html#104","App\\Model\\DatabaseWrapper::query","2"],[0,1,"database.php.html#114","App\\Model\\DatabaseWrapper::exec","2"],[0,2,"database.php.html#124","App\\Model\\DatabaseWrapper::incrementQueryCount","6"],[0,1,"database.php.html#136","App\\Model\\DatabaseWrapper::getQueryCount","2"],[0,1,"database.php.html#144","App\\Model\\DatabaseWrapper::resetQueryCount","2"],[50,2,"HistoriqueMesuresModel.php.html#110","App\\Model\\HistoriqueMesuresModel::deleteMesure","2.50"],[57.14285714285714,2,"HistoriqueMesuresModel.php.html#151","App\\Model\\HistoriqueMesuresModel::mesureExists","2.31"],[60,3,"HistoriqueMesuresModel.php.html#22","App\\Model\\HistoriqueMesuresModel::saveMesure","3.58"],[62.5,2,"HistoriqueMesuresModel.php.html#61","App\\Model\\HistoriqueMesuresModel::getHistorique","2.21"],[66.66666666666666,3,"ObjectifsModel.php.html#140","App\\Model\\ObjectifsModel::getByUser","3.33"],[77.77777777777779,3,"UserConfigModel.php.html#117","App\\Model\\UserConfigModel::get","3.10"],[78.26086956521739,18,"NaflAlerts.php.html#7","App\\Model\\NaflAlerts::generate","21.33"],[90,3,"UserConfigModel.php.html#173","App\\Model\\UserConfigModel::getAll","3.01"],[93.93939393939394,17,"ImcModel.php.html#115","App\\Model\\ImcModel::calculate","17.06"],[95.45454545454545,14,"ImcModel.php.html#64","App\\Model\\ImcModel::validateInputs","14"],[100,1,"HistoriqueMesuresModel.php.html#13","App\\Model\\HistoriqueMesuresModel::__construct","1"],[100,1,"ImcModel.php.html#23","App\\Model\\ImcModel::buildTargets","1"],[100,1,"MealModel.php.html#20","App\\Model\\MealModel::__construct","1"],[100,1,"UserConfigModel.php.html#109","App\\Model\\UserConfigModel::__construct","1"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [10,2,0,0,1,1,0,0,1,0,1,1])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [103,0,0,0,0,0,2,3,2,0,3,4])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>

@@ -24,6 +24,24 @@
         max-size: "10m"
         max-file: "3"
 
+  test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.test
+    container_name: nash-tracker_test
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_TYPE: sqlite
+      DB_PATH: /var/www/html/storage/db.sqlite
+      APP_ENV: testing
+      PCOV_ENABLED: 1
+    networks:
+      - nash-tracker_internal
+    command: ["php", "vendor/bin/phpunit", "--coverage-html=reports/coverage"]
+    profiles:
+      - test
+
   web:
     image: nginx:1.27-alpine
     container_name: nash-tracker_web

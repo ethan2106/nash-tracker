@@ -14,7 +14,7 @@ Mesure : couverture sur src/ uniquement (pas vendor, pas views)
 - [x] Installer/configurer couverture (Xdebug ou PCOV) - Utilisé PCOV dans un conteneur Docker séparé
 - [x] Ajouter un filtre coverage (phpunit.xml) : inclure src/, exclure Views/, Config/, public/, migrations/
 - [x] Sortir un rapport HTML + un résumé console
-- [ ] Lister Top 10 fichiers les moins couverts mais critiques
+- [x] Lister Top 10 fichiers les moins couverts mais critiques
 
 Sans ça, "90%" ne veut rien dire.
 

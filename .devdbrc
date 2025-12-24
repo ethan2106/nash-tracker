@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "c:\\Projects\\nash-tracker\\storage\\db.sqlite"
+  }
+]

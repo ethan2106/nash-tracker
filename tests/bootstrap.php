@@ -36,19 +36,21 @@ if ($dbPath === ':memory:')
         // Removed echo to avoid header issues in tests
     }
 
-    // Load migrations
-    $migrations = [
-        __DIR__ . '/../migrations/001_add_indexes.sqlite.sql',
-        __DIR__ . '/../migrations/002_walktrack.sqlite.sql',
-        __DIR__ . '/../migrations/003_walktrack_times.sqlite.sql',
-    ];
+    // Load migrations (skip for :memory: since schema is current state)
+    if ($dbPath !== ':memory:') {
+        $migrations = [
+            __DIR__ . '/../migrations/001_add_indexes.sqlite.sql',
+            __DIR__ . '/../migrations/002_walktrack.sqlite.sql',
+            __DIR__ . '/../migrations/003_walktrack_times.sqlite.sql',
+        ];
 
-    foreach ($migrations as $migration)
-    {
-        if (file_exists($migration))
+        foreach ($migrations as $migration)
         {
-            $sql = file_get_contents($migration);
-            $db->exec($sql);
+            if (file_exists($migration))
+            {
+                $sql = file_get_contents($migration);
+                $db->exec($sql);
+            }
         }
     }
 }
