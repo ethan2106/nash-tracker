@@ -110,3 +110,11 @@ Repositories (si tu les as vraiment)
 
 - [ ] MealRepositoryTest : requêtes + cas "vide"
 - [ ] FoodRepositoryTest : recherche + tri + limites
+
+## Notes techniques / Améliorations futures
+
+### Migration bibliothèque de validation
+- **respect/validation** cause des dépréciations PHP 8.5+ (ReflectionProperty::setAccessible())
+- **Solution envisagée** : migration vers `symfony/validator` pour une meilleure maintenabilité
+- **Statut** : À évaluer après correction upstream de respect/validation (trop long pour l'instant)
+- **Impact** : Tests validateField temporairement skippés sur PHP 8.5+, mais fonctionnels sur versions antérieures

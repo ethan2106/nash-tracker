@@ -28,7 +28,7 @@ class HomeController
 
     private ActivityService $activityService;
 
-    public function __construct(DashboardService $dashboardService, UserConfigModel $userConfigModel, GamificationService $gamificationService, NutritionService $nutritionService = null, ActivityService $activityService = null)
+    public function __construct(DashboardService $dashboardService, UserConfigModel $userConfigModel, GamificationService $gamificationService, ?NutritionService $nutritionService = null, ?ActivityService $activityService = null)
     {
         $this->dashboardService = $dashboardService;
         $this->userConfigModel = $userConfigModel;
