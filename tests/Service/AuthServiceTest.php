@@ -10,6 +10,7 @@ class AuthServiceTest extends TestCase
 {
     private AuthService $authService;
     private User $userModel;
+    private int $testUserId;
 
     protected function setUp(): void
     {
