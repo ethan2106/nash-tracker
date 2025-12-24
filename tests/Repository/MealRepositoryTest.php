@@ -10,7 +10,6 @@ class MealRepositoryTest extends TestCase
     private MealRepository $repository;
     private int $userId;
     private array $foodIds;
-    private string $today = '2025-01-02';
 
     protected function setUp(): void
     {
@@ -101,6 +100,12 @@ class MealRepositoryTest extends TestCase
         $this->assertFalse($result);
     }
 
+    public function testCreateMealWithFoodReturnsFalseForInvalidQuantity()
+    {
+        $this->assertFalse($this->repository->createMealWithFood($this->userId, 'dejeuner', $this->foodIds[0], 0));
+        $this->assertFalse($this->repository->createMealWithFood($this->userId, 'dejeuner', $this->foodIds[0], -10));
+    }
+
     public function testAddFoodToMealAddsToExistingMeal()
     {
         // Create meal first
@@ -133,6 +138,15 @@ class MealRepositoryTest extends TestCase
         $result = $this->repository->addFoodToMeal($mealId, 99999, 100);
 
         $this->assertFalse($result);
+    }
+
+    public function testAddFoodToMealReturnsFalseForInvalidQuantity()
+    {
+        // Create meal first
+        $mealId = $this->repository->createMealWithFood($this->userId, 'dejeuner', $this->foodIds[0], 100);
+
+        $this->assertFalse($this->repository->addFoodToMeal($mealId, $this->foodIds[1], 0));
+        $this->assertFalse($this->repository->addFoodToMeal($mealId, $this->foodIds[1], -10));
     }
 
     public function testGetMealsByDateReturnsMealsWithTotals()

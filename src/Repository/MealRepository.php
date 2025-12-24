@@ -77,6 +77,11 @@ class MealRepository implements MealRepositoryInterface
     public function addFoodToMeal(int $mealId, int $foodId, float $quantity): bool
     {
         try {
+            // Vérifier la quantité
+            if ($quantity <= 0) {
+                return false;
+            }
+
             // Vérifier si l'aliment existe
             $stmt = $this->db->prepare('SELECT id FROM aliments WHERE id = ?');
             $stmt->execute([$foodId]);
