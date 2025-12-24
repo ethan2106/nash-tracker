@@ -87,6 +87,11 @@ class FoodRepository implements FoodRepositoryInterface
     public function saveFoodFromAPI(array $data): bool
     {
         try {
+            // Vérifier si le nom du produit est fourni
+            if (empty($data['product_name'])) {
+                return false;
+            }
+
             // Vérifier si l'aliment existe déjà
             if (!empty($data['code']) && $this->foodExistsByBarcode($data['code'])) {
                 return true; // Considérer comme succès si déjà existant

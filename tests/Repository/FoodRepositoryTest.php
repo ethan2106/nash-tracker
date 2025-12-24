@@ -16,7 +16,11 @@ class FoodRepositoryTest extends TestCase
         // Reset table to ensure isolation
         $db = $this->getDb();
         $db->exec('DELETE FROM aliments');
-        $db->exec('DELETE FROM sqlite_sequence WHERE name="aliments"');
+        try {
+            $db->exec('DELETE FROM sqlite_sequence WHERE name="aliments"');
+        } catch (\Throwable $e) {
+            // OK if sqlite_sequence doesn't exist or no AUTOINCREMENT
+        }
 
         // Insert test data into in-memory DB
         $this->insertTestFoods();
@@ -73,7 +77,7 @@ class FoodRepositoryTest extends TestCase
     public function testSearchSavedFoodsLimitsTo20Results()
     {
         // Insert more foods to exceed limit
-        $db = \App\Model\Database::getInstance();
+        $db = $this->getDb();
         for ($i = 0; $i < 25; $i++) {
             $stmt = $db->prepare('INSERT INTO aliments (nom, calories_100g, proteines_100g, glucides_100g, lipides_100g, fibres_100g) VALUES (?, 100, 1, 20, 1, 1)');
             $stmt->execute(["Test Food {$i}"]);
@@ -167,11 +171,8 @@ class FoodRepositoryTest extends TestCase
 
         $result = $this->repository->saveFoodFromAPI($data);
 
-        // It returns true but with empty name
-        $this->assertTrue($result);
-
-        // Verify it was inserted (count increased)
-        $newCount = $this->repository->countSavedFoods();
-        $this->assertEquals($initialCount + 1, $newCount);
+        // Should refuse insertion if product_name is missing
+        $this->assertFalse($result);
+        $this->assertEquals($initialCount, $this->repository->countSavedFoods());
     }
 }
