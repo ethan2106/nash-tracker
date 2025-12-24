@@ -11,9 +11,9 @@ Mesure : couverture sur src/ uniquement (pas vendor, pas views)
 
 ## Phase 0 — Mesurer proprement (1h)
 
-- [ ] Installer/configurer couverture (Xdebug ou PCOV)
-- [ ] Ajouter un filtre coverage (phpunit.xml) : inclure src/, exclure Views/, Config/, public/, migrations/
-- [ ] Sortir un rapport HTML + un résumé console
+- [x] Installer/configurer couverture (Xdebug ou PCOV) - Utilisé PCOV dans un conteneur Docker séparé
+- [x] Ajouter un filtre coverage (phpunit.xml) : inclure src/, exclure Views/, Config/, public/, migrations/
+- [x] Sortir un rapport HTML + un résumé console
 - [ ] Lister Top 10 fichiers les moins couverts mais critiques
 
 Sans ça, "90%" ne veut rien dire.
@@ -57,6 +57,11 @@ Tests unitaires sans DB / sans HTTP. Tu vises les branches (succès + erreurs).
    - [ ] reset/expiration
 
 Déjà là tu fais monter la couverture sans t'embarquer dans des mocks HTTP débiles.
+
+## Phase 1 - Implémentation
+
+- [x] NAFLDAdviceService (0.55% → couvert) - Tests pour génération conseils, cas limites, conditions médicales
+- [x] FoodRepository (1.25% → couvert) - Tests pour recherche, pagination, sauvegarde API, isolation DB, casse insensible, données manquantes
 
 ## Phase 2 — Auth : tester le comportement, pas le "hash interne" (3–5h)
 
