@@ -9,6 +9,7 @@ use App\Model\UserConfigModel;
 class NAFLDAdviceServiceTest extends TestCase
 {
     private NAFLDAdviceService $service;
+    /** @var \App\Model\UserConfigModel&\PHPUnit\Framework\MockObject\MockObject */
     private UserConfigModel $mockUserConfig;
 
     protected function setUp(): void
