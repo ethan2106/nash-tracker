@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.4/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         failOnRisky="true"
+         failOnWarning="true">
+
+    <testsuites>
+        <testsuite name="NashTracker Tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>src/Service</directory>
+            <directory>src/Repository</directory>
+            <directory>src/Model</directory>
+            <directory>src/Controller</directory>
+        </include>
+
+        <exclude>
+            <directory>src/View</directory>
+            <directory>src/Config</directory>
+            <directory>src/Helper</directory>
+        </exclude>
+    </source>
+
+    <php>
+        <env name="DB_PATH" value=":memory:"/>
+        <env name="APP_ENV" value="testing"/>
+    </php>
+</phpunit>

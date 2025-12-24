@@ -1,0 +1,11 @@
+parameters:
+    level: 5
+    paths:
+        - src/
+    excludePaths:
+        - src/View/
+        - vendor/
+    stubFiles:
+        - phpstan-stubs/tcpdf.php
+    ignoreErrors:
+        - '#Constant PDF_.* not found.#'

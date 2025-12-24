@@ -1,0 +1,13 @@
+http:
+  routers:
+    nash-static:
+      rule: "Host(`nash-tracker.local`)"
+      entryPoints:
+        - web
+      service: nash-static-service
+  services:
+    nash-static-service:
+      loadBalancer:
+        servers:
+          - url: "http://nash-tracker_web:80"
+        passHostHeader: true

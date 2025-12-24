@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<ruleset name="Suivi Nash PHPMD Rules"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <description>
+        Règles PHPMD pour le projet Suivi Nash.
+        Sweet spot entre maintenabilité et pragmatisme.
+        Seuils calibrés pour le code existant avec marge de progression.
+    </description>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CODE SIZE - Seuils réalistes pour un projet mature
+         ═══════════════════════════════════════════════════════════════ -->
+    
+    <!-- Complexité cyclomatique : 27 pour les grosses méthodes existantes -->
+    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="reportLevel" value="27"/>
+        </properties>
+    </rule>
+    
+    <!-- NPath : seuil adapté aux méthodes avec beaucoup de branches -->
+    <rule ref="rulesets/codesize.xml/NPathComplexity">
+        <properties>
+            <property name="minimum" value="25000"/>
+        </properties>
+    </rule>
+    
+    <!-- Méthodes : 400 lignes max, permet generatePDFHTML (export PDF spécial) -->
+    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
+        <properties>
+            <property name="minimum" value="400"/>
+        </properties>
+    </rule>
+    
+    <!-- Classes : 850 lignes, laisse passer DashboardService -->
+    <rule ref="rulesets/codesize.xml/ExcessiveClassLength">
+        <properties>
+            <property name="minimum" value="850"/>
+        </properties>
+    </rule>
+    
+    <!-- Paramètres : 9 max, au-delà → DTO ou options array -->
+    <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
+        <properties>
+            <property name="minimum" value="9"/>
+        </properties>
+    </rule>
+    
+    <!-- Méthodes publiques : 15 max par classe -->
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" value="15"/>
+        </properties>
+    </rule>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CLEAN CODE - Bonnes pratiques sans être dogmatique
+         ═══════════════════════════════════════════════════════════════ -->
+    <rule ref="rulesets/cleancode.xml">
+        <!-- else parfois plus lisible que early return -->
+        <exclude name="ElseExpression"/>
+        <!-- Helpers statiques OK (ResponseHelper::json, etc.) -->
+        <exclude name="StaticAccess"/>
+        <!-- Boolean flags OK pour options simples -->
+        <exclude name="BooleanArgumentFlag"/>
+        <!-- Imports implicites OK (\DateTime, etc.) -->
+        <exclude name="MissingImport"/>
+    </rule>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CONTROVERSIAL - Conventions de nommage
+         ═══════════════════════════════════════════════════════════════ -->
+    <rule ref="rulesets/controversial.xml">
+        <!-- Superglobals OK dans controllers ($_POST, $_GET, $_SESSION) -->
+        <exclude name="Superglobals"/>
+        <!-- Variables snake_case pour données DB ($user_id, $created_at) -->
+        <exclude name="CamelCaseVariableName"/>
+        <exclude name="CamelCaseParameterName"/>
+        <exclude name="CamelCasePropertyName"/>
+    </rule>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         DESIGN - Patterns et architecture
+         ═══════════════════════════════════════════════════════════════ -->
+    <rule ref="rulesets/design.xml">
+        <!-- exit() OK dans API controllers et scripts CLI -->
+        <exclude name="ExitExpression"/>
+        <!-- eval() interdit (sécurité) - on garde cette règle -->
+    </rule>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NAMING - Nommage flexible mais cohérent
+         ═══════════════════════════════════════════════════════════════ -->
+    <rule ref="rulesets/naming.xml">
+        <!-- $i, $id, $ml, $db autorisés -->
+        <exclude name="ShortVariable"/>
+        <!-- $weeklyScorePercentage OK pour clarté -->
+        <exclude name="LongVariable"/>
+        <!-- Méthodes courtes OK (get, set, add) -->
+        <exclude name="ShortMethodName"/>
+    </rule>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         UNUSED CODE - Nettoyage du code mort
+         ═══════════════════════════════════════════════════════════════ -->
+    <rule ref="rulesets/unusedcode.xml">
+        <!-- Paramètres non utilisés OK (interfaces, callbacks, hooks) -->
+        <exclude name="UnusedFormalParameter"/>
+        <!-- Variables inutilisées : trop de faux positifs avec pattern include/require -->
+        <exclude name="UnusedLocalVariable"/>
+    </rule>
+
+</ruleset>

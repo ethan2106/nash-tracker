@@ -1,0 +1,18 @@
+{
+    "$schema": "https://raw.githubusercontent.com/infection/infection/master/resources/schema.json",
+    "source": {
+        "directories": [
+            "src/Service",
+            "src/Model",
+            "src/Helper"
+        ]
+    },
+    "logs": {
+        "text": "storage/infection.log",
+        "summary": "storage/infection-summary.log"
+    },
+    "minMsi": 10,
+    "minCoveredMsi": 20,
+    "threads": 8,
+    "timeout": 5
+}

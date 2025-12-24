@@ -1,0 +1,160 @@
+/* public/css/medicaments.css */
+
+/* Masquer les éléments avec x-cloak jusqu'à ce qu'Alpine.js soit chargé */
+[x-cloak] { display: none !important; }
+
+.periode-btn {
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.periode-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.periode-btn:active {
+    transform: translateY(0);
+}
+
+/* Animations d'entrée pour les cartes */
+.medicament-card {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.medicament-card:nth-child(1) { animation-delay: 0.1s; }
+.medicament-card:nth-child(2) { animation-delay: 0.2s; }
+.medicament-card:nth-child(3) { animation-delay: 0.3s; }
+.medicament-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal animations améliorées */
+#medicament-modal:not(.hidden) {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Loading states améliorés */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success animations */
+.success-animation {
+    animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive design amélioré */
+@media (max-width: 640px) {
+    .periode-btn {
+        min-width: 100px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Indicateurs visuels pour les états */
+.periode-btn.pris {
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+}
+
+.periode-btn.non-pris {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Sections de médicaments */
+.medicaments-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+}
+
+.medicaments-section h2 {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.medicaments-section .grid {
+    display: grid;
+    gap: 1rem;
+}
+
+/* Indicateurs de type sur les cartes */
+.medicament-card .type-indicator {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.medicament-card .type-indicator i {
+    margin-right: 0.25rem;
+}
+
+/* Responsive pour les sections */
+@media (max-width: 768px) {
+    .medicaments-section {
+        padding: 1rem;
+    }
+
+    .medicaments-section h2 {
+        font-size: 1.125rem;
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "site4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./public/css/tailwind.css -o ./public/css/app.css --watch=false",
+    "test": ".\\vendor\\bin\\phpunit",
+    "test:coverage": ".\\vendor\\bin\\phpunit --coverage-html=coverage",
+    "lint": ".\\vendor\\bin\\php-cs-fixer fix --dry-run",
+    "lint:fix": ".\\vendor\\bin\\php-cs-fixer fix",
+    "analyze": ".\\vendor\\bin\\phpstan analyse --configuration=phpstan.neon",
+    "quality": "npm run lint && npm run test && npm run analyze"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "4.1.17",
+    "autoprefixer": "10.4.22",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.17"
+  },
+  "dependencies": {
+    "alpinejs": "^3.15.2"
+  }
+}

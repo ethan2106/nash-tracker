@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment est calculé le score NASH ? • Suivi Nash</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f8fffe; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 2.5rem; text-align: center; color: #10b981; margin-bottom: 2rem; }
+    .badge { display: inline-block; width: 60px; height: 60px; border-radius: 50%; color: white; font-weight: bold; font-size: 1.5rem; line-height: 60px; text-align: center; margin: 0.5rem; }
+    .A { background: #16a34a; }  /* vert foncé */
+    .B { background: #86efac; color: #166534; }
+    .C { background: #fbbf24; color: #78350f; }
+    .D { background: #f97316; }
+    .E { background: #dc2626; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .card { background: white; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .highlight { background: #ecfdf5; padding: 1.5rem 1rem; border-radius: .5rem; font-weight: 600; }
+    footer { text-align: center; margin-top: 4rem; color: #64748b; }
+  </style>
+</head>
+<body>
+
+  <h1>Comment est calculé<br>le <strong>le score NASH</strong> ?</h1>
+
+  <p style="text-align:center;font-size:1.2rem;max-width:700px;margin:0 auto 3rem;">
+    Le seul score alimentaire français conçu <strong>spécifiquement pour la stéatose hépatique (NAFLD/NASH)</strong>,<br>
+    pas un simple Nutri-Score ou Yuka adapté.
+  </p>
+
+  <div style="text-align:center;margin:3rem 0;">
+    <span class="badge A">A</span>
+    <span class="badge B">B</span>
+    <span class="badge C">C</span>
+    <span class="badge D">D</span>
+    <span class="badge E">E</span>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Ce qui est pénalisé (le foie n’aime pas)</h2>
+      <ul>
+        <li>Sucres ajoutés & fructose → pénalité très forte</li>
+        <li>Graisses saturées & trans → pénalité forte</li>
+        <li>Index glycémique élevé</li>
+        <li>Sodium excessif</li>
+        <li>Calories vides (boissons sucrées, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Ce qui est récompensé (le foie adore)</h2>
+      <ul>
+        <li>Fibres (surtout solubles) → bonus énorme</li>
+        <li>Protéines maigres (poisson, volaille, œufs, légumineuses)</li>
+        <li>Oméga-3 & antioxydants</li>
+        <li>Polyphénols (thé vert, café, fruits rouges)</li>
+        <li>Faible densité calorique</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="highlight" style="text-align:center;font-size:1.3rem;">
+    Formule validée sur les dernières recommandations<br>
+    <strong>EASL 2023 • AASLD 2024 • SNFGE 2025</strong>
+  </p>
+
+  <div class="card" style="margin-top:3rem;">
+    <h2>Exemples concrets</h2>
+    <p>• Blanc de poulet nature → <strong>B (63 %)</strong> → « Très bien »<br>
+       • Banania → <strong>D (38 %)</strong> → « À limiter »<br>
+       • Saumon fumé → <strong>A (88 %)</strong> → « Excellent pour le foie »</p>
+  </div>
+
+  <footer>
+    © 2025 Suivi Nash • Tous droits réservés<br>
+    <small>Score développé indépendamment à partir des données OpenFoodFacts et des guidelines médicales officielles</small>
+  </footer>
+
+</body>
+</html>
