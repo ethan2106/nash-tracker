@@ -2,13 +2,15 @@
 
 namespace Tests\Repository;
 
-use PHPUnit\Framework\TestCase;
 use App\Repository\MealRepository;
+use PHPUnit\Framework\TestCase;
 
 class MealRepositoryTest extends TestCase
 {
     private MealRepository $repository;
+
     private int $userId;
+
     private array $foodIds;
 
     protected function setUp(): void
@@ -21,9 +23,12 @@ class MealRepositoryTest extends TestCase
         $db->exec('DELETE FROM repas');
         $db->exec('DELETE FROM aliments');
         $db->exec('DELETE FROM users');
-        try {
+
+        try
+        {
             $db->exec('DELETE FROM sqlite_sequence WHERE name IN ("repas_aliments", "repas", "aliments", "users")');
-        } catch (\Throwable $e) {
+        } catch (\Throwable $e)
+        {
             // OK if sqlite_sequence doesn't exist or no AUTOINCREMENT
         }
 
@@ -51,7 +56,8 @@ class MealRepositoryTest extends TestCase
             ['nom' => 'Banane', 'calories_100g' => 89, 'proteines_100g' => 1.1, 'glucides_100g' => 23, 'lipides_100g' => 0.3, 'fibres_100g' => 2.6, 'sucres_100g' => 12, 'acides_gras_satures_100g' => 0, 'sodium_100g' => 1],
         ];
         $foodIds = [];
-        foreach ($foods as $food) {
+        foreach ($foods as $food)
+        {
             $stmt = $db->prepare('INSERT INTO aliments (nom, calories_100g, proteines_100g, glucides_100g, lipides_100g, fibres_100g, sucres_100g, acides_gras_satures_100g, sodium_100g) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
             $stmt->execute([$food['nom'], $food['calories_100g'], $food['proteines_100g'], $food['glucides_100g'], $food['lipides_100g'], $food['fibres_100g'], $food['sucres_100g'], $food['acides_gras_satures_100g'], $food['sodium_100g']]);
             $foodIds[] = (int)$db->lastInsertId();
@@ -160,8 +166,8 @@ class MealRepositoryTest extends TestCase
         $this->assertCount(2, $meals);
 
         // Check totals
-        $breakfast = array_filter($meals, fn($m) => $m['type_repas'] === 'petit_dejeuner');
-        $lunch = array_filter($meals, fn($m) => $m['type_repas'] === 'dejeuner');
+        $breakfast = array_filter($meals, fn ($m) => $m['type_repas'] === 'petit_dejeuner');
+        $lunch = array_filter($meals, fn ($m) => $m['type_repas'] === 'dejeuner');
 
         $this->assertEquals(52.0, reset($breakfast)['calories_total'], '', 0.01);
         $this->assertEquals(178.0, reset($lunch)['calories_total'], '', 0.01); // 89 * 2

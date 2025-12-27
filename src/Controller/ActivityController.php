@@ -37,6 +37,7 @@ class ActivityController extends BaseApiController
         // Inclure la vue avec les données
         include __DIR__ . '/../View/activity.php';
     }
+
     public function ajouterActivite(): array
     {
         try
@@ -50,7 +51,6 @@ class ActivityController extends BaseApiController
             $type = $_POST['type_activite'] ?? '';
             $duree = isset($_POST['duree_minutes']) ? (int)$_POST['duree_minutes'] : 0;
             $calories = isset($_POST['calories']) && $_POST['calories'] !== '' ? (int)$_POST['calories'] : null;
-
 
             // Validation
             if (empty($type))
@@ -86,6 +86,7 @@ class ActivityController extends BaseApiController
                     'calories' => $result['calories'],
                     'bonus_calories' => $bonus,
                 ];
+
                 return $response;
             } else
             {
@@ -183,6 +184,7 @@ class ActivityController extends BaseApiController
                     'success' => true,
                     'message' => 'Activité supprimée avec succès',
                 ];
+
                 return $response;
             } else
             {

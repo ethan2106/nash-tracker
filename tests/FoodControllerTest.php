@@ -1,8 +1,8 @@
 <?php
 
 use App\Controller\FoodController;
-use App\Service\FoodDataService;
 use App\Service\FoodApiService;
+use App\Service\FoodDataService;
 use App\Service\FoodSaveService;
 use App\Service\OpenFoodFactsService;
 use PHPUnit\Framework\TestCase;
@@ -117,7 +117,7 @@ class FoodControllerTest extends TestCase
             'brands' => 'Sodebo',
             'barcode' => '123456789',
             'image' => 'http://example.com/image.jpg',
-            'nutriments' => ['proteins' => 10, 'carbs' => 20]
+            'nutriments' => ['proteins' => 10, 'carbs' => 20],
         ]);
         $input7 = ['food_data' => $foodDataJson, 'save_to_db' => '1'];
         $result7 = $method->invoke($this->foodController, $input7);
@@ -133,7 +133,7 @@ class FoodControllerTest extends TestCase
         // Cas 8: food_data avec code au lieu de barcode
         $foodDataJson8 = json_encode([
             'name' => 'Produit Test',
-            'code' => '987654321'
+            'code' => '987654321',
         ]);
         $input8 = ['food_data' => $foodDataJson8];
         $result8 = $method->invoke($this->foodController, $input8);
@@ -148,12 +148,12 @@ class FoodControllerTest extends TestCase
         // Cas 10: données existantes ne sont pas écrasées par food_data
         $foodDataJson10 = json_encode([
             'name' => 'Nom depuis food_data',
-            'brands' => 'Marque depuis food_data'
+            'brands' => 'Marque depuis food_data',
         ]);
         $input10 = [
             'food_data' => $foodDataJson10,
             'food_name' => 'Nom existant',
-            'other_field' => 'préservé'
+            'other_field' => 'préservé',
         ];
         $result10 = $method->invoke($this->foodController, $input10);
         $this->assertEquals('Nom existant', $result10['food_name']); // Pas écrasé

@@ -39,7 +39,8 @@ class ImcController
 
         // Hydrate request with saved data if missing
         $saved = \App\Model\ObjectifsModel::getByUser($userId);
-        if ($saved) {
+        if ($saved)
+        {
             $request['poids'] ??= $saved['poids'];
             $request['taille'] ??= $saved['taille'];
             $request['annee'] ??= $saved['annee'];
@@ -60,10 +61,13 @@ class ImcController
 
         // Sanitize request data to handle arrays
         $fields = ['taille', 'poids', 'annee', 'sexe', 'activite', 'objectif', 'sucres', 'graisses_sat', 'fibres', 'glucides', 'graisses_insaturees'];
-        foreach ($fields as $field) {
-            if (isset($request[$field])) {
+        foreach ($fields as $field)
+        {
+            if (isset($request[$field]))
+            {
                 $value = $request[$field];
-                if (is_array($value)) {
+                if (is_array($value))
+                {
                     $value = $value[0] ?? '';
                 }
                 $request[$field] = $value;
@@ -72,7 +76,8 @@ class ImcController
 
         // Hydrate request with saved data if missing
         $saved = \App\Model\ObjectifsModel::getByUser($user_id);
-        if ($saved) {
+        if ($saved)
+        {
             $request['poids'] ??= $saved['poids'];
             $request['taille'] ??= $saved['taille'];
             $request['annee'] ??= $saved['annee'];
@@ -125,10 +130,13 @@ class ImcController
         // Sanitize POST data to handle arrays (e.g., from Alpine.js duplicates)
         $cleanPost = [];
         $fields = ['taille', 'poids', 'annee', 'sexe', 'activite', 'objectif', 'sucres', 'graisses_sat', 'fibres', 'glucides', 'graisses_insaturees'];
-        foreach ($fields as $field) {
-            if (isset($_POST[$field])) {
+        foreach ($fields as $field)
+        {
+            if (isset($_POST[$field]))
+            {
                 $value = $_POST[$field];
-                if (is_array($value)) {
+                if (is_array($value))
+                {
                     $value = $value[0] ?? '';
                 }
                 $cleanPost[$field] = $value;

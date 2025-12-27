@@ -128,8 +128,8 @@ class ImcModel
 
         $taille = $sanitizeFloat($request['taille'] ?? null);
         $taille = max(0.1, $taille);
-        $poids  = $sanitizeFloat($request['poids'] ?? null);
-        $annee  = isset($request['annee']) ? (int)$request['annee'] : null;;
+        $poids = $sanitizeFloat($request['poids'] ?? null);
+        $annee = isset($request['annee']) ? (int)$request['annee'] : null;
         $annee = max(1920, min((int)date('Y'), $annee));
 
         $sexe = $request['sexe'] ?? 'homme';

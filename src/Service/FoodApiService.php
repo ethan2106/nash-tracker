@@ -2,15 +2,13 @@
 
 namespace App\Service;
 
-use App\Service\FoodQualityService;
-
 /**
  * FoodApiService - Service de formatage des réponses API pour les aliments
  * Responsabilités :
  * - Formatage des réponses JSON pour les recherches
  * - Formatage des réponses AJAX pour le catalogue
  * - Enrichissement des données avec les scores qualité
- * - Gestion des erreurs API
+ * - Gestion des erreurs API.
  */
 class FoodApiService
 {
@@ -22,11 +20,12 @@ class FoodApiService
     }
 
     /**
-     * Formate les résultats de recherche pour l'API
+     * Formate les résultats de recherche pour l'API.
      */
     public function formatSearchResults(array $results, ?string $error = null): array
     {
-        if ($error) {
+        if ($error)
+        {
             return [
                 'success' => false,
                 'error' => $error,
@@ -40,11 +39,12 @@ class FoodApiService
     }
 
     /**
-     * Formate les données du catalogue pour AJAX
+     * Formate les données du catalogue pour AJAX.
      */
     public function formatCatalogData(array $catalogData): array
     {
-        $foods = array_map(function ($food) {
+        $foods = array_map(function ($food)
+        {
             return $this->enrichFoodWithQuality($food);
         }, $catalogData['foods']);
 
@@ -61,7 +61,7 @@ class FoodApiService
     }
 
     /**
-     * Formate une réponse de sauvegarde d'aliment
+     * Formate une réponse de sauvegarde d'aliment.
      */
     public function formatSaveResult(array $result): array
     {
@@ -74,7 +74,7 @@ class FoodApiService
     }
 
     /**
-     * Formate une réponse d'ajout au repas
+     * Formate une réponse d'ajout au repas.
      */
     public function formatAddToMealResult(array $result): array
     {
@@ -87,7 +87,7 @@ class FoodApiService
     }
 
     /**
-     * Formate une réponse de suppression
+     * Formate une réponse de suppression.
      */
     public function formatDeleteResult(array $result): array
     {
@@ -99,7 +99,7 @@ class FoodApiService
     }
 
     /**
-     * Enrichit un aliment avec les données de qualité
+     * Enrichit un aliment avec les données de qualité.
      */
     private function enrichFoodWithQuality(array $food): array
     {

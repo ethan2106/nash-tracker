@@ -8,7 +8,7 @@ use Respect\Validation\Validator as v;
 
 /**
  * Tests pour ValidationService
- * Couvre toutes les méthodes de validation avec cas valides et invalides
+ * Couvre toutes les méthodes de validation avec cas valides et invalides.
  */
 class ValidationServiceTest extends TestCase
 {
@@ -32,7 +32,7 @@ class ValidationServiceTest extends TestCase
             'email' => 'test@example.com',
             'pseudo' => 'testuser123',
             'password' => 'password123',
-            'password_confirm' => 'password123'
+            'password_confirm' => 'password123',
         ];
 
         $errors = $this->validationService->validateUserRegistration($data);
@@ -46,7 +46,7 @@ class ValidationServiceTest extends TestCase
             'email' => 'invalid-email',
             'pseudo' => 'testuser123',
             'password' => 'password123',
-            'password_confirm' => 'password123'
+            'password_confirm' => 'password123',
         ];
 
         $errors = $this->validationService->validateUserRegistration($data);
@@ -62,7 +62,7 @@ class ValidationServiceTest extends TestCase
             'email' => 'test@example.com',
             'pseudo' => 't', // trop court
             'password' => 'password123',
-            'password_confirm' => 'password123'
+            'password_confirm' => 'password123',
         ];
 
         $errors = $this->validationService->validateUserRegistration($data);
@@ -78,7 +78,7 @@ class ValidationServiceTest extends TestCase
             'email' => 'test@example.com',
             'pseudo' => 'testuser123',
             'password' => '123', // trop court
-            'password_confirm' => '123'
+            'password_confirm' => '123',
         ];
 
         $errors = $this->validationService->validateUserRegistration($data);
@@ -94,7 +94,7 @@ class ValidationServiceTest extends TestCase
             'email' => 'test@example.com',
             'pseudo' => 'testuser123',
             'password' => 'password123',
-            'password_confirm' => 'different123'
+            'password_confirm' => 'different123',
         ];
 
         $errors = $this->validationService->validateUserRegistration($data);
@@ -110,7 +110,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'email' => 'test@example.com',
-            'password' => 'password123'
+            'password' => 'password123',
         ];
 
         $errors = $this->validationService->validateUserLogin($data);
@@ -122,7 +122,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'email' => 'invalid-email',
-            'password' => 'password123'
+            'password' => 'password123',
         ];
 
         $errors = $this->validationService->validateUserLogin($data);
@@ -134,7 +134,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'email' => 'test@example.com',
-            'password' => ''
+            'password' => '',
         ];
 
         $errors = $this->validationService->validateUserLogin($data);
@@ -145,7 +145,7 @@ class ValidationServiceTest extends TestCase
     public function testValidateUserLoginMissingEmail(): void
     {
         $errors = $this->validationService->validateUserLogin([
-            'password' => 'password123'
+            'password' => 'password123',
         ]);
 
         $this->assertArrayHasKey('email', $errors);
@@ -198,7 +198,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'current_password' => 'oldpass123',
             'new_password' => 'newpass123',
-            'new_password_confirm' => 'newpass123'
+            'new_password_confirm' => 'newpass123',
         ];
 
         $errors = $this->validationService->validatePasswordChange($data);
@@ -211,7 +211,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'current_password' => '',
             'new_password' => 'newpass123',
-            'new_password_confirm' => 'newpass123'
+            'new_password_confirm' => 'newpass123',
         ];
 
         $errors = $this->validationService->validatePasswordChange($data);
@@ -224,7 +224,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'current_password' => 'oldpass123',
             'new_password' => '123',
-            'new_password_confirm' => '123'
+            'new_password_confirm' => '123',
         ];
 
         $errors = $this->validationService->validatePasswordChange($data);
@@ -237,7 +237,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'current_password' => 'oldpass123',
             'new_password' => 'newpass123',
-            'new_password_confirm' => 'different123'
+            'new_password_confirm' => 'different123',
         ];
 
         $errors = $this->validationService->validatePasswordChange($data);
@@ -251,7 +251,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'password' => 'password123',
-            'confirmation' => 'SUPPRIMER'
+            'confirmation' => 'SUPPRIMER',
         ];
 
         $errors = $this->validationService->validateDeleteAccount($data);
@@ -263,7 +263,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'password' => '',
-            'confirmation' => 'SUPPRIMER'
+            'confirmation' => 'SUPPRIMER',
         ];
 
         $errors = $this->validationService->validateDeleteAccount($data);
@@ -275,7 +275,7 @@ class ValidationServiceTest extends TestCase
     {
         $data = [
             'password' => 'password123',
-            'confirmation' => 'delete'
+            'confirmation' => 'delete',
         ];
 
         $errors = $this->validationService->validateDeleteAccount($data);
@@ -290,7 +290,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'aliment_id' => 123,
             'quantite_g' => 100.5,
-            'meal_type' => 'dejeuner'
+            'meal_type' => 'dejeuner',
         ];
 
         $errors = $this->validationService->validateFoodAddition($data);
@@ -303,7 +303,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'aliment_id' => -1,
             'quantite_g' => 100.5,
-            'meal_type' => 'dejeuner'
+            'meal_type' => 'dejeuner',
         ];
 
         $errors = $this->validationService->validateFoodAddition($data);
@@ -316,7 +316,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'aliment_id' => 123,
             'quantite_g' => 6000,
-            'meal_type' => 'dejeuner'
+            'meal_type' => 'dejeuner',
         ];
 
         $errors = $this->validationService->validateFoodAddition($data);
@@ -329,7 +329,7 @@ class ValidationServiceTest extends TestCase
         $data = [
             'aliment_id' => 123,
             'quantite_g' => 100.5,
-            'meal_type' => 'invalid'
+            'meal_type' => 'invalid',
         ];
 
         $errors = $this->validationService->validateFoodAddition($data);
@@ -342,7 +342,7 @@ class ValidationServiceTest extends TestCase
         $errors = $this->validationService->validateFoodAddition([
             'aliment_id' => 123,
             'quantite_g' => 0,
-            'meal_type' => 'dejeuner'
+            'meal_type' => 'dejeuner',
         ]);
 
         $this->assertArrayHasKey('quantite_g', $errors);
@@ -352,7 +352,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsValid(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -360,7 +360,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 175,
             'poids_kg' => 70.5,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -376,7 +376,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 175,
             'poids_kg' => 70.5,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -386,7 +386,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsInvalidSexe(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -394,7 +394,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 175,
             'poids_kg' => 70.5,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -404,7 +404,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsInvalidAge(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -412,7 +412,7 @@ class ValidationServiceTest extends TestCase
             'age' => 150,
             'taille_cm' => 175,
             'poids_kg' => 70.5,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -422,7 +422,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsInvalidTaille(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -430,7 +430,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 300,
             'poids_kg' => 70.5,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -440,7 +440,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsInvalidPoids(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -448,7 +448,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 175,
             'poids_kg' => 350,
-            'activite' => 'modere'
+            'activite' => 'modere',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -458,7 +458,7 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateNutritionGoalsInvalidActivite(): void
     {
-        $currentYear = (int) date('Y');
+        $currentYear = (int)date('Y');
 
         $data = [
             'annee' => $currentYear,
@@ -466,7 +466,7 @@ class ValidationServiceTest extends TestCase
             'age' => 30,
             'taille_cm' => 175,
             'poids_kg' => 70.5,
-            'activite' => 'invalid'
+            'activite' => 'invalid',
         ];
 
         $errors = $this->validationService->validateNutritionGoals($data);
@@ -478,18 +478,20 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateFieldValid(): void
     {
-        if (!class_exists(v::class)) {
+        if (!class_exists(v::class))
+        {
             $this->markTestSkipped('Respect\Validation not installed');
         }
 
-    // Skip this test if PHP 8.5+ due to deprecation in respect/validation library
-    if (PHP_VERSION_ID >= 80500 && class_exists(\Respect\Validation\Validator::class)) {
-        $this->markTestSkipped(
-            'Skipped due to respect/validation ReflectionProperty::setAccessible() deprecation on PHP 8.5+'
-        );
-    }
+        // Skip this test if PHP 8.5+ due to deprecation in respect/validation library
+        if (PHP_VERSION_ID >= 80500 && class_exists(\Respect\Validation\Validator::class))
+        {
+            $this->markTestSkipped(
+                'Skipped due to respect/validation ReflectionProperty::setAccessible() deprecation on PHP 8.5+'
+            );
+        }
 
-        $rule = fn() => v::stringType()->notEmpty();
+        $rule = fn () => v::stringType()->notEmpty();
 
         $result = $this->validationService->validateField('test', $rule);
 
@@ -498,16 +500,18 @@ class ValidationServiceTest extends TestCase
 
     public function testValidateFieldInvalid(): void
     {
-        if (!class_exists(v::class)) {
+        if (!class_exists(v::class))
+        {
             $this->markTestSkipped('Respect\Validation not installed');
         }
 
         // Skip this test if PHP 8.5+ due to deprecation in respect/validation library
-        if (PHP_VERSION_ID >= 80500) {
+        if (PHP_VERSION_ID >= 80500)
+        {
             $this->markTestSkipped('Skipped due to respect/validation deprecation in PHP 8.5');
         }
 
-        $rule = fn() => v::stringType()->notEmpty();
+        $rule = fn () => v::stringType()->notEmpty();
 
         $result = $this->validationService->validateField('', $rule);
 

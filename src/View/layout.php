@@ -66,6 +66,9 @@ function includeCss(array $styles)
             --z-overlay: 30;
             --z-modal: 40;
         }
+        body {
+            overflow-anchor: none;
+        }
     </style>
 
     <!-- Alpine.js (loaded in head for proper initialization) -->

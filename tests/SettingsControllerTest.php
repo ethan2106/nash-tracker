@@ -12,11 +12,17 @@ use PHPUnit\Framework\TestCase;
 class TestableSettingsController extends SettingsController
 {
     private $userModel;
+
     private $userConfigModel;
+
     private $historiqueMesuresModel;
+
     private $cacheService;
+
     private $validationService;
+
     private $settingsDataService;
+
     private $skipSessionCheck = false;
 
     public function __construct(
@@ -221,11 +227,17 @@ class TestableSettingsController extends SettingsController
 class SettingsControllerTest extends TestCase
 {
     private $userModel;
+
     private $userConfigModel;
+
     private $historiqueMesuresModel;
+
     private $cacheService;
+
     private $validationService;
+
     private $settingsDataService;
+
     private $controller;
 
     protected function setUp(): void

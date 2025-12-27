@@ -8,6 +8,7 @@ use App\Model\PriseMedicamentModel;
 class MedicamentService
 {
     private MedicamentModel $medicamentModel;
+
     private PriseMedicamentModel $priseModel;
 
     public function __construct(
@@ -26,7 +27,8 @@ class MedicamentService
         $medicaments = $this->medicamentModel->getAllActifs();
 
         // Decode heures_prise JSON pour chaque médicament
-        foreach ($medicaments as &$med) {
+        foreach ($medicaments as &$med)
+        {
             $med['heures_prise'] = json_decode($med['heures_prise'], true) ?? [];
         }
 
@@ -40,7 +42,8 @@ class MedicamentService
     {
         $medicament = $this->medicamentModel->getById($id);
 
-        if ($medicament) {
+        if ($medicament)
+        {
             $medicament['heures_prise'] = json_decode($medicament['heures_prise'], true) ?? [];
             $medicament['type'] = $medicament['type'] ?? 'regulier';
         }
@@ -58,7 +61,8 @@ class MedicamentService
         $prises = $this->priseModel->getPrisesForMedicamentsDate($medicamentIds, $date);
 
         $result = [];
-        foreach ($medicaments as $med) {
+        foreach ($medicaments as $med)
+        {
             $result[$med['id']] = [
                 'nom' => $med['nom'],
                 'type' => $med['type'] ?? 'regulier',
@@ -80,8 +84,10 @@ class MedicamentService
 
         $success = $this->priseModel->marquerPris($medicamentId, $date, $periode);
 
-        if ($success) {
+        if ($success)
+        {
             $prises = $this->priseModel->getPrisesForDate($medicamentId, $date);
+
             return ['success' => true, 'prises' => $prises];
         }
 
@@ -98,8 +104,10 @@ class MedicamentService
 
         $success = $this->priseModel->annulerPris($medicamentId, $date, $periode);
 
-        if ($success) {
+        if ($success)
+        {
             $prises = $this->priseModel->getPrisesForDate($medicamentId, $date);
+
             return ['success' => true, 'prises' => $prises];
         }
 
@@ -113,7 +121,8 @@ class MedicamentService
     {
         $id = $this->medicamentModel->create($data);
 
-        if ($id) {
+        if ($id)
+        {
             return $this->getMedicamentById($id);
         }
 
@@ -126,13 +135,15 @@ class MedicamentService
     public function updateMedicament(int $id, array $data): ?array
     {
         $existing = $this->medicamentModel->getById($id);
-        if (!$existing) {
+        if (!$existing)
+        {
             return null;
         }
 
         $success = $this->medicamentModel->update($id, $data);
 
-        if ($success) {
+        if ($success)
+        {
             return $this->getMedicamentById($id);
         }
 
@@ -145,7 +156,8 @@ class MedicamentService
     public function deleteMedicament(int $id): bool
     {
         $existing = $this->medicamentModel->getById($id);
-        if (!$existing) {
+        if (!$existing)
+        {
             return false;
         }
 
@@ -162,7 +174,7 @@ class MedicamentService
 
         return [
             'historique' => $historique,
-            'stats' => $stats
+            'stats' => $stats,
         ];
     }
 
@@ -175,7 +187,8 @@ class MedicamentService
         $medicamentIds = array_column($medicaments, 'id');
         $prises = $this->priseModel->getPrisesForMedicamentsDate($medicamentIds, $date);
 
-        foreach ($medicaments as &$med) {
+        foreach ($medicaments as &$med)
+        {
             $medId = $med['id'];
             $med['prises'] = $prises[$medId] ?? [];
             $med['heures_prise'] = json_decode($med['heures_prise'], true) ?? [];
@@ -189,7 +202,8 @@ class MedicamentService
      */
     private function validatePeriode(string $periode): void
     {
-        if (!in_array($periode, ['matin', 'midi', 'soir', 'nuit'])) {
+        if (!in_array($periode, ['matin', 'midi', 'soir', 'nuit']))
+        {
             throw new \InvalidArgumentException('Période invalide');
         }
     }
@@ -200,7 +214,8 @@ class MedicamentService
     private function validateMedicamentExistsAndActive(int $medicamentId): void
     {
         $medicament = $this->medicamentModel->getById($medicamentId);
-        if (!$medicament || !$medicament['actif']) {
+        if (!$medicament || !$medicament['actif'])
+        {
             throw new \InvalidArgumentException('Médicament non trouvé ou inactif');
         }
     }

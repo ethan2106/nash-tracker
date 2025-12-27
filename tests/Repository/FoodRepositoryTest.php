@@ -2,8 +2,8 @@
 
 namespace Tests\Repository;
 
-use PHPUnit\Framework\TestCase;
 use App\Repository\FoodRepository;
+use PHPUnit\Framework\TestCase;
 
 class FoodRepositoryTest extends TestCase
 {
@@ -16,9 +16,12 @@ class FoodRepositoryTest extends TestCase
         // Reset table to ensure isolation
         $db = $this->getDb();
         $db->exec('DELETE FROM aliments');
-        try {
+
+        try
+        {
             $db->exec('DELETE FROM sqlite_sequence WHERE name="aliments"');
-        } catch (\Throwable $e) {
+        } catch (\Throwable $e)
+        {
             // OK if sqlite_sequence doesn't exist or no AUTOINCREMENT
         }
 
@@ -42,7 +45,8 @@ class FoodRepositoryTest extends TestCase
             ['nom' => 'Fromage blanc', 'calories_100g' => 72, 'proteines_100g' => 10.3, 'glucides_100g' => 3.4, 'lipides_100g' => 0.4, 'fibres_100g' => 0],
         ];
 
-        foreach ($foods as $food) {
+        foreach ($foods as $food)
+        {
             $stmt = $db->prepare('INSERT INTO aliments (nom, calories_100g, proteines_100g, glucides_100g, lipides_100g, fibres_100g) VALUES (?, ?, ?, ?, ?, ?)');
             $stmt->execute([$food['nom'], $food['calories_100g'], $food['proteines_100g'], $food['glucides_100g'], $food['lipides_100g'], $food['fibres_100g']]);
         }
@@ -78,7 +82,8 @@ class FoodRepositoryTest extends TestCase
     {
         // Insert more foods to exceed limit
         $db = $this->getDb();
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 25; $i++)
+        {
             $stmt = $db->prepare('INSERT INTO aliments (nom, calories_100g, proteines_100g, glucides_100g, lipides_100g, fibres_100g) VALUES (?, 100, 1, 20, 1, 1)');
             $stmt->execute(["Test Food {$i}"]);
         }

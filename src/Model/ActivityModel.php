@@ -14,7 +14,6 @@ use PDO;
  */
 class ActivityModel extends BaseModel
 {
-
     // Coefficients réalistes basés sur MET (kcal/min pour une personne de 70kg)
     // Valeurs ajustées pour être plus crédibles et médicalement validées
     private const CALORIE_COEFFICIENTS = [
@@ -41,6 +40,7 @@ class ActivityModel extends BaseModel
     public function ajouterActivite($userId, $type, $dureeMinutes, $calories = null)
     {
         file_put_contents(__DIR__ . '/../../storage/acti_debug.log', date('Y-m-d H:i:s') . " Model ajouterActivite called with userId=$userId, type=$type, duree=$dureeMinutes, calories=" . ($calories ?? 'null') . "\n", FILE_APPEND);
+
         try
         {
             // Calculer les calories si non fournies
@@ -65,11 +65,12 @@ class ActivityModel extends BaseModel
                 'activite_id' => $activiteId,
                 'calories' => $calories,
             ];
-            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "Returning: " . json_encode($result) . "\n", FILE_APPEND);
+            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', 'Returning: ' . json_encode($result) . "\n", FILE_APPEND);
+
             return $result;
         } catch (Exception $e)
         {
-            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "Model exception: " . $e->getMessage() . "\n", FILE_APPEND);
+            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', 'Model exception: ' . $e->getMessage() . "\n", FILE_APPEND);
             error_log('Erreur ajout activité: ' . $e->getMessage());
 
             return ['error' => 'Erreur lors de l\'ajout de l\'activité'];
@@ -154,6 +155,7 @@ class ActivityModel extends BaseModel
     public function supprimerActivite($userId, $activiteId)
     {
         file_put_contents(__DIR__ . '/../../storage/acti_debug.log', date('Y-m-d H:i:s') . " Model supprimerActivite called with userId=$userId, activiteId=$activiteId\n", FILE_APPEND);
+
         try
         {
             file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "Executing DELETE\n", FILE_APPEND);
@@ -166,16 +168,19 @@ class ActivityModel extends BaseModel
             $affected = $stmt->rowCount();
             file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "DELETE executed, affected rows: $affected\n", FILE_APPEND);
 
-            if ($affected > 0) {
+            if ($affected > 0)
+            {
                 $result = ['success' => true];
-            } else {
+            } else
+            {
                 $result = ['error' => 'Activité non trouvée ou déjà supprimée'];
             }
-            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "Returning: " . json_encode($result) . "\n", FILE_APPEND);
+            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', 'Returning: ' . json_encode($result) . "\n", FILE_APPEND);
+
             return $result;
         } catch (Exception $e)
         {
-            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', "Model exception: " . $e->getMessage() . "\n", FILE_APPEND);
+            file_put_contents(__DIR__ . '/../../storage/acti_debug.log', 'Model exception: ' . $e->getMessage() . "\n", FILE_APPEND);
             error_log('Erreur suppression activité: ' . $e->getMessage());
 
             return ['error' => 'Erreur lors de la suppression'];

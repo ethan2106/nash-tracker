@@ -13,12 +13,14 @@ use App\Repository\MealRepositoryInterface;
  * - Sauvegarde des aliments depuis l'API
  * - Ajout d'aliments aux repas
  * - Suppression d'aliments
- * - Gestion des aliments manuels
+ * - Gestion des aliments manuels.
  */
 class FoodSaveService
 {
     private FoodRepositoryInterface $foodRepository;
+
     private MealRepositoryInterface $mealRepository;
+
     private CacheService $cache;
 
     public function __construct(
@@ -32,14 +34,16 @@ class FoodSaveService
     }
 
     /**
-     * Sauvegarde un aliment depuis l'API OpenFoodFacts
+     * Sauvegarde un aliment depuis l'API OpenFoodFacts.
      */
     public function saveFoodFromAPI(array $data): array
     {
-        try {
+        try
+        {
             // Validation des données
             $validationErrors = $this->validateApiFoodData($data);
-            if (!empty($validationErrors)) {
+            if (!empty($validationErrors))
+            {
                 return [
                     'success' => false,
                     'error' => 'Données invalides: ' . implode(', ', $validationErrors),
@@ -52,8 +56,10 @@ class FoodSaveService
             // Sauvegarde
             $success = $this->foodRepository->saveFoodFromAPI($normalizedData);
 
-            if ($success) {
+            if ($success)
+            {
                 $this->invalidateCaches();
+
                 return [
                     'success' => true,
                     'message' => 'Aliment sauvegardé avec succès',
@@ -64,8 +70,10 @@ class FoodSaveService
                 'success' => false,
                 'error' => 'Erreur lors de la sauvegarde',
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur sauvegarde aliment API: ' . $e->getMessage());
+
             return [
                 'success' => false,
                 'error' => 'Erreur interne lors de la sauvegarde',
@@ -74,16 +82,18 @@ class FoodSaveService
     }
 
     /**
-     * Ajoute un aliment du catalogue à un repas
+     * Ajoute un aliment du catalogue à un repas.
      */
     public function addFoodFromCatalog(array $data): array
     {
-        try {
+        try
+        {
             $foodId = $data['food_id'] ?? $data['aliment_id'] ?? null;
             $mealType = $data['meal_type'] ?? 'repas';
             $quantity = (float)($data['quantity'] ?? 100);
 
-            if (!$foodId || $quantity <= 0) {
+            if (!$foodId || $quantity <= 0)
+            {
                 return [
                     'success' => false,
                     'error' => 'Données invalides pour l\'ajout au repas',
@@ -95,45 +105,54 @@ class FoodSaveService
 
             // Récupération ou création du repas
             $userId = $_SESSION['user']['id'] ?? null;
-            if (!$userId) {
+            if (!$userId)
+            {
                 return [
                     'success' => false,
-                    'error' => 'Utilisateur non connecté'
+                    'error' => 'Utilisateur non connecté',
                 ];
             }
 
             $dateOnly = date('Y-m-d');
             $existingMeal = $this->mealRepository->getMealByDateAndType($userId, $dateOnly, $mealType);
 
-            if ($existingMeal) {
+            if ($existingMeal)
+            {
                 $mealId = $existingMeal['id'];
                 $result = $this->mealRepository->addFoodToMeal($mealId, (int)$foodId, $quantity);
-                if (!$result) {
+                if (!$result)
+                {
                     // Vérifier si l'aliment existe
                     $foodExists = $this->checkFoodExists($foodId);
-                    if (!$foodExists) {
+                    if (!$foodExists)
+                    {
                         return [
                             'success' => false,
                             'error' => 'Cet aliment n\'existe plus dans le catalogue.',
                         ];
                     }
+
                     return [
                         'success' => false,
                         'error' => 'Erreur lors de l\'ajout au repas.',
                     ];
                 }
-            } else {
+            } else
+            {
                 $mealId = $this->mealRepository->createMealWithFood($userId, $mealType, (int)$foodId, $quantity);
                 $result = ($mealId !== false);
-                if (!$result) {
+                if (!$result)
+                {
                     // Vérifier si l'aliment existe
                     $foodExists = $this->checkFoodExists($foodId);
-                    if (!$foodExists) {
+                    if (!$foodExists)
+                    {
                         return [
                             'success' => false,
                             'error' => 'Cet aliment n\'existe plus dans le catalogue.',
                         ];
                     }
+
                     return [
                         'success' => false,
                         'error' => 'Erreur lors de la création du repas.',
@@ -141,8 +160,10 @@ class FoodSaveService
                 }
             }
 
-            if ($result) {
+            if ($result)
+            {
                 $this->invalidateCaches();
+
                 return [
                     'success' => true,
                     'message' => 'Aliment ajouté au repas avec succès',
@@ -154,8 +175,10 @@ class FoodSaveService
                 'success' => false,
                 'error' => 'Erreur lors de l\'ajout au repas',
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur ajout aliment catalogue: ' . $e->getMessage());
+
             return [
                 'success' => false,
                 'error' => 'Erreur interne lors de l\'ajout',
@@ -164,28 +187,32 @@ class FoodSaveService
     }
 
     /**
-     * Vérifie si un aliment existe dans la base de données
+     * Vérifie si un aliment existe dans la base de données.
      */
     private function checkFoodExists(int $foodId): bool
     {
-        try {
+        try
+        {
             // Utiliser le repository pour vérifier l'existence
             $food = $this->foodRepository->findById($foodId);
+
             return $food !== null;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             return false;
         }
     }
 
     /**
-     * Ajoute un aliment de la recherche à un repas
+     * Ajoute un aliment de la recherche à un repas.
      */
     public function addFoodFromSearch(array $data): array
     {
         // D'abord sauvegarder l'aliment, puis l'ajouter au repas
         $saveResult = $this->saveFoodFromAPI($data);
 
-        if (!$saveResult['success']) {
+        if (!$saveResult['success'])
+        {
             return $saveResult;
         }
 
@@ -195,15 +222,18 @@ class FoodSaveService
     }
 
     /**
-     * Supprime un aliment
+     * Supprime un aliment.
      */
     public function deleteFood(int $foodId): array
     {
-        try {
+        try
+        {
             $success = $this->foodRepository->deleteFood($foodId);
 
-            if ($success) {
+            if ($success)
+            {
                 $this->invalidateCaches();
+
                 return [
                     'success' => true,
                     'message' => 'Aliment supprimé avec succès',
@@ -214,8 +244,10 @@ class FoodSaveService
                 'success' => false,
                 'message' => 'Cet aliment ne peut pas être supprimé car il est utilisé dans des repas.',
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur suppression aliment: ' . $e->getMessage());
+
             return [
                 'success' => false,
                 'message' => 'Erreur lors de la suppression',
@@ -224,11 +256,12 @@ class FoodSaveService
     }
 
     /**
-     * Ajoute un aliment manuel
+     * Ajoute un aliment manuel.
      */
     public function addFoodManually(array $data, array $files = []): array
     {
-        try {
+        try
+        {
             // Validation et traitement des données manuelles
             // Cette méthode nécessiterait plus de logique pour traiter les uploads d'images
             // Pour l'instant, on retourne une structure similaire
@@ -237,8 +270,10 @@ class FoodSaveService
                 'success' => true,
                 'message' => 'Aliment manuel ajouté (implémentation à compléter)',
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur ajout aliment manuel: ' . $e->getMessage());
+
             return [
                 'success' => false,
                 'error' => 'Erreur lors de l\'ajout manuel',
@@ -247,7 +282,7 @@ class FoodSaveService
     }
 
     /**
-     * Valide les données d'aliment depuis l'API
+     * Valide les données d'aliment depuis l'API.
      */
     private function validateApiFoodData(array $data): array
     {
@@ -255,7 +290,8 @@ class FoodSaveService
 
         // Vérifier le nom du produit dans différents formats
         $productName = $data['product_name'] ?? $data['name'] ?? $data['food_name'] ?? '';
-        if (empty($productName)) {
+        if (empty($productName))
+        {
             $errors[] = 'Nom du produit requis';
         }
 
@@ -263,13 +299,15 @@ class FoodSaveService
     }
 
     /**
-     * Normalise les données d'aliment depuis l'API
+     * Normalise les données d'aliment depuis l'API.
      */
     private function normalizeApiFoodData(array $data): array
     {
         // Gestion des données depuis JavaScript (food_data) ou champs séparés
-        if (isset($data['food_data'])) {
+        if (isset($data['food_data']))
+        {
             $productData = json_decode($data['food_data'], true);
+
             return [
                 'product_name' => $productData['name'] ?? $productData['product_name'] ?? '',
                 'brands' => $productData['brands'] ?? '',
@@ -281,6 +319,7 @@ class FoodSaveService
 
         // Données depuis champs séparés
         $nutriments = json_decode($data['food_nutriments'] ?? '{}', true);
+
         return [
             'product_name' => $data['food_name'] ?? '',
             'brands' => $data['food_brands'] ?? '',
@@ -291,7 +330,7 @@ class FoodSaveService
     }
 
     /**
-     * Normalise le type de repas
+     * Normalise le type de repas.
      */
     private function normalizeMealType(string $mealType): string
     {
@@ -315,7 +354,7 @@ class FoodSaveService
     }
 
     /**
-     * Invalide les caches appropriés
+     * Invalide les caches appropriés.
      */
     private function invalidateCaches(): void
     {

@@ -8,7 +8,7 @@ use App\Model\UserConfigModel;
 use App\Model\UserModel;
 
 /**
- * SettingsDataService - Service de récupération des données pour les paramètres utilisateur
+ * SettingsDataService - Service de récupération des données pour les paramètres utilisateur.
  *
  * Responsabilités :
  * - Récupération et mise en cache des données utilisateur
@@ -18,8 +18,11 @@ use App\Model\UserModel;
 class SettingsDataService
 {
     private HistoriqueMesuresModel $historiqueMesuresModel;
+
     private UserConfigModel $userConfigModel;
+
     private UserModel $userModel;
+
     private CacheService $cache;
 
     public function __construct(
@@ -90,12 +93,14 @@ class SettingsDataService
     {
         $userKey = 'user_' . $userId;
         $cachedUser = $this->cache->get($namespace, $userKey);
-        if ($cachedUser !== null) {
+        if ($cachedUser !== null)
+        {
             return $cachedUser;
         }
 
         $user = $this->userModel->getById($userId);
         $this->cache->set($namespace, $userKey, $user, CacheService::TTL_MEDIUM);
+
         return $user;
     }
 
@@ -106,12 +111,14 @@ class SettingsDataService
     {
         $statsKey = 'stats_' . $userId;
         $cachedStats = $this->cache->get($namespace, $statsKey);
-        if ($cachedStats !== null) {
+        if ($cachedStats !== null)
+        {
             return $cachedStats;
         }
 
         $stats = $this->userModel->getUserStats($userId);
         $this->cache->set($namespace, $statsKey, $stats, CacheService::TTL_SHORT);
+
         return $stats;
     }
 
@@ -122,12 +129,14 @@ class SettingsDataService
     {
         $objectifsKey = 'historique_objectifs_' . $userId;
         $cachedObjectifs = $this->cache->get($namespace, $objectifsKey);
-        if ($cachedObjectifs !== null) {
+        if ($cachedObjectifs !== null)
+        {
             return $cachedObjectifs;
         }
 
         $historiqueObjectifs = ObjectifsModel::getHistoriqueByUser($userId);
         $this->cache->set($namespace, $objectifsKey, $historiqueObjectifs, CacheService::TTL_MEDIUM);
+
         return $historiqueObjectifs;
     }
 
@@ -138,12 +147,14 @@ class SettingsDataService
     {
         $allMesuresKey = 'all_historique_mesures_' . $userId;
         $cachedAllMesures = $this->cache->get($namespace, $allMesuresKey);
-        if ($cachedAllMesures !== null) {
+        if ($cachedAllMesures !== null)
+        {
             return $cachedAllMesures;
         }
 
         $allHistoriqueMesures = $this->historiqueMesuresModel->getHistorique($userId, 1000);
         $this->cache->set($namespace, $allMesuresKey, $allHistoriqueMesures, CacheService::TTL_MEDIUM);
+
         return $allHistoriqueMesures;
     }
 
@@ -154,12 +165,14 @@ class SettingsDataService
     {
         $configKey = 'user_config_' . $userId;
         $cachedConfig = $this->cache->get($namespace, $configKey);
-        if ($cachedConfig !== null) {
+        if ($cachedConfig !== null)
+        {
             return $cachedConfig;
         }
 
         $userConfig = $this->userConfigModel->getAll($userId);
         $this->cache->set($namespace, $configKey, $userConfig, CacheService::TTL_MEDIUM);
+
         return $userConfig;
     }
 }

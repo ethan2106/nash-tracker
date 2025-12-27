@@ -46,17 +46,20 @@ class DIContainer
                 \App\Service\FoodManager::class => \DI\autowire(),
 
                 // MealManager (depends on MealModel)
-                \App\Service\MealManager::class => function (\Psr\Container\ContainerInterface $c) {
+                \App\Service\MealManager::class => function (\Psr\Container\ContainerInterface $c)
+                {
                     return new \App\Service\MealManager($c->get(\App\Model\MealModel::class));
                 },
 
                 // ActivityService (depends on PDO)
-                \App\Service\ActivityService::class => function () {
+                \App\Service\ActivityService::class => function ()
+                {
                     return new \App\Service\ActivityService(\App\Model\Database::getInstance());
                 },
 
                 // Models (simple, no deps)
-                \App\Model\MealModel::class => function () {
+                \App\Model\MealModel::class => function ()
+                {
                     return new \App\Model\MealModel();
                 },
                 \App\Model\UserModel::class => \DI\autowire(),
@@ -107,7 +110,8 @@ class DIContainer
                 \App\Controller\SettingsController::class => \DI\autowire(),
                 \App\Controller\MedicamentController::class => \DI\autowire(),
                 \App\Controller\UserController::class => \DI\autowire(),
-                \App\Controller\MealController::class => function (\Psr\Container\ContainerInterface $c) {
+                \App\Controller\MealController::class => function (\Psr\Container\ContainerInterface $c)
+                {
                     return new \App\Controller\MealController(
                         $c->get(\App\Model\MealModel::class),
                         $c->get(\App\Service\MealManager::class),

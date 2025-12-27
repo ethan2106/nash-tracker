@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 class FoodApiServiceTest extends TestCase
 {
     private $foodQualityServiceMock;
+
     private $foodApiService;
 
     protected function setUp(): void
@@ -16,7 +17,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage des résultats de recherche réussis
+     * Test formatage des résultats de recherche réussis.
      */
     public function testFormatSearchResultsSuccess()
     {
@@ -34,7 +35,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage des résultats de recherche avec erreur
+     * Test formatage des résultats de recherche avec erreur.
      */
     public function testFormatSearchResultsWithError()
     {
@@ -49,7 +50,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage des données de catalogue
+     * Test formatage des données de catalogue.
      */
     public function testFormatCatalogData()
     {
@@ -124,7 +125,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage du résultat de sauvegarde réussi
+     * Test formatage du résultat de sauvegarde réussi.
      */
     public function testFormatSaveResultSuccess()
     {
@@ -145,7 +146,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage du résultat de sauvegarde avec erreur
+     * Test formatage du résultat de sauvegarde avec erreur.
      */
     public function testFormatSaveResultError()
     {
@@ -165,7 +166,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage du résultat d'ajout au repas
+     * Test formatage du résultat d'ajout au repas.
      */
     public function testFormatAddToMealResult()
     {
@@ -186,7 +187,7 @@ class FoodApiServiceTest extends TestCase
     }
 
     /**
-     * Test formatage du résultat de suppression
+     * Test formatage du résultat de suppression.
      */
     public function testFormatDeleteResult()
     {

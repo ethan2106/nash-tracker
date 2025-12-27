@@ -28,15 +28,19 @@ class MedicamentController extends BaseApiController
     public function handleApiGetMedicament()
     {
         $id = $_GET['id'] ?? null;
-        if (!$id) {
+        if (!$id)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'ID manquant']);
+
             return;
         }
 
         $medicament = $this->medicamentService->getMedicamentById((int)$id);
-        if ($medicament) {
+        if ($medicament)
+        {
             $this->jsonResponse(['success' => true, 'medicament' => $medicament]);
-        } else {
+        } else
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Médicament non trouvé']);
         }
     }
@@ -55,15 +59,19 @@ class MedicamentController extends BaseApiController
         $date = $input['date'] ?? date('Y-m-d');
         $periode = $input['periode'] ?? null;
 
-        if (!$medicamentId || !$periode) {
+        if (!$medicamentId || !$periode)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Paramètres manquants']);
+
             return;
         }
 
-        try {
+        try
+        {
             $result = $this->medicamentService->marquerPrise((int)$medicamentId, $date, $periode);
             $this->jsonResponse($result);
-        } catch (\InvalidArgumentException $e) {
+        } catch (\InvalidArgumentException $e)
+        {
             $this->jsonResponse(['success' => false, 'message' => $e->getMessage()]);
         }
     }
@@ -75,15 +83,19 @@ class MedicamentController extends BaseApiController
         $date = $input['date'] ?? date('Y-m-d');
         $periode = $input['periode'] ?? null;
 
-        if (!$medicamentId || !$periode) {
+        if (!$medicamentId || !$periode)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Paramètres manquants']);
+
             return;
         }
 
-        try {
+        try
+        {
             $result = $this->medicamentService->annulerPrise((int)$medicamentId, $date, $periode);
             $this->jsonResponse($result);
-        } catch (\InvalidArgumentException $e) {
+        } catch (\InvalidArgumentException $e)
+        {
             $this->jsonResponse(['success' => false, 'message' => $e->getMessage()]);
         }
     }
@@ -93,9 +105,11 @@ class MedicamentController extends BaseApiController
         $input = json_decode(file_get_contents('php://input'), true);
         $medicament = $this->medicamentService->createMedicament($input);
 
-        if ($medicament) {
+        if ($medicament)
+        {
             $this->jsonResponse(['success' => true, 'medicament' => $medicament]);
-        } else {
+        } else
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Erreur lors de la création']);
         }
     }
@@ -105,18 +119,23 @@ class MedicamentController extends BaseApiController
         $input = json_decode(file_get_contents('php://input'), true);
         $id = $input['id'] ?? null;
 
-        if (!$id) {
+        if (!$id)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'ID manquant']);
+
             return;
         }
 
         $medicament = $this->medicamentService->updateMedicament((int)$id, $input);
 
-        if ($medicament) {
+        if ($medicament)
+        {
             $this->jsonResponse(['success' => true, 'medicament' => $medicament]);
-        } elseif ($medicament === null) {
+        } elseif ($medicament === null)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Médicament non trouvé']);
-        } else {
+        } else
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Erreur lors de la mise à jour']);
         }
     }
@@ -126,16 +145,20 @@ class MedicamentController extends BaseApiController
         $input = json_decode(file_get_contents('php://input'), true);
         $id = $input['id'] ?? null;
 
-        if (!$id) {
+        if (!$id)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'ID manquant']);
+
             return;
         }
 
         $success = $this->medicamentService->deleteMedicament((int)$id);
 
-        if (!$success) {
+        if (!$success)
+        {
             $this->jsonResponse(['success' => false, 'message' => 'Médicament non trouvé']);
-        } else {
+        } else
+        {
             $this->jsonResponse(['success' => $success]);
         }
     }
@@ -149,7 +172,7 @@ class MedicamentController extends BaseApiController
         $this->jsonResponse([
             'success' => true,
             'historique' => $data['historique'],
-            'stats' => $data['stats']
+            'stats' => $data['stats'],
         ]);
     }
 

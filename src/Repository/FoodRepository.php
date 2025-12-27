@@ -6,7 +6,7 @@ use App\Model\Database;
 use PDO;
 
 /**
- * FoodRepository - Implémentation des opérations sur les aliments sauvegardés
+ * FoodRepository - Implémentation des opérations sur les aliments sauvegardés.
  */
 class FoodRepository implements FoodRepositoryInterface
 {
@@ -18,11 +18,12 @@ class FoodRepository implements FoodRepositoryInterface
     }
 
     /**
-     * Recherche des aliments sauvegardés par nom
+     * Recherche des aliments sauvegardés par nom.
      */
     public function searchSavedFoods(string $query): array
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('
                 SELECT * FROM aliments
                 WHERE LOWER(nom) LIKE LOWER(?)
@@ -33,21 +34,25 @@ class FoodRepository implements FoodRepositoryInterface
             $stmt->execute([$searchTerm]);
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log("Erreur lors de la recherche d'aliments sauvegardés: " . $e->getMessage());
+
             return [];
         }
     }
 
     /**
-     * Récupère tous les aliments sauvegardés avec pagination
+     * Récupère tous les aliments sauvegardés avec pagination.
      */
     public function getSavedFoods(?int $limit = null, int $offset = 0): array
     {
-        try {
+        try
+        {
             $sql = 'SELECT * FROM aliments ORDER BY nom ASC';
 
-            if ($limit !== null) {
+            if ($limit !== null)
+            {
                 $limit = (int)$limit;
                 $offset = (int)$offset;
                 $sql .= " LIMIT {$limit} OFFSET {$offset}";
@@ -57,43 +62,51 @@ class FoodRepository implements FoodRepositoryInterface
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la récupération des aliments sauvegardés: ' . $e->getMessage());
+
             return [];
         }
     }
 
     /**
-     * Compte le nombre total d'aliments sauvegardés
+     * Compte le nombre total d'aliments sauvegardés.
      */
     public function countSavedFoods(): int
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('SELECT COUNT(*) as total FROM aliments');
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             return (int)($result['total'] ?? 0);
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors du comptage des aliments sauvegardés: ' . $e->getMessage());
+
             return 0;
         }
     }
 
     /**
-     * Sauvegarde un aliment depuis l'API OpenFoodFacts
+     * Sauvegarde un aliment depuis l'API OpenFoodFacts.
      */
     public function saveFoodFromAPI(array $data): bool
     {
-        try {
+        try
+        {
             // Vérifier si le nom du produit est fourni
-            if (empty($data['product_name'])) {
+            if (empty($data['product_name']))
+            {
                 return false;
             }
 
             // Vérifier si l'aliment existe déjà
-            if (!empty($data['code']) && $this->foodExistsByBarcode($data['code'])) {
+            if (!empty($data['code']) && $this->foodExistsByBarcode($data['code']))
+            {
                 return true; // Considérer comme succès si déjà existant
             }
 
@@ -127,28 +140,32 @@ class FoodRepository implements FoodRepositoryInterface
                 $data['nutriments']['sodium_100g'] ?? 0,
                 $data['code'] ?? '',
                 $data['image_path'] ?? null,
-                json_encode($autresInfos)
+                json_encode($autresInfos),
             ]);
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log("Erreur lors de la sauvegarde d'aliment depuis API: " . $e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Supprime un aliment par son ID
+     * Supprime un aliment par son ID.
      */
     public function deleteFood(int $foodId): bool
     {
-        try {
+        try
+        {
             // Vérifier si l'aliment est utilisé dans des repas
             $stmt = $this->db->prepare('SELECT COUNT(*) FROM repas_aliments WHERE aliment_id = ?');
             $stmt->execute([$foodId]);
             $count = $stmt->fetchColumn();
 
-            if ($count > 0) {
+            if ($count > 0)
+            {
                 return false; // Ne pas supprimer si utilisé
             }
 
@@ -157,39 +174,49 @@ class FoodRepository implements FoodRepositoryInterface
             $stmt->execute([$foodId]);
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur suppression aliment: ' . $e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Trouve un aliment par son ID
+     * Trouve un aliment par son ID.
      */
     public function findById(int $id): ?array
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('SELECT * FROM aliments WHERE id = ?');
             $stmt->execute([$id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
             return $result ?: null;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la recherche d\'aliment par ID: ' . $e->getMessage());
+
             return null;
         }
     }
 
     /**
-     * Vérifie si un aliment existe par son barcode
+     * Vérifie si un aliment existe par son barcode.
      */
     public function foodExistsByBarcode(string $barcode): bool
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('SELECT COUNT(*) FROM aliments WHERE openfoodfacts_id = ?');
             $stmt->execute([$barcode]);
+
             return (int)$stmt->fetchColumn() > 0;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur vérification barcode: ' . $e->getMessage());
+
             return false;
         }
     }

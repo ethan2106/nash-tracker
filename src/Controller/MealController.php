@@ -50,6 +50,7 @@ class MealController extends BaseApiController
         if ($this->isAjaxRequest())
         {
             $this->handleAjaxMealsRequest($mealsByType, $selectedDate, $isToday, $csrf_token);
+
             return;
         }
 
@@ -68,6 +69,7 @@ class MealController extends BaseApiController
         {
             $selectedDate = date('Y-m-d');
         }
+
         return $selectedDate;
     }
 
@@ -161,7 +163,8 @@ class MealController extends BaseApiController
         // Badge "Équilibre parfait" si calories entre 80% et 100% de l'objectif
         $cals = $totals['calories'] ?? 0;
         $objCals = $objectifs['calories_perte'] ?? 2000;
-        if ($cals > 0 && $cals <= $objCals && $cals >= ($objCals * 0.8)) {
+        if ($cals > 0 && $cals <= $objCals && $cals >= ($objCals * 0.8))
+        {
             $badgesNutrition['earned'][] = [
                 'id' => 'equilibre_parfait',
                 'label' => 'Équilibre parfait',
@@ -191,7 +194,8 @@ class MealController extends BaseApiController
             $totals['calories'] += $effectiveSportCalories;
             $totals['sport_calories'] = $effectiveSportCalories;
             $totals['raw_sport_calories'] = $rawSportCalories;
-        } else {
+        } else
+        {
             // Fallback si ActivityService n'est pas disponible
             $totals['sport_calories'] = 0;
             $totals['raw_sport_calories'] = 0;
@@ -211,6 +215,7 @@ class MealController extends BaseApiController
         }
 
         require_once __DIR__ . '/../Model/ObjectifsModel.php';
+
         return \App\Model\ObjectifsModel::getByUser($user_id);
     }
 

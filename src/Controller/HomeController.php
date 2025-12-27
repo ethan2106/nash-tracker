@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Model\Database;
 use App\Model\UserConfigModel;
+use App\Service\ActivityService;
 use App\Service\DashboardService;
 use App\Service\GamificationService;
 use App\Service\NutritionService;
-use App\Service\ActivityService;
-use App\Model\Database;
 
 /**
  * HomeController - Contrôleur pour la page d'accueil/dashboard.
@@ -42,8 +42,9 @@ class HomeController
      */
     private function getDailyAction($userId, $objectifs, $currentNutrition, $activityMinutes)
     {
-        if (!$objectifs) {
-            return "Ajoutez votre premier repas pour commencer";
+        if (!$objectifs)
+        {
+            return 'Ajoutez votre premier repas pour commencer';
         }
 
         $caloriesConsumed = $currentNutrition['calories'] ?? 0;
@@ -53,22 +54,25 @@ class HomeController
 
         // Règle 1: Nutrition prioritaire
         if ($caloriesTarget > 0 && $caloriesConsumed < $caloriesTarget * 0.5 ||
-            $proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.5) {
-            return "Ajoutez un repas équilibré pour prendre soin de votre foie";
+            $proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.5)
+        {
+            return 'Ajoutez un repas équilibré pour prendre soin de votre foie';
         }
 
         // Règle 2: Activité
-        if ($activityMinutes < 20) {
-            return "Marchez 10 minutes pour booster votre énergie";
+        if ($activityMinutes < 20)
+        {
+            return 'Marchez 10 minutes pour booster votre énergie';
         }
 
         // Règle 3: Suivi médical
-        if (($objectifs['imc'] ?? 0) > 25) {
-            return "Mesurez votre IMC cette semaine";
+        if (($objectifs['imc'] ?? 0) > 25)
+        {
+            return 'Mesurez votre IMC cette semaine';
         }
 
         // Règle 4: Pause méritée
-        return "Prenez une pause méritée – vous faites du bon travail !";
+        return 'Prenez une pause méritée – vous faites du bon travail !';
     }
 
     /**
@@ -76,8 +80,9 @@ class HomeController
      */
     private function getDailyActionUrl($userId, $objectifs, $currentNutrition, $activityMinutes)
     {
-        if (!$objectifs) {
-            return "?page=meals"; // Premier repas
+        if (!$objectifs)
+        {
+            return '?page=meals'; // Premier repas
         }
 
         $caloriesConsumed = $currentNutrition['calories'] ?? 0;
@@ -87,22 +92,25 @@ class HomeController
 
         // Règle 1: Nutrition prioritaire
         if ($caloriesTarget > 0 && $caloriesConsumed < $caloriesTarget * 0.5 ||
-            $proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.5) {
-            return "?page=meals"; // Ajouter un repas
+            $proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.5)
+        {
+            return '?page=meals'; // Ajouter un repas
         }
 
         // Règle 2: Activité
-        if ($activityMinutes < 20) {
-            return "?page=walktrack"; // Activité physique
+        if ($activityMinutes < 20)
+        {
+            return '?page=walktrack'; // Activité physique
         }
 
         // Règle 3: Suivi médical
-        if (($objectifs['imc'] ?? 0) > 25) {
-            return "?page=imc"; // Mesure IMC
+        if (($objectifs['imc'] ?? 0) > 25)
+        {
+            return '?page=imc'; // Mesure IMC
         }
 
         // Règle 4: Pause méritée
-        return "?page=profile"; // Voir le profil
+        return '?page=profile'; // Voir le profil
     }
 
     /**
@@ -112,7 +120,8 @@ class HomeController
     {
         $hasData = ($currentNutrition['calories'] ?? 0) > 0 || $activityMinutes > 0;
 
-        if (!$hasData) {
+        if (!$hasData)
+        {
             return 'empty';
         }
 
@@ -125,8 +134,15 @@ class HomeController
 
         $avgCompletion = ($caloriesCompletion + $proteinesCompletion + $activityCompletion) / 3;
 
-        if ($avgCompletion > 80) return 'success';
-        if ($avgCompletion > 30) return 'partial';
+        if ($avgCompletion > 80)
+        {
+            return 'success';
+        }
+        if ($avgCompletion > 30)
+        {
+            return 'partial';
+        }
+
         return 'late';
     }
 
@@ -142,32 +158,37 @@ class HomeController
         $proteinesTarget = $objectifs['proteines_min'] ?? 0;
 
         // Si pas assez de protéines
-        if ($proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.7) {
-            return "🍗 Augmentez votre apport en protéines – essentielles pour votre foie !";
+        if ($proteinesTarget > 0 && $proteinesConsumed < $proteinesTarget * 0.7)
+        {
+            return '🍗 Augmentez votre apport en protéines – essentielles pour votre foie !';
         }
 
         // Si trop de calories
-        if ($caloriesTarget > 0 && $caloriesConsumed > $caloriesTarget * 1.2) {
-            return "⚖️ Attention à votre équilibre calorique pour atteindre vos objectifs";
+        if ($caloriesTarget > 0 && $caloriesConsumed > $caloriesTarget * 1.2)
+        {
+            return '⚖️ Attention à votre équilibre calorique pour atteindre vos objectifs';
         }
 
         // Si pas assez d'activité
-        if ($activityMinutes < 15) {
+        if ($activityMinutes < 15)
+        {
             return "🏃‍♂️ Un peu d'activité physique booste votre métabolisme hépatique";
         }
 
         // Si score faible
-        if ($scoreGlobal < 50) {
-            return "📈 Concentrez-vous sur vos repas équilibrés pour améliorer votre score";
+        if ($scoreGlobal < 50)
+        {
+            return '📈 Concentrez-vous sur vos repas équilibrés pour améliorer votre score';
         }
 
         // Si objectifs atteints
-        if ($scoreGlobal > 75) {
-            return "🌟 Excellente journée ! Continuez sur cette lancée";
+        if ($scoreGlobal > 75)
+        {
+            return '🌟 Excellente journée ! Continuez sur cette lancée';
         }
 
         // Conseil par défaut sur les fibres
-        return "🥦 Privilégiez les aliments riches en fibres pour votre santé hépatique";
+        return '🥦 Privilégiez les aliments riches en fibres pour votre santé hépatique';
     }
 
     /**
@@ -219,7 +240,7 @@ class HomeController
     }
 
     /**
-     * Récupère les données du tableau de bord
+     * Récupère les données du tableau de bord.
      */
     public function getDashboardData($user)
     {

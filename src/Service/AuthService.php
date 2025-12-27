@@ -10,7 +10,7 @@ use App\Model\User;
  * - Login/register via UserModel
  * - Gestion des sessions utilisateur
  * - Cookies "remember me"
- * - Logout sécurisé
+ * - Logout sécurisé.
  */
 class AuthService
 {
@@ -22,19 +22,21 @@ class AuthService
     }
 
     /**
-     * Authentifie un utilisateur et gère la session
+     * Authentifie un utilisateur et gère la session.
      */
     public function login(array $data): array
     {
         // Si déjà connecté, redirige
-        if (!empty($_SESSION['user'])) {
+        if (!empty($_SESSION['user']))
+        {
             header('Location: ?page=home');
             exit;
         }
 
         $result = $this->userModel->login($data);
 
-        if ($result['success'] && isset($result['user'])) {
+        if ($result['success'] && isset($result['user']))
+        {
             $this->createUserSession($result['user']);
         }
 
@@ -42,7 +44,7 @@ class AuthService
     }
 
     /**
-     * Enregistre un nouvel utilisateur
+     * Enregistre un nouvel utilisateur.
      */
     public function register(array $data): array
     {
@@ -50,12 +52,13 @@ class AuthService
     }
 
     /**
-     * Déconnecte l'utilisateur de manière sécurisée
+     * Déconnecte l'utilisateur de manière sécurisée.
      */
     public function logout(): void
     {
         // Supprimer l'utilisateur de la session
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']))
+        {
             unset($_SESSION['user']);
         }
 
@@ -63,25 +66,28 @@ class AuthService
         session_regenerate_id(true);
 
         // Régénérer le token CSRF
-        try {
+        try
+        {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(24));
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(24));
         }
     }
 
     /**
-     * Gère le cookie "remember me"
+     * Gère le cookie "remember me".
      */
     public function handleRememberMe(array $postData): void
     {
-        if (isset($postData['remember']) && $postData['remember'] == '1') {
+        if (isset($postData['remember']) && $postData['remember'] == '1')
+        {
             setcookie('remember_email', $postData['email'], time() + 3600 * 24 * 30, '/', '', true, true);
         }
     }
 
     /**
-     * Récupère l'email mémorisé depuis le cookie
+     * Récupère l'email mémorisé depuis le cookie.
      */
     public function getRememberedEmail(): string
     {
@@ -89,7 +95,7 @@ class AuthService
     }
 
     /**
-     * Crée la session utilisateur après login réussi
+     * Crée la session utilisateur après login réussi.
      */
     private function createUserSession(array $user): void
     {

@@ -122,7 +122,8 @@ class ObjectifsModel
         } catch (\PDOException $e)
         {
             // Annuler la transaction en cas d'erreur
-            if ($pdo && $pdo->inTransaction()) {
+            if ($pdo && $pdo->inTransaction())
+            {
                 $pdo->rollBack();
             }
             error_log('Erreur SQL dans ObjectifsModel::save: ' . $e->getMessage());

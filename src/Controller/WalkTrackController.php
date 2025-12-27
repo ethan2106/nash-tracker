@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\WalkModel;
 use App\Service\GamificationService;
-use App\Service\ServiceContainer;
 use Exception;
 
 /**
@@ -74,6 +73,7 @@ class WalkTrackController extends BaseApiController
             if (isset($result['success']))
             {
                 $stats = $this->getUpdatedStats($userId, true);
+
                 return array_merge($result, $stats);
             }
 
@@ -99,7 +99,10 @@ class WalkTrackController extends BaseApiController
 
             $walkId = (int)($_POST['walk_id'] ?? 0);
             $error = $this->validateId($walkId, 'ID marche');
-            if ($error) return $error;
+            if ($error)
+            {
+                return $error;
+            }
 
             $data = [
                 'duration_minutes' => (int)($_POST['duration_minutes'] ?? 0),
@@ -113,6 +116,7 @@ class WalkTrackController extends BaseApiController
             if (isset($result['success']))
             {
                 $stats = $this->getUpdatedStats($userId, false);
+
                 return array_merge($result, $stats);
             }
 
@@ -138,13 +142,17 @@ class WalkTrackController extends BaseApiController
 
             $walkId = (int)($_POST['walk_id'] ?? $_GET['walk_id'] ?? 0);
             $error = $this->validateId($walkId, 'ID marche');
-            if ($error) return $error;
+            if ($error)
+            {
+                return $error;
+            }
 
             $result = $this->walkModel->supprimerMarche($userId, $walkId);
 
             if (isset($result['success']))
             {
                 $stats = $this->getUpdatedStats($userId, false);
+
                 return array_merge($result, $stats);
             }
 
@@ -334,7 +342,10 @@ class WalkTrackController extends BaseApiController
 
             $routeId = (int)($_POST['route_id'] ?? $_GET['route_id'] ?? 0);
             $error = $this->validateId($routeId, 'ID parcours');
-            if ($error) return $error;
+            if ($error)
+            {
+                return $error;
+            }
 
             return $this->walkModel->supprimerParcours($userId, $routeId);
         } catch (Exception $e)
@@ -430,6 +441,7 @@ class WalkTrackController extends BaseApiController
         {
             return ['error' => ucfirst($fieldName) . ' invalide'];
         }
+
         return null;
     }
 
@@ -478,6 +490,7 @@ class WalkTrackController extends BaseApiController
     private function handleModelException(string $methodName, Exception $e): array
     {
         error_log('Erreur WalkTrackController::' . $methodName . ': ' . $e->getMessage());
+
         return ['error' => 'Erreur lors de ' . strtolower(str_replace('get', 'la récupération de ', str_replace(['ajouter', 'modifier', 'supprimer', 'update'], ['l\'ajout de ', 'la modification de ', 'la suppression de ', 'la mise à jour de '], $methodName)))];
     }
 }

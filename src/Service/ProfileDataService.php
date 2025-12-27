@@ -166,7 +166,7 @@ class ProfileDataService
     }
 
     /**
-     * Calcule le score réel de santé pour la gamification
+     * Calcule le score réel de santé pour la gamification.
      */
     private function calculateRealScore(array $result, int $objectifsCompletion): float
     {
@@ -191,10 +191,13 @@ class ProfileDataService
             'imc' => (float)$result['imc'],
         ];
 
-        try {
+        try
+        {
             $scores = $this->dashboardService->computeHealthScore($stats, $userConfig, $objectifs);
+
             return (float)$scores['global'];
-        } catch (\Throwable $e) {
+        } catch (\Throwable $e)
+        {
             return 0.0; // Score par défaut en cas d'erreur
         }
     }

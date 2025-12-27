@@ -8,12 +8,14 @@ namespace App\Service;
  * Responsabilités :
  * - Vérification du taux de requêtes par IP
  * - Stockage des timestamps dans des fichiers cache
- * - Gestion des fenêtres temporelles
+ * - Gestion des fenêtres temporelles.
  */
 class RateLimitService
 {
     private string $cacheDir;
+
     private int $windowSeconds;
+
     private int $maxRequests;
 
     public function __construct(string $cacheDir = null, int $windowSeconds = 60, int $maxRequests = 15)
@@ -26,7 +28,7 @@ class RateLimitService
     }
 
     /**
-     * Vérifie si la requête courante dépasse la limite de taux
+     * Vérifie si la requête courante dépasse la limite de taux.
      * @throws \RuntimeException Si rate limited
      */
     public function checkRateLimit(): void
@@ -47,13 +49,14 @@ class RateLimitService
         $this->saveTimestamps($cacheFile, $timestamps);
 
         // Vérifier la limite
-        if (count($timestamps) > $this->maxRequests) {
+        if (count($timestamps) > $this->maxRequests)
+        {
             throw new \RuntimeException('rate_limited');
         }
     }
 
     /**
-     * Retourne le nombre de secondes avant de pouvoir réessayer
+     * Retourne le nombre de secondes avant de pouvoir réessayer.
      */
     public function getRetryAfter(): int
     {
@@ -61,7 +64,7 @@ class RateLimitService
     }
 
     /**
-     * Normalise une IP pour la sécurité des noms de fichiers
+     * Normalise une IP pour la sécurité des noms de fichiers.
      */
     private function normalizeIpForFilename(string $ip): string
     {
@@ -69,31 +72,37 @@ class RateLimitService
     }
 
     /**
-     * S'assure que le répertoire cache existe
+     * S'assure que le répertoire cache existe.
      */
     private function ensureCacheDirExists(): void
     {
-        if (!is_dir($this->cacheDir)) {
-            if (!mkdir($this->cacheDir, 0755, true) && !is_dir($this->cacheDir)) {
+        if (!is_dir($this->cacheDir))
+        {
+            if (!mkdir($this->cacheDir, 0755, true) && !is_dir($this->cacheDir))
+            {
                 error_log('Failed to create cache directory: ' . $this->cacheDir);
             }
         }
     }
 
     /**
-     * Charge les timestamps depuis le fichier cache
+     * Charge les timestamps depuis le fichier cache.
      */
     private function loadTimestamps(string $cacheFile, int $now): array
     {
         $timestamps = [];
 
-        if (is_readable($cacheFile)) {
+        if (is_readable($cacheFile))
+        {
             $raw = file_get_contents($cacheFile);
-            if ($raw !== false) {
+            if ($raw !== false)
+            {
                 $arr = json_decode($raw, true);
-                if (is_array($arr)) {
+                if (is_array($arr))
+                {
                     // Filtrer les timestamps dans la fenêtre
-                    $timestamps = array_filter($arr, function ($t) use ($now) {
+                    $timestamps = array_filter($arr, function ($t) use ($now)
+                    {
                         return $t >= ($now - $this->windowSeconds);
                     });
                 }
@@ -104,12 +113,13 @@ class RateLimitService
     }
 
     /**
-     * Sauvegarde les timestamps dans le fichier cache
+     * Sauvegarde les timestamps dans le fichier cache.
      */
     private function saveTimestamps(string $cacheFile, array $timestamps): void
     {
         $written = file_put_contents($cacheFile, json_encode(array_values($timestamps)));
-        if ($written === false) {
+        if ($written === false)
+        {
             error_log('Failed to write rate limit cache: ' . $cacheFile);
         }
     }

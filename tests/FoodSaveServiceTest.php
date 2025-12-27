@@ -1,16 +1,19 @@
 <?php
 
-use App\Service\FoodSaveService;
 use App\Repository\FoodRepositoryInterface;
 use App\Repository\MealRepositoryInterface;
 use App\Service\CacheService;
+use App\Service\FoodSaveService;
 use PHPUnit\Framework\TestCase;
 
 class FoodSaveServiceTest extends TestCase
 {
     private $foodRepositoryMock;
+
     private $mealRepositoryMock;
+
     private $cacheMock;
+
     private $foodSaveService;
 
     protected function setUp(): void
@@ -26,7 +29,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test sauvegarde d'aliment depuis API - succès
+     * Test sauvegarde d'aliment depuis API - succès.
      */
     public function testSaveFoodFromAPISuccess()
     {
@@ -46,7 +49,8 @@ class FoodSaveServiceTest extends TestCase
 
         $this->cacheMock->expects($this->exactly(2))
             ->method('clearNamespace')
-            ->with($this->callback(function ($arg) {
+            ->with($this->callback(function ($arg)
+            {
                 return $arg === 'foods' || $arg === 'meals';
             }));
 
@@ -59,7 +63,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test sauvegarde d'aliment depuis API - données invalides
+     * Test sauvegarde d'aliment depuis API - données invalides.
      */
     public function testSaveFoodFromAPIInvalidData()
     {
@@ -76,7 +80,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test ajout d'aliment du catalogue à un repas existant
+     * Test ajout d'aliment du catalogue à un repas existant.
      */
     public function testAddFoodFromCatalogExistingMeal()
     {
@@ -103,7 +107,8 @@ class FoodSaveServiceTest extends TestCase
 
         $this->cacheMock->expects($this->exactly(2))
             ->method('clearNamespace')
-            ->with($this->callback(function ($arg) {
+            ->with($this->callback(function ($arg)
+            {
                 return $arg === 'foods' || $arg === 'meals';
             }));
 
@@ -120,7 +125,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test ajout d'aliment du catalogue - création nouveau repas
+     * Test ajout d'aliment du catalogue - création nouveau repas.
      */
     public function testAddFoodFromCatalogNewMeal()
     {
@@ -144,7 +149,8 @@ class FoodSaveServiceTest extends TestCase
 
         $this->cacheMock->expects($this->exactly(2))
             ->method('clearNamespace')
-            ->with($this->callback(function ($arg) {
+            ->with($this->callback(function ($arg)
+            {
                 return $arg === 'foods' || $arg === 'meals';
             }));
 
@@ -160,7 +166,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test ajout d'aliment du catalogue - données invalides
+     * Test ajout d'aliment du catalogue - données invalides.
      */
     public function testAddFoodFromCatalogInvalidData()
     {
@@ -182,7 +188,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test ajout d'aliment du catalogue - utilisateur non connecté
+     * Test ajout d'aliment du catalogue - utilisateur non connecté.
      */
     public function testAddFoodFromCatalogNotLoggedIn()
     {
@@ -199,7 +205,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test suppression d'aliment - succès
+     * Test suppression d'aliment - succès.
      */
     public function testDeleteFoodSuccess()
     {
@@ -212,7 +218,8 @@ class FoodSaveServiceTest extends TestCase
 
         $this->cacheMock->expects($this->exactly(2))
             ->method('clearNamespace')
-            ->with($this->callback(function ($arg) {
+            ->with($this->callback(function ($arg)
+            {
                 return $arg === 'foods' || $arg === 'meals';
             }));
 
@@ -225,7 +232,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test suppression d'aliment - échec (aliment utilisé)
+     * Test suppression d'aliment - échec (aliment utilisé).
      */
     public function testDeleteFoodFailure()
     {
@@ -245,7 +252,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test normalisation du type de repas
+     * Test normalisation du type de repas.
      */
     public function testNormalizeMealType()
     {
@@ -277,7 +284,7 @@ class FoodSaveServiceTest extends TestCase
     }
 
     /**
-     * Test normalisation robuste des types de repas (casse, espaces)
+     * Test normalisation robuste des types de repas (casse, espaces).
      */
     public function testNormalizeMealTypeRobust()
     {
@@ -294,7 +301,8 @@ class FoodSaveServiceTest extends TestCase
             'invalid_type' => 'dejeuner', // Valeur par défaut
         ];
 
-        foreach ($testCases as $input => $expected) {
+        foreach ($testCases as $input => $expected)
+        {
             $result = $method->invoke($this->foodSaveService, $input);
             $this->assertEquals($expected, $result, "Failed for input: '$input'");
         }

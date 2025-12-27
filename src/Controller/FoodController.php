@@ -2,12 +2,11 @@
 
 namespace App\Controller;
 
-use App\Service\CacheService;
-use App\Service\FoodDataService;
+use App\Helper\ResponseHelper;
 use App\Service\FoodApiService;
+use App\Service\FoodDataService;
 use App\Service\FoodSaveService;
 use App\Service\OpenFoodFactsService;
-use App\Helper\ResponseHelper;
 
 /**
  * FoodController - Gère l'ajout d'aliments au catalogue.
@@ -20,8 +19,11 @@ use App\Helper\ResponseHelper;
 class FoodController extends BaseApiController
 {
     private OpenFoodFactsService $apiService;
+
     private FoodDataService $foodDataService;
+
     private FoodApiService $foodApiService;
+
     private FoodSaveService $foodSaveService;
 
     public function __construct(
@@ -53,21 +55,23 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Adapte les données de recherche en données d'aliment
+     * Adapte les données de recherche en données d'aliment.
      */
     protected function adaptPostDataForFoodService(array $data): array
     {
         $adaptedData = $data;
 
         // Cas OpenFoodFacts : food_data JSON string
-        if (!empty($adaptedData['food_data']) && is_string($adaptedData['food_data'])) {
+        if (!empty($adaptedData['food_data']) && is_string($adaptedData['food_data']))
+        {
             $foodData = json_decode($adaptedData['food_data'], true);
 
-            if (is_array($foodData)) {
-                $adaptedData['food_name']       ??= $foodData['name'] ?? null;
-                $adaptedData['food_brands']     ??= $foodData['brands'] ?? null;
-                $adaptedData['food_barcode']    ??= $foodData['barcode'] ?? $foodData['code'] ?? null;
-                $adaptedData['food_image']      ??= $foodData['image'] ?? null;
+            if (is_array($foodData))
+            {
+                $adaptedData['food_name'] ??= $foodData['name'] ?? null;
+                $adaptedData['food_brands'] ??= $foodData['brands'] ?? null;
+                $adaptedData['food_barcode'] ??= $foodData['barcode'] ?? $foodData['code'] ?? null;
+                $adaptedData['food_image'] ??= $foodData['image'] ?? null;
                 $adaptedData['food_nutriments'] ??= json_encode($foodData['nutriments'] ?? []);
             }
 
@@ -75,12 +79,16 @@ class FoodController extends BaseApiController
         }
 
         // Fallbacks nom produit
-        if (empty($adaptedData['food_name'])) {
-            if (!empty($adaptedData['search_query'])) {
+        if (empty($adaptedData['food_name']))
+        {
+            if (!empty($adaptedData['search_query']))
+            {
                 $adaptedData['food_name'] = trim($adaptedData['search_query']);
-            } elseif (!empty($adaptedData['product_name'])) {
+            } elseif (!empty($adaptedData['product_name']))
+            {
                 $adaptedData['food_name'] = trim($adaptedData['product_name']);
-            } elseif (!empty($adaptedData['name'])) {
+            } elseif (!empty($adaptedData['name']))
+            {
                 $adaptedData['food_name'] = trim($adaptedData['name']);
             }
         }
@@ -89,18 +97,20 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Gère la réponse d'un service selon le contexte (AJAX ou non)
+     * Gère la réponse d'un service selon le contexte (AJAX ou non).
      */
     private function handleServiceResponse(array $result, ?string $redirectUrl = null, ?bool $forceAjax = null, bool $formatForMeal = false): void
     {
         $isAjax = $forceAjax ?? $this->isAjaxRequest();
 
-        if ($isAjax) {
+        if ($isAjax)
+        {
             $payload = $formatForMeal
                 ? $this->foodApiService->formatAddToMealResult($result)
                 : $result;
 
             ResponseHelper::jsonResponse($payload);
+
             return;
         }
 
@@ -145,9 +155,12 @@ class FoodController extends BaseApiController
             'save_to_db' => 'handleSaveToDatabase',
         ];
 
-        foreach ($postActions as $actionKey => $handlerMethod) {
-            if (isset($_POST[$actionKey]) && $_POST[$actionKey] == '1') {
+        foreach ($postActions as $actionKey => $handlerMethod)
+        {
+            if (isset($_POST[$actionKey]) && $_POST[$actionKey] == '1')
+            {
                 $this->$handlerMethod();
+
                 break;
             }
         }
@@ -337,7 +350,7 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Gère l'ajout manuel d'aliment
+     * Gère l'ajout manuel d'aliment.
      */
     private function handleAddManual(): void
     {
@@ -346,7 +359,7 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Gère l'ajout d'aliment du catalogue au repas
+     * Gère l'ajout d'aliment du catalogue au repas.
      */
     private function handleAddToMealFromCatalog(): void
     {
@@ -355,7 +368,7 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Gère l'ajout d'aliment de la recherche au repas
+     * Gère l'ajout d'aliment de la recherche au repas.
      */
     private function handleAddToMealFromSearch(): void
     {
@@ -366,7 +379,7 @@ class FoodController extends BaseApiController
     }
 
     /**
-     * Gère la sauvegarde d'aliment en base de données
+     * Gère la sauvegarde d'aliment en base de données.
      */
     private function handleSaveToDatabase(): void
     {

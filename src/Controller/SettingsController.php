@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 use App\Model\HistoriqueMesuresModel;
-use App\Model\ObjectifsModel;
 use App\Model\UserConfigModel;
 use App\Model\UserModel;
-use App\Service\ValidationService;
-use App\Service\SettingsDataService;
 use App\Service\CacheService;
+use App\Service\SettingsDataService;
+use App\Service\ValidationService;
 
 /**
  * SettingsController - Gestion des paramètres utilisateur
@@ -17,10 +16,15 @@ use App\Service\CacheService;
 class SettingsController extends BaseApiController
 {
     private UserModel $userModel;
+
     private UserConfigModel $userConfigModel;
+
     private HistoriqueMesuresModel $historiqueMesuresModel;
+
     private CacheService $cache;
+
     private ValidationService $validationService;
+
     private SettingsDataService $settingsDataService;
 
     public function __construct(
@@ -63,7 +67,9 @@ class SettingsController extends BaseApiController
     public function updateEmail(): void
     {
         header('Content-Type: application/json');
-        try {
+
+        try
+        {
             $userId = $this->requireAuthAndCsrfJson();
 
             $data = ['email' => trim($_POST['email'] ?? '')];
@@ -88,7 +94,8 @@ class SettingsController extends BaseApiController
             {
                 $this->jsonError(['errors' => ['email' => 'Email déjà utilisé ou invalide']]);
             }
-        } catch (\Throwable $e) {
+        } catch (\Throwable $e)
+        {
             error_log('SettingsController::updateEmail error: ' . $e->getMessage());
             $this->jsonError(['errors' => ['general' => 'Erreur interne du serveur']], 500);
         }

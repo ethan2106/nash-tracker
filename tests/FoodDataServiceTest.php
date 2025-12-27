@@ -1,14 +1,16 @@
 <?php
 
-use App\Service\FoodDataService;
 use App\Repository\FoodRepositoryInterface;
 use App\Service\CacheService;
+use App\Service\FoodDataService;
 use PHPUnit\Framework\TestCase;
 
 class FoodDataServiceTest extends TestCase
 {
     private $foodRepositoryMock;
+
     private $cacheMock;
+
     private $foodDataService;
 
     protected function setUp(): void
@@ -19,7 +21,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test récupération des aliments sauvegardés avec cache
+     * Test récupération des aliments sauvegardés avec cache.
      */
     public function testGetSavedFoodsUsesCache()
     {
@@ -28,7 +30,8 @@ class FoodDataServiceTest extends TestCase
         $this->cacheMock->expects($this->once())
             ->method('remember')
             ->with('foods', 'foods_saved__0', $this->isCallable())
-            ->willReturnCallback(function ($namespace, $key, $callback) {
+            ->willReturnCallback(function ($namespace, $key, $callback)
+            {
                 return $callback();
             });
 
@@ -43,7 +46,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test récupération avec pagination
+     * Test récupération avec pagination.
      */
     public function testGetSavedFoodsWithPagination()
     {
@@ -54,7 +57,8 @@ class FoodDataServiceTest extends TestCase
         $this->cacheMock->expects($this->once())
             ->method('remember')
             ->with('foods', 'foods_saved_10_20', $this->isCallable())
-            ->willReturnCallback(function ($namespace, $key, $callback) {
+            ->willReturnCallback(function ($namespace, $key, $callback)
+            {
                 return $callback();
             });
 
@@ -69,7 +73,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test recherche d'aliments avec cache
+     * Test recherche d'aliments avec cache.
      */
     public function testSearchSavedFoodsUsesCache()
     {
@@ -79,7 +83,8 @@ class FoodDataServiceTest extends TestCase
         $this->cacheMock->expects($this->once())
             ->method('remember')
             ->with('foods', $this->matchesRegularExpression('/^foods_search_[a-f0-9]{32}$/'), $this->isCallable())
-            ->willReturnCallback(function ($namespace, $key, $callback) {
+            ->willReturnCallback(function ($namespace, $key, $callback)
+            {
                 return $callback();
             });
 
@@ -94,7 +99,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test comptage des aliments avec cache
+     * Test comptage des aliments avec cache.
      */
     public function testCountSavedFoodsUsesCache()
     {
@@ -103,7 +108,8 @@ class FoodDataServiceTest extends TestCase
         $this->cacheMock->expects($this->once())
             ->method('remember')
             ->with('foods', 'foods_count', $this->isCallable())
-            ->willReturnCallback(function ($namespace, $key, $callback) {
+            ->willReturnCallback(function ($namespace, $key, $callback)
+            {
                 return $callback();
             });
 
@@ -117,7 +123,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test récupération des données de catalogue
+     * Test récupération des données de catalogue.
      */
     public function testGetCatalogData()
     {
@@ -130,7 +136,8 @@ class FoodDataServiceTest extends TestCase
         ];
 
         $this->cacheMock->method('remember')
-            ->willReturnCallback(function ($namespace, $key, $callback) {
+            ->willReturnCallback(function ($namespace, $key, $callback)
+            {
                 return $key === 'foods_count' ? 50 : $callback();
             });
 
@@ -149,7 +156,7 @@ class FoodDataServiceTest extends TestCase
     }
 
     /**
-     * Test invalidation du cache
+     * Test invalidation du cache.
      */
     public function testInvalidateCache()
     {

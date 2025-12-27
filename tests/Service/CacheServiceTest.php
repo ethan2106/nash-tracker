@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Tests pour CacheService
- * Teste toutes les fonctionnalités de cache avec isolation par répertoire temporaire
+ * Teste toutes les fonctionnalités de cache avec isolation par répertoire temporaire.
  */
 class CacheServiceTest extends TestCase
 {
@@ -91,7 +91,7 @@ class CacheServiceTest extends TestCase
             'array' => [1, 2, 3],
             'object' => (object)['prop' => 'value'],
             'string' => 'test',
-            'number' => 42
+            'number' => 42,
         ];
 
         $this->cacheService->set($namespace, $key, $value);
@@ -181,8 +181,10 @@ class CacheServiceTest extends TestCase
         $key = 'remember_key';
         $callCount = 0;
 
-        $callback = function() use (&$callCount) {
+        $callback = function () use (&$callCount)
+        {
             $callCount++;
+
             return 'computed_value_' . $callCount;
         };
 
@@ -203,8 +205,10 @@ class CacheServiceTest extends TestCase
         $key = 'ttl_key';
 
         $callCount = 0;
-        $callback = function() use (&$callCount) {
+        $callback = function () use (&$callCount)
+        {
             $callCount++;
+
             return 'ttl_value_' . $callCount;
         };
 
@@ -226,8 +230,10 @@ class CacheServiceTest extends TestCase
         $this->cacheService->setEnabled(false);
 
         $callCount = 0;
-        $callback = function() use (&$callCount) {
+        $callback = function () use (&$callCount)
+        {
             $callCount++;
+
             return 'no_cache_value';
         };
 

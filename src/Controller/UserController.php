@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use App\Helper\JsonResponseTrait;
 use App\Service\AuthService;
 use App\Service\CsrfService;
 use App\Service\RateLimitService;
 use App\Service\UserValidationService;
-use App\Helper\JsonResponseTrait;
 
 /**
  * UserController - Gère l'authentification et l'inscription des utilisateurs.
@@ -14,15 +14,18 @@ use App\Helper\JsonResponseTrait;
  * - Orchestration des services pour login/register/logout
  * - Gestion des pages et redirections
  * - Validation CSRF et rate limiting
- * - Délégation de la logique métier aux services
+ * - Délégation de la logique métier aux services.
  */
 class UserController
 {
     use JsonResponseTrait;
 
     private AuthService $authService;
+
     private CsrfService $csrfService;
+
     private RateLimitService $rateLimitService;
+
     private UserValidationService $userValidationService;
 
     public function __construct(
@@ -55,8 +58,10 @@ class UserController
         $this->csrfService->getToken();
 
         $data = null;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            try {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            try
+            {
                 // Valider le token CSRF
                 $this->csrfService->validatePostToken();
 
@@ -64,7 +69,8 @@ class UserController
                 $dataSuccess = $data['success'] ?? false;
                 $dataMessage = $data['message'] ?? '';
 
-                if ($data && $dataSuccess) {
+                if ($data && $dataSuccess)
+                {
                     // Gérer le cookie "remember me"
                     $this->authService->handleRememberMe($_POST);
 
@@ -74,13 +80,15 @@ class UserController
                     ];
                     header('Location: ?page=home');
                     exit;
-                } elseif ($data) {
+                } elseif ($data)
+                {
                     $_SESSION['flash'] = [
                         'type' => 'error',
                         'msg' => $dataMessage,
                     ];
                 }
-            } catch (\InvalidArgumentException $e) {
+            } catch (\InvalidArgumentException $e)
+            {
                 $_SESSION['flash'] = [
                     'type' => 'error',
                     'msg' => $e->getMessage(),
@@ -103,25 +111,30 @@ class UserController
         $this->csrfService->getToken();
 
         $data = null;
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            try {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            try
+            {
                 // Valider le token CSRF
                 $this->csrfService->validatePostToken();
 
                 $data = $this->authService->register($_POST);
-                if ($data) {
+                if ($data)
+                {
                     $dataSuccess = $data['success'] ?? false;
                     $dataMessage = $data['message'] ?? '';
                     $_SESSION['flash'] = [
                         'type' => $dataSuccess ? 'success' : 'error',
                         'msg' => $dataMessage,
                     ];
-                    if ($dataSuccess) {
+                    if ($dataSuccess)
+                    {
                         header('Location: ?page=login');
                         exit;
                     }
                 }
-            } catch (\InvalidArgumentException $e) {
+            } catch (\InvalidArgumentException $e)
+            {
                 $_SESSION['flash'] = [
                     'type' => 'error',
                     'msg' => $e->getMessage(),
@@ -135,18 +148,23 @@ class UserController
 
     public function handleApiCheckUnique()
     {
-        try {
+        try
+        {
             header('Content-Type: application/json');
 
             // Vérifier le rate limiting
-            try {
+            try
+            {
                 $this->rateLimitService->checkRateLimit();
-            } catch (\RuntimeException $e) {
-                if ($e->getMessage() === 'rate_limited') {
+            } catch (\RuntimeException $e)
+            {
+                if ($e->getMessage() === 'rate_limited')
+                {
                     http_response_code(429);
                     echo json_encode(['error' => 'rate_limited', 'retry_after' => $this->rateLimitService->getRetryAfter()]);
                     exit;
                 }
+
                 throw $e;
             }
 
@@ -156,7 +174,8 @@ class UserController
             $response = $this->userValidationService->checkUniqueness($email, $pseudo);
             echo json_encode($response);
 
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             header('Content-Type: application/json');
             echo json_encode(['error' => 'Erreur interne']);
         }
@@ -170,7 +189,8 @@ class UserController
         $token = $_POST['csrf_token'] ?? '';
 
         // Vérification CSRF
-        if ($this->csrfService->validateToken($token)) {
+        if ($this->csrfService->validateToken($token))
+        {
             // Déconnexion via le service
             $this->authService->logout();
 
@@ -181,7 +201,8 @@ class UserController
 
             header('Location: ?page=login');
             exit;
-        } else {
+        } else
+        {
             // Échec de validation CSRF
             $_SESSION['flash'] = [
                 'type' => 'error',

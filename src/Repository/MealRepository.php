@@ -6,7 +6,7 @@ use App\Model\Database;
 use PDO;
 
 /**
- * MealRepository - Implémentation des opérations sur les repas
+ * MealRepository - Implémentation des opérations sur les repas.
  */
 class MealRepository implements MealRepositoryInterface
 {
@@ -18,11 +18,12 @@ class MealRepository implements MealRepositoryInterface
     }
 
     /**
-     * Récupère un repas par date et type pour un utilisateur
+     * Récupère un repas par date et type pour un utilisateur.
      */
     public function getMealByDateAndType(int $userId, string $date, string $mealType): ?array
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('
                 SELECT * FROM repas
                 WHERE user_id = ? AND date_heure BETWEEN ? AND ? AND type_repas = ?
@@ -32,67 +33,82 @@ class MealRepository implements MealRepositoryInterface
             $stmt->execute([$userId, $date . ' 00:00:00', $date . ' 23:59:59', $mealType]);
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
             return $result ?: null;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la récupération du repas: ' . $e->getMessage());
+
             return null;
         }
     }
 
     /**
-     * Crée un repas avec un aliment en transaction atomique
+     * Crée un repas avec un aliment en transaction atomique.
      */
     public function createMealWithFood(int $userId, string $mealType, int $foodId, float $quantity): int|false
     {
-        try {
+        try
+        {
             $this->db->beginTransaction();
 
             // Créer le repas
             $mealId = $this->createMeal($userId, $mealType);
-            if (!$mealId) {
+            if (!$mealId)
+            {
                 $this->db->rollBack();
+
                 return false;
             }
 
             // Ajouter l'aliment
             $result = $this->addFoodToMeal($mealId, $foodId, $quantity);
-            if (!$result) {
+            if (!$result)
+            {
                 $this->db->rollBack();
+
                 return false;
             }
 
             $this->db->commit();
+
             return $mealId;
 
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             $this->db->rollBack();
             error_log('Erreur lors de la création du repas avec aliment: ' . $e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Ajoute un aliment à un repas existant
+     * Ajoute un aliment à un repas existant.
      */
     public function addFoodToMeal(int $mealId, int $foodId, float $quantity): bool
     {
-        try {
+        try
+        {
             // Vérifier la quantité
-            if ($quantity <= 0) {
+            if ($quantity <= 0)
+            {
                 return false;
             }
 
             // Vérifier si l'aliment existe
             $stmt = $this->db->prepare('SELECT id FROM aliments WHERE id = ?');
             $stmt->execute([$foodId]);
-            if (!$stmt->fetch()) {
+            if (!$stmt->fetch())
+            {
                 return false;
             }
 
             // Vérifier si le repas existe
             $stmt = $this->db->prepare('SELECT id FROM repas WHERE id = ?');
             $stmt->execute([$mealId]);
-            if (!$stmt->fetch()) {
+            if (!$stmt->fetch())
+            {
                 return false;
             }
 
@@ -103,32 +119,38 @@ class MealRepository implements MealRepositoryInterface
             ');
             $result = $stmt->execute([$mealId, $foodId, $quantity]);
 
-            if (!$result) {
+            if (!$result)
+            {
                 return false;
             }
 
             // Mettre à jour le timestamp du repas s'il est d'aujourd'hui
-            try {
+            try
+            {
                 $today = date('Y-m-d');
                 $update = $this->db->prepare('UPDATE repas SET date_heure = datetime(\'now\') WHERE id = ? AND date_heure BETWEEN ? AND ?');
                 $update->execute([$mealId, $today . ' 00:00:00', $today . ' 23:59:59']);
-            } catch (\Exception $e) {
+            } catch (\Exception $e)
+            {
                 // Ignorer l'erreur de mise à jour du timestamp
             }
 
             return true;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de l\'ajout d\'aliment au repas: ' . $e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Récupère les repas d'un utilisateur pour une date donnée
+     * Récupère les repas d'un utilisateur pour une date donnée.
      */
     public function getMealsByDate(int $userId, string $date): array
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('
                 SELECT r.*, COUNT(ra.id) AS aliment_count,
                        SUM((a.calories_100g * ra.quantite_g) / 100) AS calories_total,
@@ -149,18 +171,21 @@ class MealRepository implements MealRepositoryInterface
             $stmt->execute([$userId, $date]);
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la récupération des repas: ' . $e->getMessage());
+
             return [];
         }
     }
 
     /**
-     * Supprime un aliment d'un repas
+     * Supprime un aliment d'un repas.
      */
     public function removeFoodFromMeal(int $mealId, int $foodId): bool
     {
-        try {
+        try
+        {
             $stmt = $this->db->prepare('
                 DELETE FROM repas_aliments
                 WHERE repas_id = ? AND aliment_id = ?
@@ -168,18 +193,21 @@ class MealRepository implements MealRepositoryInterface
             $stmt->execute([$mealId, $foodId]);
 
             return $stmt->rowCount() > 0;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la suppression d\'aliment du repas: ' . $e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Crée un nouveau repas (méthode privée)
+     * Crée un nouveau repas (méthode privée).
      */
     private function createMeal(int $userId, string $mealType = 'repas', ?string $dateTime = null): int|false
     {
-        try {
+        try
+        {
             $dateTime = $dateTime ?? date('Y-m-d H:i:s');
 
             $stmt = $this->db->prepare('
@@ -188,13 +216,16 @@ class MealRepository implements MealRepositoryInterface
             ');
             $result = $stmt->execute([$userId, $mealType, $dateTime]);
 
-            if ($result) {
+            if ($result)
+            {
                 return (int)$this->db->lastInsertId();
             }
 
             return false;
-        } catch (\Exception $e) {
+        } catch (\Exception $e)
+        {
             error_log('Erreur lors de la création du repas: ' . $e->getMessage());
+
             return false;
         }
     }

@@ -10,6 +10,7 @@ namespace App\Config;
 class Router
 {
     private array $routes = [];
+
     private \Psr\Container\ContainerInterface $container;
 
     public function __construct(\Psr\Container\ContainerInterface $container)

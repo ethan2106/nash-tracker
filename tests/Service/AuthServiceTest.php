@@ -9,13 +9,16 @@ use PHPUnit\Framework\TestCase;
 class AuthServiceTest extends TestCase
 {
     private AuthService $authService;
+
     private User $userModel;
+
     private int $testUserId;
 
     protected function setUp(): void
     {
         // Start session for testing
-        if (session_status() === PHP_SESSION_NONE) {
+        if (session_status() === PHP_SESSION_NONE)
+        {
             session_start();
         }
 
@@ -29,9 +32,12 @@ class AuthServiceTest extends TestCase
         // Reset DB for isolation
         $db = $this->userModel->getDb();
         $db->exec('DELETE FROM users');
-        try {
+
+        try
+        {
             $db->exec('DELETE FROM sqlite_sequence WHERE name="users"');
-        } catch (\Throwable $e) {
+        } catch (\Throwable $e)
+        {
             // OK if sqlite_sequence doesn't exist
         }
 
@@ -42,7 +48,8 @@ class AuthServiceTest extends TestCase
     protected function tearDown(): void
     {
         // Clear session after each test
-        if (session_status() === PHP_SESSION_ACTIVE) {
+        if (session_status() === PHP_SESSION_ACTIVE)
+        {
             session_destroy();
         }
         $_SESSION = [];
@@ -60,7 +67,7 @@ class AuthServiceTest extends TestCase
     {
         $data = [
             'email' => 'test@example.com',
-            'password' => 'password123'
+            'password' => 'password123',
         ];
 
         $result = $this->authService->login($data);
@@ -80,7 +87,7 @@ class AuthServiceTest extends TestCase
     {
         $data = [
             'email' => 'test@example.com',
-            'password' => 'wrongpassword'
+            'password' => 'wrongpassword',
         ];
 
         $result = $this->authService->login($data);
@@ -97,7 +104,7 @@ class AuthServiceTest extends TestCase
     {
         $data = [
             'email' => 'nonexistent@example.com',
-            'password' => 'password123'
+            'password' => 'password123',
         ];
 
         $result = $this->authService->login($data);
@@ -113,7 +120,7 @@ class AuthServiceTest extends TestCase
     public function testLoginFailsWithMissingFields()
     {
         $data = [
-            'email' => 'test@example.com'
+            'email' => 'test@example.com',
             // missing password
         ];
 

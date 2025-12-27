@@ -2,13 +2,14 @@
 
 namespace Tests\Service;
 
-use PHPUnit\Framework\TestCase;
-use App\Service\NAFLDAdviceService;
 use App\Model\UserConfigModel;
+use App\Service\NAFLDAdviceService;
+use PHPUnit\Framework\TestCase;
 
 class NAFLDAdviceServiceTest extends TestCase
 {
     private NAFLDAdviceService $service;
+
     /** @var \App\Model\UserConfigModel&\PHPUnit\Framework\MockObject\MockObject */
     private UserConfigModel $mockUserConfig;
 
@@ -27,10 +28,13 @@ class NAFLDAdviceServiceTest extends TestCase
     public function testGeneratePersonalizedAdviceWithMedicalConditionsIncludesDisclaimer()
     {
         $this->mockUserConfig->method('get')
-            ->willReturnCallback(function ($userId, $key) {
-                if (in_array($key, ['medical_cardiac', 'medical_diabetes', 'medical_other'])) {
+            ->willReturnCallback(function ($userId, $key)
+            {
+                if (in_array($key, ['medical_cardiac', 'medical_diabetes', 'medical_other']))
+                {
                     return true;
                 }
+
                 return 18.5; // default IMC thresholds
             });
 
@@ -60,7 +64,8 @@ class NAFLDAdviceServiceTest extends TestCase
 
         $this->assertIsArray($result);
         $this->assertLessThanOrEqual(5, count($result)); // max 5 advice
-        foreach ($result as $advice) {
+        foreach ($result as $advice)
+        {
             $this->assertArrayHasKey('text', $advice);
             $this->assertArrayHasKey('icon', $advice);
             $this->assertArrayHasKey('color', $advice);
@@ -83,7 +88,7 @@ class NAFLDAdviceServiceTest extends TestCase
         $this->assertNotEmpty($result);
         // Should contain advice about obesity
         $texts = array_column($result, 'text');
-        $this->assertTrue(count(array_filter($texts, fn($t) => stripos($t, 'obésité') !== false)) > 0);
+        $this->assertTrue(count(array_filter($texts, fn ($t) => stripos($t, 'obésité') !== false)) > 0);
     }
 
     public function testGeneratePersonalizedAdviceWithLowActivity()
@@ -101,6 +106,6 @@ class NAFLDAdviceServiceTest extends TestCase
         $this->assertNotEmpty($result);
         // Should contain advice about activity
         $texts = array_column($result, 'text');
-        $this->assertTrue(count(array_filter($texts, fn($t) => stripos($t, 'activité') !== false || stripos($t, 'marche') !== false)) > 0);
+        $this->assertTrue(count(array_filter($texts, fn ($t) => stripos($t, 'activité') !== false || stripos($t, 'marche') !== false)) > 0);
     }
 }

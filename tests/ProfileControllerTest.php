@@ -3,7 +3,6 @@
 namespace Tests;
 
 use App\Controller\ProfileController;
-use App\Service\GamificationService;
 use PDO;
 use PHPUnit\Framework\TestCase;
 
