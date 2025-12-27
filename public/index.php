@@ -13,6 +13,14 @@
  */
 require_once '../vendor/autoload.php';
 
+// Charger les variables d'environnement
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+// Activer le rapport d'erreurs complet en développement
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Whoops for pretty error pages in dev (only for non-API requests)
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);

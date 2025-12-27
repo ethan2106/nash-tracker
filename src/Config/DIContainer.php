@@ -20,8 +20,10 @@ class DIContainer
         {
             $builder = new ContainerBuilder();
 
-            // Enable compilation for performance in prod
-            $builder->enableCompilation(__DIR__ . '/../../storage/cache/di');
+            // Enable compilation for performance in prod only
+            if (getenv('APP_ENV') !== 'dev') {
+                $builder->enableCompilation(__DIR__ . '/../../storage/cache/di');
+            }
 
             // Add definitions
             $builder->addDefinitions([
