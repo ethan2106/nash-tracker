@@ -27,9 +27,33 @@ class DIContainer
 
             // Add definitions
             $builder->addDefinitions([
+                // Database Wrapper (PDO)
+                \App\Model\DatabaseWrapper::class => function () {
+                    if (!isset($_ENV['DB_PATH'])) {
+                        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+                        $dotenv->load();
+                    }
+
+                    $dbPath = $_ENV['DB_PATH'] ?? __DIR__ . '/../../storage/db.sqlite';
+                    $dsn = 'sqlite:' . $dbPath;
+
+                    return new \App\Model\DatabaseWrapper(
+                        $dsn,
+                        null,
+                        null,
+                        [
+                            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                            \PDO::ATTR_EMULATE_PREPARES => false,
+                        ]
+                    );
+                },
+
+                // PDO alias to DatabaseWrapper
+                \PDO::class => \DI\get(\App\Model\DatabaseWrapper::class),
+
                 // Logger (already configured in index.php, but can be injected)
-                \Monolog\Logger::class => function ()
-                {
+                \Monolog\Logger::class => function () {
                     $logger = new \Monolog\Logger('nash-tracker');
                     $logger->pushHandler(new \Monolog\Handler\StreamHandler(__DIR__ . '/../../storage/app.log', \Monolog\Logger::WARNING));
                     $logger->pushHandler(new \Monolog\Handler\StreamHandler('php://stdout', \Monolog\Logger::DEBUG));
@@ -48,30 +72,34 @@ class DIContainer
                 \App\Service\FoodManager::class => \DI\autowire(),
 
                 // MealManager (depends on MealModel)
-                \App\Service\MealManager::class => function (\Psr\Container\ContainerInterface $c)
-                {
-                    return new \App\Service\MealManager($c->get(\App\Model\MealModel::class));
-                },
+                \App\Service\MealManager::class => \DI\autowire(),
 
                 // ActivityService (depends on PDO)
-                \App\Service\ActivityService::class => function ()
-                {
-                    return new \App\Service\ActivityService(\App\Model\Database::getInstance());
-                },
+                \App\Service\ActivityService::class => \DI\autowire(),
 
                 // Models (simple, no deps)
-                \App\Model\MealModel::class => function ()
-                {
-                    return new \App\Model\MealModel();
-                },
+                \App\Model\MealModel::class => \DI\autowire(),
                 \App\Model\UserModel::class => \DI\autowire(),
                 \App\Model\HistoriqueMesuresModel::class => \DI\autowire(),
+                \App\Model\ObjectifsModel::class => \DI\autowire(),
+                \App\Model\UserConfigModel::class => \DI\autowire(),
+                \App\Model\PriseMedicamentModel::class => \DI\autowire(),
+                \App\Model\SymptomModel::class => \DI\autowire(),
+                \App\Model\User::class => \DI\autowire(),
+                \App\Model\WalkModel::class => \DI\autowire(),
+                \App\Model\ActivityModel::class => \DI\autowire(),
+                \App\Model\ReportsModel::class => \DI\autowire(),
 
                 // ValidationService
                 \App\Service\ValidationService::class => \DI\autowire(),
 
                 // GamificationService
                 \App\Service\GamificationService::class => \DI\autowire(),
+
+                \App\Service\NAFLDAdviceService::class => \DI\autowire(),
+
+                // NutritionService
+                \App\Service\NutritionService::class => \DI\autowire(),
 
                 // Profile services
                 \App\Service\ProfileDataService::class => \DI\autowire(),
@@ -112,15 +140,7 @@ class DIContainer
                 \App\Controller\SettingsController::class => \DI\autowire(),
                 \App\Controller\MedicamentController::class => \DI\autowire(),
                 \App\Controller\UserController::class => \DI\autowire(),
-                \App\Controller\MealController::class => function (\Psr\Container\ContainerInterface $c)
-                {
-                    return new \App\Controller\MealController(
-                        $c->get(\App\Model\MealModel::class),
-                        $c->get(\App\Service\MealManager::class),
-                        null, // ActivityService has PDO resolution issues
-                        $c->get(\App\Service\GamificationService::class)
-                    );
-                },
+                \App\Controller\MealController::class => \DI\autowire(),
             ]);
 
             self::$container = $builder->build();

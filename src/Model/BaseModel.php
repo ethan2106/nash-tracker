@@ -8,10 +8,10 @@ namespace App\Model;
  */
 abstract class BaseModel
 {
-    protected $db;
+    protected readonly \PDO $db;
 
-    public function __construct()
+    public function __construct(\PDO $db)
     {
-        $this->db = Database::getInstance();
+        $this->db = $db;
     }
 }

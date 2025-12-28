@@ -9,8 +9,6 @@ use PDO;
  */
 class UserConfigModel
 {
-    private PDO $db;
-
     // Clés de configuration disponibles
     public const CONFIG_KEYS = [
         'activite_objectif_minutes' => [
@@ -106,9 +104,8 @@ class UserConfigModel
         ],
     ];
 
-    public function __construct(?PDO $db = null)
+    public function __construct(private PDO $db)
     {
-        $this->db = $db ?? Database::getInstance();
     }
 
     /**

@@ -15,11 +15,10 @@ use Exception;
  */
 class ActivityController extends BaseApiController
 {
-    private $activityModel;
-
-    public function __construct()
-    {
-        $this->activityModel = new ActivityModel();
+    public function __construct(
+        private ActivityModel $activityModel,
+        private ObjectifsModel $objectifsModel
+    ) {
     }
 
     /**
@@ -114,7 +113,7 @@ class ActivityController extends BaseApiController
             $activitesData = $this->activityModel->getActivitesAujourdhui($userId);
 
             // Récupérer le poids de l'utilisateur depuis ses objectifs IMC
-            $objectifs = ObjectifsModel::getByUser($userId);
+            $objectifs = $this->objectifsModel->getByUser($userId);
             $userWeight = $objectifs['poids'] ?? null;
 
             // Ajouter le poids aux données retournées

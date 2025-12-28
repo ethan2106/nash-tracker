@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\UserConfigModel;
 use App\Model\ObjectifsModel;
 use Exception;
 use PDO;
@@ -17,29 +18,14 @@ use PDO;
  */
 class DashboardService
 {
-    private $db;
-
-    private $cache;
-
     private const TOAST_COOLDOWN_MINUTES = 60; // anti-spam entre 2 alertes identiques
 
-    public function __construct(?\PDO $db = null, ?CacheService $cache = null)
-    {
-        if ($db === null)
-        {
-            $this->db = (new \App\Model\Database())->getConnection();
-        } else
-        {
-            $this->db = $db;
-        }
-
-        if ($cache === null)
-        {
-            $this->cache = new \App\Service\CacheService();
-        } else
-        {
-            $this->cache = $cache;
-        }
+    public function __construct(
+        private \PDO $db,
+        private CacheService $cache,
+        private ObjectifsModel $objectifsModel,
+        private UserConfigModel $userConfigModel
+    ) {
     }
 
     /**
@@ -68,7 +54,7 @@ class DashboardService
                 $data['objectifs'] = $cachedObjectifs;
             } else
             {
-                $data['objectifs'] = ObjectifsModel::getByUser($user['id']);
+                $data['objectifs'] = $this->objectifsModel->getByUser($user['id']);
                 $this->cache->set($namespace, $key, $data['objectifs'], \App\Service\CacheService::TTL_MEDIUM); // 30 min
             }
 
@@ -86,8 +72,7 @@ class DashboardService
             {
                 try
                 {
-                    $userConfigModel = new \App\Model\UserConfigModel();
-                    $userConfig = $userConfigModel->getAll($user['id']);
+                    $userConfig = $this->userConfigModel->getAll($user['id']);
                 } catch (\Throwable $e)
                 {
                     $userConfig = [];
@@ -358,7 +343,7 @@ class DashboardService
         }
 
         // Récupérer les objectifs de l'utilisateur
-        $objectifs = ObjectifsModel::getByUser($user['id']);
+        $objectifs = $this->objectifsModel->getByUser($user['id']);
 
         // Calculer les vraies statistiques
         $stats = [
@@ -637,8 +622,7 @@ class DashboardService
         // Objectif activité via configuration utilisateur si disponible
         try
         {
-            $userConfigModel = new \App\Model\UserConfigModel();
-            $activityTarget = $userId ? (int)$userConfigModel->get($userId, 'activite_objectif_minutes') : 30;
+            $activityTarget = $userId ? (int)$this->userConfigModel->get($userId, 'activite_objectif_minutes') : 30;
         } catch (\Throwable $e)
         {
             $activityTarget = 30;

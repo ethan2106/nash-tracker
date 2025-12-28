@@ -8,11 +8,8 @@ namespace App\Service;
  */
 class NAFLDAdviceService
 {
-    private \App\Model\UserConfigModel $userConfigModel;
-
-    public function __construct(?\App\Model\UserConfigModel $userConfigModel = null)
+    public function __construct(private \App\Model\UserConfigModel $userConfigModel)
     {
-        $this->userConfigModel = $userConfigModel ?? new \App\Model\UserConfigModel();
     }
 
     /**

@@ -35,7 +35,7 @@
                                     Hier
                                 <?php } else
                                 { ?>
-                                    <?= strftime('%A', $date->getTimestamp()); ?>
+                                    <?= (new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE, null, null, 'EEEE'))->format($date); ?>
                                 <?php } ?>
                             </div>
                             <div class="text-xs text-slate-400">

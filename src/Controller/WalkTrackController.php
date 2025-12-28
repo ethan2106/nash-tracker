@@ -17,15 +17,10 @@ use Exception;
  */
 class WalkTrackController extends BaseApiController
 {
-    private WalkModel $walkModel;
-
-    private GamificationService $gamificationService;
-
-    public function __construct()
-    {
-        require_once __DIR__ . '/../Model/WalkModel.php';
-        $this->walkModel = new WalkModel();
-        $this->gamificationService = new GamificationService();
+    public function __construct(
+        private WalkModel $walkModel,
+        private GamificationService $gamificationService
+    ) {
     }
 
     /**

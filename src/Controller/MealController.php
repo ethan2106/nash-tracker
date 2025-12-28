@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Helper\ResponseHelper;
 use App\Model\MealModel;
+use App\Model\ObjectifsModel;
 use App\Service\ActivityService;
 use App\Service\GamificationService;
 use App\Service\MealManager;
@@ -18,16 +19,20 @@ class MealController extends BaseApiController
 
     private GamificationService $gamificationService;
 
+    private ObjectifsModel $objectifsModel;
+
     public function __construct(
         MealModel $mealModel,
         MealManager $mealManager,
         ?ActivityService $activityService,
-        GamificationService $gamificationService
+        GamificationService $gamificationService,
+        ObjectifsModel $objectifsModel
     ) {
         $this->mealModel = $mealModel;
         $this->mealManager = $mealManager;
         $this->activityService = $activityService;
         $this->gamificationService = $gamificationService;
+        $this->objectifsModel = $objectifsModel;
     }
 
     /**
@@ -216,7 +221,7 @@ class MealController extends BaseApiController
 
         require_once __DIR__ . '/../Model/ObjectifsModel.php';
 
-        return \App\Model\ObjectifsModel::getByUser($user_id);
+        return $this->objectifsModel->getByUser($user_id);
     }
 
     /**

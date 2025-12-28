@@ -4,6 +4,10 @@ namespace App\Model;
 
 class ObjectifsModel
 {
+    public function __construct(private \PDO $pdo)
+    {
+    }
+
     /**
      * Sauvegarde un nouvel objectif nutritionnel avec système de versioning.
      * Désactive automatiquement l'ancien objectif actif et crée une nouvelle version.
@@ -11,13 +15,8 @@ class ObjectifsModel
      * @param array $data Données de l'objectif (calories, macros, infos utilisateur)
      * @return bool True si succès, False sinon
      */
-    public static function save(array $data): bool
+    public function save(array $data, int $userId): bool
     {
-        if (session_status() === PHP_SESSION_NONE)
-        {
-            session_start();
-        }
-
         $fields = [
             'calories_perte', 'sucres_max', 'glucides', 'graisses_sat_max', 'graisses_insaturees',
             'proteines_min', 'proteines_max', 'fibres_min', 'fibres_max', 'sodium_max',
@@ -58,31 +57,19 @@ class ObjectifsModel
             }
         }
 
-        $user_id = $_SESSION['user']['id'] ?? null;
-        if (!$user_id)
-        {
-            error_log('ObjectifsModel::save: user_id non trouvé dans session');
-
-            return false;
-        }
-
         $nowDate = date('Y-m-d');
-
-        $pdo = null;
 
         try
         {
-            $pdo = Database::getInstance();
-
             // Début de transaction pour garantir la cohérence des données
-            $pdo->beginTransaction();
+            $this->pdo->beginTransaction();
 
             // Étape 1 : Désactiver l'ancien objectif actif (s'il existe)
             $deactivateSql = 'UPDATE objectifs_nutrition 
                              SET actif = 0, date_fin = ? 
                              WHERE user_id = ? AND actif = 1';
-            $deactivateStmt = $pdo->prepare($deactivateSql);
-            $deactivateStmt->execute([$nowDate, $user_id]);
+            $deactivateStmt = $this->pdo->prepare($deactivateSql);
+            $deactivateStmt->execute([$nowDate, $userId]);
 
             // Étape 2 : Insérer le nouvel objectif actif
             $sql = 'INSERT INTO objectifs_nutrition 
@@ -92,7 +79,7 @@ class ObjectifsModel
                      actif, date_debut)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)';
 
-            $stmt = $pdo->prepare($sql);
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 $data['calories_perte'],
                 $data['sucres_max'],
@@ -111,20 +98,20 @@ class ObjectifsModel
                 $data['activite'],
                 $data['imc'],
                 $data['objectif'],
-                $user_id,
+                $userId,
                 $nowDate,
             ]);
 
             // Valider la transaction
-            $pdo->commit();
+            $this->pdo->commit();
 
             return true;
         } catch (\PDOException $e)
         {
             // Annuler la transaction en cas d'erreur
-            if ($pdo && $pdo->inTransaction())
+            if ($this->pdo->inTransaction())
             {
-                $pdo->rollBack();
+                $this->pdo->rollBack();
             }
             error_log('Erreur SQL dans ObjectifsModel::save: ' . $e->getMessage());
 
@@ -138,12 +125,10 @@ class ObjectifsModel
      * @param int $user_id ID de l'utilisateur
      * @return array|null Données de l'objectif actif ou null si aucun
      */
-    public static function getByUser($user_id)
+    public function getByUser($user_id)
     {
         try
         {
-            $pdo = Database::getInstance();
-
             // Récupère uniquement l'objectif actif
             $sql = 'SELECT calories_perte, sucres_max, glucides, graisses_sat_max, graisses_insaturees, 
                            proteines_min, proteines_max, fibres_min, fibres_max, sodium_max, 
@@ -152,7 +137,7 @@ class ObjectifsModel
                     FROM objectifs_nutrition 
                     WHERE user_id = ? AND actif = 1 
                     LIMIT 1';
-            $stmt = $pdo->prepare($sql);
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$user_id]);
 
             return $stmt->fetch(\PDO::FETCH_ASSOC) ?: null;
@@ -170,12 +155,10 @@ class ObjectifsModel
      * @param int $user_id ID de l'utilisateur
      * @return array Liste des objectifs triés par date (plus récent en premier)
      */
-    public static function getHistoriqueByUser($user_id): array
+    public function getHistoriqueByUser($user_id): array
     {
         try
         {
-            $pdo = Database::getInstance();
-
             $sql = 'SELECT id, calories_perte, sucres_max, glucides, graisses_sat_max, graisses_insaturees, 
                            proteines_min, proteines_max, fibres_min, fibres_max, sodium_max, 
                            taille, poids, annee, sexe, activite, imc, objectif, 
@@ -183,7 +166,7 @@ class ObjectifsModel
                     FROM objectifs_nutrition 
                     WHERE user_id = ? 
                     ORDER BY date_debut DESC';
-            $stmt = $pdo->prepare($sql);
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$user_id]);
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?: [];
@@ -202,12 +185,10 @@ class ObjectifsModel
      * @param string $date Date au format Y-m-d
      * @return array|null Objectif valide à cette date ou null
      */
-    public static function getByUserAtDate($user_id, $date)
+    public function getByUserAtDate($user_id, $date)
     {
         try
         {
-            $pdo = Database::getInstance();
-
             $sql = 'SELECT calories_perte, sucres_max, glucides, graisses_sat_max, graisses_insaturees, 
                            proteines_min, proteines_max, fibres_min, fibres_max, sodium_max, 
                            taille, poids, annee, sexe, activite, imc, objectif 
@@ -217,7 +198,7 @@ class ObjectifsModel
                       AND (date_fin IS NULL OR date_fin >= ?)
                     ORDER BY date_debut DESC 
                     LIMIT 1';
-            $stmt = $pdo->prepare($sql);
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$user_id, $date, $date]);
 
             return $stmt->fetch(\PDO::FETCH_ASSOC) ?: null;

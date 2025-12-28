@@ -16,11 +16,9 @@ class HistoriqueMesuresModelTest extends TestCase
         $this->pdoMock = $this->createMock(PDO::class);
         $this->stmtMock = $this->createMock(PDOStatement::class);
 
-        // Utiliser reflection pour injecter le mock PDO
-        $this->model = new HistoriqueMesuresModel();
-        $reflection = new ReflectionClass($this->model);
-        $property = $reflection->getProperty('pdo'); // Corrected: pdo not db
-        $property->setValue($this->model, $this->pdoMock);
+        $this->pdoMock->method('prepare')->willReturn($this->stmtMock);
+
+        $this->model = new HistoriqueMesuresModel($this->pdoMock);
     }
 
     public function testSaveMesure()

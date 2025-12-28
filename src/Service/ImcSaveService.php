@@ -63,7 +63,7 @@ class ImcSaveService
         $data['user_id'] = $userId;
 
         // Appel du model
-        $success = $this->objectifsRepo->save($data);
+        $success = $this->objectifsRepo->save($data, $userId);
 
         // Sauvegarder la mesure dans l'historique si succès
         if ($success)

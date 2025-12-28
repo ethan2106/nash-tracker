@@ -13,16 +13,13 @@ use Exception;
  */
 class User
 {
-    private $db;
-
-    public function getDb()
+    public function __construct(private \PDO $db)
     {
-        return $this->db;
     }
 
-    public function __construct()
+    public function getDb(): \PDO
     {
-        $this->db = Database::getInstance();
+        return $this->db;
     }
 
     public function register($data)

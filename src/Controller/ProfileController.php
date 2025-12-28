@@ -16,39 +16,18 @@ use App\Service\ValidationService;
 
 class ProfileController extends BaseApiController
 {
-    private readonly \PDO $db;
-
-    private readonly NutritionService $nutritionService;
-
-    private readonly ActivityService $activityService;
-
-    private readonly NAFLDAdviceService $adviceService;
-
-    private readonly UserConfigModel $userConfigModel;
-
-    private readonly CacheService $cacheService;
-
-    private readonly ValidationService $validationService;
-
-    private readonly ProfileDataService $profileDataService;
-
-    private readonly ProfileApiService $profileApiService;
-
-    private readonly GamificationService $gamificationService;
-
-    public function __construct(?NutritionService $nutritionService = null, ?ActivityService $activityService = null, ?NAFLDAdviceService $adviceService = null, ?UserConfigModel $userConfigModel = null, ?CacheService $cacheService = null, ?ValidationService $validationService = null, ?ProfileDataService $profileDataService = null, ?ProfileApiService $profileApiService = null, ?DashboardService $dashboardService = null, ?GamificationService $gamificationService = null, ?\PDO $db = null)
-    {
-        $this->db = $db ?? Database::getInstance();
-        $this->nutritionService = $nutritionService ?? new NutritionService($this->db);
-        $this->activityService = $activityService ?? new ActivityService($this->db);
-        $this->adviceService = $adviceService ?? new NAFLDAdviceService();
-        $this->userConfigModel = $userConfigModel ?? new UserConfigModel($this->db);
-        $this->cacheService = $cacheService ?? new CacheService();
-        $this->validationService = $validationService ?? new ValidationService();
-        $dashboardServiceInstance = $dashboardService ?? new DashboardService($this->db, $this->cacheService);
-        $this->profileDataService = $profileDataService ?? new ProfileDataService($this->db, $this->nutritionService, $this->activityService, $dashboardServiceInstance);
-        $this->profileApiService = $profileApiService ?? new ProfileApiService($this->activityService);
-        $this->gamificationService = $gamificationService ?? new GamificationService();
+    public function __construct(
+        private readonly \PDO $db,
+        private readonly NutritionService $nutritionService,
+        private readonly ActivityService $activityService,
+        private readonly NAFLDAdviceService $adviceService,
+        private readonly UserConfigModel $userConfigModel,
+        private readonly CacheService $cacheService,
+        private readonly ValidationService $validationService,
+        private readonly ProfileDataService $profileDataService,
+        private readonly ProfileApiService $profileApiService,
+        private readonly GamificationService $gamificationService
+    ) {
     }
 
     // ===============================

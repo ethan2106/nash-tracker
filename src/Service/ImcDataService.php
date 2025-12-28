@@ -14,11 +14,10 @@ use App\Model\ObjectifsModel;
  */
 class ImcDataService
 {
-    private CacheService $cache;
-
-    public function __construct(CacheService $cache)
-    {
-        $this->cache = $cache;
+    public function __construct(
+        private CacheService $cache,
+        private ObjectifsModel $objectifsModel
+    ) {
     }
 
     /**
@@ -38,7 +37,7 @@ class ImcDataService
                 $saved = $cached;
             } else
             {
-                $saved = ObjectifsModel::getByUser($userId);
+                $saved = $this->objectifsModel->getByUser($userId);
                 $this->cache->set($namespace, $key, $saved, CacheService::TTL_MEDIUM);
             }
         }

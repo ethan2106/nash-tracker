@@ -7,17 +7,11 @@ use PDO;
 
 class ReportsModel
 {
-    private $pdo;
-
-    public function __construct()
-    {
-        try
-        {
-            $this->pdo = Database::getInstance();
-        } catch (\PDOException $e)
-        {
-            throw new Exception('Erreur de connexion à la base de données');
-        }
+    public function __construct(
+        private PDO $pdo,
+        private MealModel $mealModel,
+        private ObjectifsModel $objectifsModel
+    ) {
     }
 
     /**
@@ -61,13 +55,11 @@ class ReportsModel
 
     private function getTodayMeals($userId)
     {
-        require_once __DIR__ . '/MealModel.php';
-        $mealModel = new MealModel();
-        $meals = $mealModel->getMealsByDate($userId, date('Y-m-d'));
+        $meals = $this->mealModel->getMealsByDate($userId, date('Y-m-d'));
         $mealsWithDetails = [];
         foreach ($meals as $meal)
         {
-            $details = $mealModel->getMealDetails($meal['id']);
+            $details = $this->mealModel->getMealDetails($meal['id']);
             $meal['aliments'] = [];
             foreach ($details as $detail)
             {
@@ -85,10 +77,7 @@ class ReportsModel
 
     private function getSavedObjectifs($userId)
     {
-        require_once __DIR__ . '/ObjectifsModel.php';
-        require_once __DIR__ . '/ImcModel.php';
-
-        return \App\Model\ObjectifsModel::getByUser($userId);
+        return $this->objectifsModel->getByUser($userId);
     }
 
     private function calculateTodayCalories($userId)

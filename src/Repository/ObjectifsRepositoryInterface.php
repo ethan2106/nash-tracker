@@ -7,5 +7,5 @@ namespace App\Repository;
  */
 interface ObjectifsRepositoryInterface
 {
-    public function save(array $data): bool;
+    public function save(array $data, int $userId): bool;
 }

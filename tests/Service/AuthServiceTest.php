@@ -26,7 +26,7 @@ class AuthServiceTest extends TestCase
         $_SESSION = [];
         $_COOKIE = [];
 
-        $this->userModel = new User();
+        $this->userModel = new User(\App\Model\Database::getInstance());
         $this->authService = new AuthService($this->userModel);
 
         // Reset DB for isolation

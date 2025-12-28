@@ -9,11 +9,9 @@ use App\Model\SymptomModel;
  */
 class SymptomController extends BaseApiController
 {
-    private SymptomModel $symptomModel;
-
-    public function __construct()
-    {
-        $this->symptomModel = new SymptomModel();
+    public function __construct(
+        private SymptomModel $symptomModel
+    ) {
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\Database;
 use App\Model\UserConfigModel;
 use App\Service\ActivityService;
+use App\Service\CacheService;
 use App\Service\DashboardService;
 use App\Service\GamificationService;
 use App\Service\NutritionService;
@@ -33,8 +34,8 @@ class HomeController
         $this->dashboardService = $dashboardService;
         $this->userConfigModel = $userConfigModel;
         $this->gamificationService = $gamificationService;
-        $this->nutritionService = $nutritionService ?? new NutritionService((new Database())->getConnection());
-        $this->activityService = $activityService ?? new ActivityService((new Database())->getConnection());
+        $this->nutritionService = $nutritionService ?? new NutritionService((new Database())->getConnection(), new CacheService());
+        $this->activityService = $activityService ?? new ActivityService((new Database())->getConnection(), new CacheService());
     }
 
     /**

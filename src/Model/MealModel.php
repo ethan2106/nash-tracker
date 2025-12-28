@@ -15,11 +15,8 @@ use PDO;
  */
 class MealModel
 {
-    private $db;
-
-    public function __construct()
+    public function __construct(private \PDO $db)
     {
-        $this->db = Database::getInstance();
     }
 
     /**

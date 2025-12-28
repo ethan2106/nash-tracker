@@ -4,11 +4,8 @@ namespace App\Model;
 
 class PriseMedicamentModel
 {
-    private $db;
-
-    public function __construct()
+    public function __construct(private \PDO $db)
     {
-        $this->db = Database::getInstance();
     }
 
     public function getPrisesForDate($medicamentId, $date)

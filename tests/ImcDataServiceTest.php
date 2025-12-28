@@ -13,7 +13,8 @@ class ImcDataServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->cacheMock = $this->createMock(CacheService::class);
-        $this->imcDataService = new ImcDataService($this->cacheMock);
+        $objectifsModelMock = $this->createMock(\App\Model\ObjectifsModel::class);
+        $this->imcDataService = new ImcDataService($this->cacheMock, $objectifsModelMock);
     }
 
     /**

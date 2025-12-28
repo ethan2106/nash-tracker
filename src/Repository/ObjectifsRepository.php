@@ -9,8 +9,12 @@ use App\Model\ObjectifsModel;
  */
 class ObjectifsRepository implements ObjectifsRepositoryInterface
 {
-    public function save(array $data): bool
+    public function __construct(private ObjectifsModel $objectifsModel)
     {
-        return ObjectifsModel::save($data);
+    }
+
+    public function save(array $data, int $userId): bool
+    {
+        return $this->objectifsModel->save($data, $userId);
     }
 }

@@ -14,10 +14,6 @@ use PDO;
  */
 class NutritionService
 {
-    private PDO $db;
-
-    private CacheService $cache;
-
     // Configuration centralisée des nutriments (déplacée depuis ProfileController)
     public const NUTRITION_CONFIG = [
         'calories' => [
@@ -46,10 +42,10 @@ class NutritionService
         ],
     ];
 
-    public function __construct(PDO $db, ?CacheService $cache = null)
-    {
-        $this->db = $db;
-        $this->cache = $cache ?? new CacheService();
+    public function __construct(
+        private PDO $db,
+        private CacheService $cache
+    ) {
     }
 
     /**

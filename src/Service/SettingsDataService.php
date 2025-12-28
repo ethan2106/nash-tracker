@@ -17,24 +17,13 @@ use App\Model\UserModel;
  */
 class SettingsDataService
 {
-    private HistoriqueMesuresModel $historiqueMesuresModel;
-
-    private UserConfigModel $userConfigModel;
-
-    private UserModel $userModel;
-
-    private CacheService $cache;
-
     public function __construct(
-        HistoriqueMesuresModel $historiqueMesuresModel,
-        UserConfigModel $userConfigModel,
-        UserModel $userModel,
-        CacheService $cache
+        private HistoriqueMesuresModel $historiqueMesuresModel,
+        private UserConfigModel $userConfigModel,
+        private UserModel $userModel,
+        private CacheService $cache,
+        private ObjectifsModel $objectifsModel
     ) {
-        $this->historiqueMesuresModel = $historiqueMesuresModel;
-        $this->userConfigModel = $userConfigModel;
-        $this->userModel = $userModel;
-        $this->cache = $cache;
     }
 
     /**
@@ -134,7 +123,7 @@ class SettingsDataService
             return $cachedObjectifs;
         }
 
-        $historiqueObjectifs = ObjectifsModel::getHistoriqueByUser($userId);
+        $historiqueObjectifs = $this->objectifsModel->getHistoriqueByUser($userId);
         $this->cache->set($namespace, $objectifsKey, $historiqueObjectifs, CacheService::TTL_MEDIUM);
 
         return $historiqueObjectifs;

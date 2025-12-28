@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\ImcApiService;
 use App\Service\ImcDataService;
 use App\Service\ImcSaveService;
+use App\Model\ObjectifsModel;
 
 /**
  * ImcController - Gère les calculs et l'affichage de l'IMC et métriques associées.
@@ -22,11 +23,14 @@ class ImcController
 
     private ImcSaveService $saveService;
 
-    public function __construct(ImcDataService $dataService, ImcApiService $apiService, ImcSaveService $saveService)
+    private ObjectifsModel $objectifsModel;
+
+    public function __construct(ImcDataService $dataService, ImcApiService $apiService, ImcSaveService $saveService, ObjectifsModel $objectifsModel)
     {
         $this->dataService = $dataService;
         $this->apiService = $apiService;
         $this->saveService = $saveService;
+        $this->objectifsModel = $objectifsModel;
     }
 
     /**
@@ -38,7 +42,7 @@ class ImcController
         $request = $_GET; // Pour la pagination ou autres params
 
         // Hydrate request with saved data if missing
-        $saved = \App\Model\ObjectifsModel::getByUser($userId);
+        $saved = $this->objectifsModel->getByUser($userId);
         if ($saved)
         {
             $request['poids'] ??= $saved['poids'];
@@ -75,7 +79,7 @@ class ImcController
         }
 
         // Hydrate request with saved data if missing
-        $saved = \App\Model\ObjectifsModel::getByUser($user_id);
+        $saved = $this->objectifsModel->getByUser($user_id);
         if ($saved)
         {
             $request['poids'] ??= $saved['poids'];

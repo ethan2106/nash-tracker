@@ -16,9 +16,10 @@ class ActivityServiceTest extends TestCase
         // Créer les mocks
         $this->pdoMock = $this->createMock(PDO::class);
         $this->stmtMock = $this->createMock(PDOStatement::class);
+        $cacheMock = $this->createMock(\App\Service\CacheService::class);
 
         // Injecter le mock PDO dans ActivityService
-        $this->activityService = new ActivityService($this->pdoMock);
+        $this->activityService = new ActivityService($this->pdoMock, $cacheMock);
     }
 
     public function testGetRecentActivitiesCountReturnsInt()

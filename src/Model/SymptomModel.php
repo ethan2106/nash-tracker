@@ -10,11 +10,8 @@ use PDOException;
  */
 class SymptomModel
 {
-    private PDO $pdo;
-
-    public function __construct()
+    public function __construct(private PDO $pdo)
     {
-        $this->pdo = Database::getInstance();
     }
 
     /**

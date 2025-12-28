@@ -16,20 +16,13 @@ use PDO;
  */
 class ProfileDataService
 {
-    private readonly PDO $db;
-
-    private readonly NutritionService $nutritionService;
-
-    private readonly ActivityService $activityService;
-
-    private readonly DashboardService $dashboardService;
-
-    public function __construct(PDO $db, NutritionService $nutritionService, ActivityService $activityService, DashboardService $dashboardService)
-    {
-        $this->db = $db;
-        $this->nutritionService = $nutritionService;
-        $this->activityService = $activityService;
-        $this->dashboardService = $dashboardService;
+    public function __construct(
+        private readonly PDO $db,
+        private readonly NutritionService $nutritionService,
+        private readonly ActivityService $activityService,
+        private readonly DashboardService $dashboardService,
+        private readonly ObjectifsModel $objectifsModel
+    ) {
     }
 
     /**
@@ -97,7 +90,7 @@ class ProfileDataService
             WHERE o.user_id = ? AND o.actif = 1
         ');
 
-        $stmt->execute([$todayStart, $todayEnd, $todayStart, $todayEnd, $todayStart, $todayEnd, $userId]);
+        $stmt->execute([$todayStart, $todayEnd, $todayStart, $todayEnd, $userId]);
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$result)
@@ -260,7 +253,7 @@ class ProfileDataService
 
         try
         {
-            $data['objectifs'] = ObjectifsModel::getByUser($user['id']);
+            $data['objectifs'] = $this->objectifsModel->getByUser($user['id']);
 
             $dashboardData = $this->dashboardService->getDashboardData($user);
             $data['stats'] = $dashboardData['stats'] ?? null;

@@ -17,8 +17,6 @@ use PDO;
  */
 class WalkModel
 {
-    private $db;
-
     // Valeurs MET (Metabolic Equivalent of Task) pour les activités de marche
     // Source: Compendium of Physical Activities
     private const MET_VALUES = [
@@ -29,9 +27,8 @@ class WalkModel
     // Poids par défaut si non renseigné (kg)
     private const DEFAULT_WEIGHT = 70;
 
-    public function __construct()
+    public function __construct(private \PDO $db)
     {
-        $this->db = Database::getInstance();
     }
 
     // ================================================================

@@ -9,14 +9,16 @@ class IntegrationTest extends TestCase
 {
     public function testAllServicesCanBeInstantiated()
     {
+        $pdoMock = $this->createMock(PDO::class);
+
         // Test que toutes les classes peuvent être instanciées sans erreurs
-        $mealModel = new \App\Model\MealModel();
+        $mealModel = new \App\Model\MealModel($pdoMock);
         $offService = new \App\Service\OpenFoodFactsService();
         $uploadService = new \App\Service\UploadService();
         $cacheService = new \App\Service\CacheService();
         $foodQualityService = new \App\Service\FoodQualityService();
-        $foodRepository = new \App\Repository\FoodRepository();
-        $mealRepository = new \App\Repository\MealRepository();
+        $foodRepository = new \App\Repository\FoodRepository($pdoMock);
+        $mealRepository = new \App\Repository\MealRepository($pdoMock);
 
         $foodDataService = new \App\Service\FoodDataService($foodRepository, $cacheService);
         $this->assertInstanceOf(\App\Service\FoodDataService::class, $foodDataService);
@@ -82,12 +84,13 @@ class IntegrationTest extends TestCase
 
     public function testRefactoringMaintainsApiCompatibility()
     {
-        $mealModel = new \App\Model\MealModel();
+        $pdoMock = $this->createMock(PDO::class);
+        $mealModel = new \App\Model\MealModel($pdoMock);
         $offService = new \App\Service\OpenFoodFactsService();
         $uploadService = new \App\Service\UploadService();
         $cacheService = new \App\Service\CacheService();
-        $foodRepository = new \App\Repository\FoodRepository();
-        $mealRepository = new \App\Repository\MealRepository();
+        $foodRepository = new \App\Repository\FoodRepository($pdoMock);
+        $mealRepository = new \App\Repository\MealRepository($pdoMock);
         $foodQualityService = new \App\Service\FoodQualityService();
 
         $foodDataService = new \App\Service\FoodDataService($foodRepository, $cacheService);

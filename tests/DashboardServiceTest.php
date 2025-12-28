@@ -23,9 +23,15 @@ class DashboardServiceTest extends TestCase
         $this->stmtMock = $this->createMock(PDOStatement::class);
         $this->objectifsModelMock = $this->createMock(ObjectifsModel::class);
 
+        // Set up PDO mock to return stmt mock
+        $this->pdoMock->method('prepare')->willReturn($this->stmtMock);
+
         // Mock CacheService
         $cacheMock = $this->createMock(\App\Service\CacheService::class);
         $cacheMock->method('get')->willReturn(null); // Cache miss par défaut
+
+        // Mock UserConfigModel
+        $userConfigModelMock = $this->createMock(\App\Model\UserConfigModel::class);
 
         // Mock les classes statiques
         $this->objectifsModelMock->expects($this->any())
@@ -40,7 +46,9 @@ class DashboardServiceTest extends TestCase
         // Créer DashboardService avec mocks et CacheService
         $this->dashboardService = new DashboardService(
             $this->pdoMock,
-            $cacheMock
+            $cacheMock,
+            $this->objectifsModelMock,
+            $userConfigModelMock
         );
     }
 
@@ -52,9 +60,12 @@ class DashboardServiceTest extends TestCase
         $cacheMock = $this->createMock(\App\Service\CacheService::class);
         $cacheMock->method('get')->willReturn(null);
 
+        // Mock UserConfigModel
+        $userConfigModelMock = $this->createMock(\App\Model\UserConfigModel::class);
+
         // Créer un mock partiel qui mock les méthodes qui utilisent des modèles statiques
         $service = $this->getMockBuilder(DashboardService::class)
-            ->setConstructorArgs([null, $cacheMock])
+            ->setConstructorArgs([$this->pdoMock, $cacheMock, $this->objectifsModelMock, $userConfigModelMock])
             ->onlyMethods([
                 'getDashboardStats',
                 'getDailyGoals',
@@ -100,7 +111,7 @@ class DashboardServiceTest extends TestCase
 
     public function testComputeHealthScoreReturnsConsistentStructure()
     {
-        $service = new DashboardService();
+        $service = $this->dashboardService;
         $stats = [
             'objectifs_completion' => 150, // should clamp to 100
             'activity_minutes_today' => 45,
@@ -124,7 +135,7 @@ class DashboardServiceTest extends TestCase
 
     public function testComputeHealthScoreNormalValues()
     {
-        $service = new DashboardService();
+        $service = $this->dashboardService;
         $stats = [
             'objectifs_completion' => 90, // Excellent nutrition
             'activity_minutes_today' => 30, // Objectif atteint
@@ -153,7 +164,7 @@ class DashboardServiceTest extends TestCase
 
     public function testComputeHealthScoreHighRiskValues()
     {
-        $service = new DashboardService();
+        $service = $this->dashboardService;
         $stats = [
             'objectifs_completion' => 10, // Mauvaise nutrition
             'activity_minutes_today' => 5, // Très faible activité
@@ -182,7 +193,7 @@ class DashboardServiceTest extends TestCase
 
     public function testComputeHealthScorePartialActivity()
     {
-        $service = new DashboardService();
+        $service = $this->dashboardService;
         $stats = [
             'objectifs_completion' => 75,
             'activity_minutes_today' => 22, // 75% de l'objectif
@@ -215,9 +226,12 @@ class DashboardServiceTest extends TestCase
         $cacheMock = $this->createMock(\App\Service\CacheService::class);
         $cacheMock->method('get')->willReturn(null);
 
+        // Mock UserConfigModel
+        $userConfigModelMock = $this->createMock(\App\Model\UserConfigModel::class);
+
         // Créer un mock partiel qui mock les méthodes qui utilisent des modèles statiques
         $service = $this->getMockBuilder(DashboardService::class)
-            ->setConstructorArgs([null, $cacheMock])
+            ->setConstructorArgs([$this->pdoMock, $cacheMock, $this->objectifsModelMock, $userConfigModelMock])
             ->onlyMethods([
                 'calculateObjectifsCompletion',
                 'getCaloriesConsumedToday',
@@ -340,9 +354,12 @@ class DashboardServiceTest extends TestCase
         $cacheMock = $this->createMock(\App\Service\CacheService::class);
         $cacheMock->method('get')->willReturn(null);
 
+        // Mock UserConfigModel
+        $userConfigModelMock = $this->createMock(\App\Model\UserConfigModel::class);
+
         // Créer un mock partiel qui mock les méthodes DB
         $service = $this->getMockBuilder(DashboardService::class)
-            ->setConstructorArgs([null, $cacheMock])
+            ->setConstructorArgs([$this->pdoMock, $cacheMock, $this->objectifsModelMock, $userConfigModelMock])
             ->onlyMethods([
                 'getProteinesConsumedToday',
                 'getFibresConsumedToday',

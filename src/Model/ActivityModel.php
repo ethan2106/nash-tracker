@@ -29,9 +29,9 @@ class ActivityModel extends BaseModel
         'basketball' => 6.0, // Basketball - ~360 kcal/h
     ];
 
-    public function __construct()
+    public function __construct(\PDO $db)
     {
-        $this->db = Database::getInstance();
+        parent::__construct($db);
     }
 
     /**

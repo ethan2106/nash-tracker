@@ -13,14 +13,10 @@ use PDO;
  */
 class ActivityService
 {
-    private PDO $db;
-
-    private $cache;
-
-    public function __construct(PDO $db)
-    {
-        $this->db = $db;
-        $this->cache = new \App\Service\CacheService();
+    public function __construct(
+        private PDO $db,
+        private CacheService $cache
+    ) {
     }
 
     /**

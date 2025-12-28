@@ -15,7 +15,7 @@ class MealRepositoryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->repository = new MealRepository();
+        $this->repository = new MealRepository($this->getDb());
 
         // Reset tables to ensure isolation
         $db = $this->getDb();

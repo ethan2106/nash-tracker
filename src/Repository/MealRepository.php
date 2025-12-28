@@ -10,11 +10,8 @@ use PDO;
  */
 class MealRepository implements MealRepositoryInterface
 {
-    private PDO $db;
-
-    public function __construct()
+    public function __construct(private PDO $db)
     {
-        $this->db = Database::getInstance();
     }
 
     /**
