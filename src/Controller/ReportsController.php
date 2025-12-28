@@ -18,16 +18,10 @@ require_once __DIR__ . '/../../vendor/autoload.php'; // Pour TCPDF
  */
 class ReportsController extends BaseApiController
 {
-    private $reportsModel;
-
-    private $exportService;
-
-    public function __construct()
-    {
-        require_once __DIR__ . '/../Model/ReportsModel.php';
-        require_once __DIR__ . '/../Service/ExportService.php';
-        $this->reportsModel = new ReportsModel();
-        $this->exportService = new ExportService();
+    public function __construct(
+        private ReportsModel $reportsModel,
+        private ExportService $exportService
+    ) {
     }
 
     /**

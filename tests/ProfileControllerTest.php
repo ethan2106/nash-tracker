@@ -56,8 +56,24 @@ class ProfileControllerTest extends TestCase
         $this->profileApiService = $this->createMock(\App\Service\ProfileApiService::class);
         $this->gamificationService = $this->createMock(\App\Service\GamificationService::class);
 
-        // Injection des dépendances mockées
-        $this->controller = new TestableProfileController($this->nutritionService, $this->activityService, null, null, null, null, $this->profileDataService, $this->profileApiService, null, $this->gamificationService, $this->db);
+        $adviceService = $this->createMock(\App\Service\NAFLDAdviceService::class);
+        $userConfigModel = $this->createMock(\App\Model\UserConfigModel::class);
+        $cacheService = $this->createMock(\App\Service\CacheService::class);
+        $validationService = $this->createMock(\App\Service\ValidationService::class);
+
+        // Injection des dépendances mockées dans le bon ordre
+        $this->controller = new TestableProfileController(
+            $this->db,
+            $this->nutritionService,
+            $this->activityService,
+            $adviceService,
+            $userConfigModel,
+            $cacheService,
+            $validationService,
+            $this->profileDataService,
+            $this->profileApiService,
+            $this->gamificationService
+        );
     }
 
     public function testGetProfileDataReturnsNullForInvalidUser(): void

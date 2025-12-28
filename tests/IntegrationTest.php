@@ -13,10 +13,10 @@ class IntegrationTest extends TestCase
 
         // Test que toutes les classes peuvent être instanciées sans erreurs
         $mealModel = new \App\Model\MealModel($pdoMock);
-        $offService = new \App\Service\OpenFoodFactsService();
-        $uploadService = new \App\Service\UploadService();
         $cacheService = new \App\Service\CacheService();
-        $foodQualityService = new \App\Service\FoodQualityService();
+        $offService = new \App\Service\OpenFoodFactsService($cacheService);
+        $uploadService = new \App\Service\UploadService();
+        $foodQualityService = new \App\Service\FoodQualityService($cacheService, $mealModel);
         $foodRepository = new \App\Repository\FoodRepository($pdoMock);
         $mealRepository = new \App\Repository\MealRepository($pdoMock);
 
@@ -86,12 +86,12 @@ class IntegrationTest extends TestCase
     {
         $pdoMock = $this->createMock(PDO::class);
         $mealModel = new \App\Model\MealModel($pdoMock);
-        $offService = new \App\Service\OpenFoodFactsService();
-        $uploadService = new \App\Service\UploadService();
         $cacheService = new \App\Service\CacheService();
+        $offService = new \App\Service\OpenFoodFactsService($cacheService);
+        $uploadService = new \App\Service\UploadService();
         $foodRepository = new \App\Repository\FoodRepository($pdoMock);
         $mealRepository = new \App\Repository\MealRepository($pdoMock);
-        $foodQualityService = new \App\Service\FoodQualityService();
+        $foodQualityService = new \App\Service\FoodQualityService($cacheService, $mealModel);
 
         $foodDataService = new \App\Service\FoodDataService($foodRepository, $cacheService);
         $foodApiService = new \App\Service\FoodApiService($foodQualityService);

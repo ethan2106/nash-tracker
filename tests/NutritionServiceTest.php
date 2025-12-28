@@ -117,7 +117,8 @@ class NutritionServiceTest extends TestCase
         ];
 
         // Créer une instance réelle pour ce test purement calculatoire
-        $service = new \App\Service\NutritionService($this->pdoMock);
+        $cacheMock = $this->createMock(CacheService::class);
+        $service = new \App\Service\NutritionService($this->pdoMock, $cacheMock);
         $score = $service->calculateHealthScore($currentNutrition, $objectifs);
 
         $this->assertIsInt($score);
@@ -143,7 +144,8 @@ class NutritionServiceTest extends TestCase
         ];
 
         // Créer une instance réelle pour ce test purement calculatoire
-        $service = new \App\Service\NutritionService($this->pdoMock);
+        $cacheMock = $this->createMock(CacheService::class);
+        $service = new \App\Service\NutritionService($this->pdoMock, $cacheMock);
         $score = $service->calculateHealthScore($currentNutrition, $objectifs);
 
         $this->assertIsInt($score);

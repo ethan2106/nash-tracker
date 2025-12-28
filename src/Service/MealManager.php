@@ -15,14 +15,10 @@ use Exception;
  */
 class MealManager
 {
-    private $mealModel;
-
-    private $cache;
-
-    public function __construct(MealModel $mealModel)
-    {
-        $this->mealModel = $mealModel;
-        $this->cache = new \App\Service\CacheService();
+    public function __construct(
+        private MealModel $mealModel,
+        private \App\Service\CacheService $cache
+    ) {
     }
 
     /**

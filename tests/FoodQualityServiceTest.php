@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use App\Model\MealModel;
+use App\Service\CacheService;
 use App\Service\FoodQualityService;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +13,9 @@ class FoodQualityServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->service = new FoodQualityService();
+        $cache = $this->createMock(CacheService::class);
+        $mealModel = $this->createMock(MealModel::class);
+        $this->service = new FoodQualityService($cache, $mealModel);
     }
 
     public function testCalculateGradeFromNutrimentsWithExcellentFood()

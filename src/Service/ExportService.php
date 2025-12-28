@@ -11,14 +11,10 @@ use App\Model\ReportsModel;
  */
 class ExportService
 {
-    private $reportsModel;
-
-    private $historiqueModel;
-
-    public function __construct()
-    {
-        $this->reportsModel = new ReportsModel();
-        $this->historiqueModel = new HistoriqueMesuresModel();
+    public function __construct(
+        private ReportsModel $reportsModel,
+        private HistoriqueMesuresModel $historiqueModel
+    ) {
     }
 
     /**

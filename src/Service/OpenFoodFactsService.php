@@ -16,11 +16,9 @@ class OpenFoodFactsService
 
     private const PRODUCT_API_URL = 'https://world.openfoodfacts.org/api/v0/product/';
 
-    private CacheService $cache;
-
-    public function __construct(?CacheService $cache = null)
-    {
-        $this->cache = $cache ?? new CacheService();
+    public function __construct(
+        private CacheService $cache
+    ) {
     }
 
     /**

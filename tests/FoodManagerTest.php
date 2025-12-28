@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\MealModel;
+use App\Service\CacheService;
 use App\Service\FoodManager;
 use App\Service\OpenFoodFactsService;
 use App\Service\UploadService;
@@ -13,6 +14,8 @@ class FoodManagerTest extends TestCase
     private $openFoodFactsMock;
 
     private $uploadServiceMock;
+
+    private $cacheServiceMock;
 
     private $foodManager;
 
@@ -30,6 +33,7 @@ class FoodManagerTest extends TestCase
         $this->mealModelMock = $this->createMock(MealModel::class);
         $this->openFoodFactsMock = $this->createMock(OpenFoodFactsService::class);
         $this->uploadServiceMock = $this->createMock(UploadService::class);
+        $this->cacheServiceMock = $this->createMock(CacheService::class);
 
         // Configuration par défaut pour les mocks
         $this->mealModelMock->method('addFoodToMeal')->willReturn(true);
@@ -38,7 +42,8 @@ class FoodManagerTest extends TestCase
         $this->foodManager = new FoodManager(
             $this->mealModelMock,
             $this->openFoodFactsMock,
-            $this->uploadServiceMock
+            $this->uploadServiceMock,
+            $this->cacheServiceMock
         );
     }
 

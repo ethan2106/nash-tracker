@@ -15,20 +15,12 @@ use Exception;
  */
 class FoodManager
 {
-    private $mealModel;
-
-    private $openFoodFactsService;
-
-    private $uploadService;
-
-    private $cache;
-
-    public function __construct(MealModel $mealModel, OpenFoodFactsService $openFoodFactsService, UploadService $uploadService)
-    {
-        $this->mealModel = $mealModel;
-        $this->openFoodFactsService = $openFoodFactsService;
-        $this->uploadService = $uploadService;
-        $this->cache = new \App\Service\CacheService();
+    public function __construct(
+        private MealModel $mealModel,
+        private OpenFoodFactsService $openFoodFactsService,
+        private UploadService $uploadService,
+        private \App\Service\CacheService $cache
+    ) {
     }
 
     /**

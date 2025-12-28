@@ -10,10 +10,6 @@ namespace App\Service;
  */
 class FoodQualityService
 {
-    private CacheService $cache;
-
-    private ?\App\Model\MealModel $mealModel = null;
-
     // Seuils configurables pour la notation
     private const THRESHOLDS = [
         'protein_good' => 15,    // g/100g - Excellent
@@ -27,13 +23,10 @@ class FoodQualityService
         'calories_high' => 400,  // kcal/100g - Très calorique
     ];
 
-    public function __construct()
-    {
-        // Initialiser le cache toujours
-        $this->cache = new CacheService();
-
-        // Initialiser le MealModel seulement si on en a besoin (lazy loading)
-        // $this->mealModel sera initialisé dans getFoodGrade() si nécessaire
+    public function __construct(
+        private CacheService $cache,
+        private \App\Model\MealModel $mealModel
+    ) {
     }
 
     /**
@@ -41,12 +34,6 @@ class FoodQualityService
      */
     public function getFoodGrade(int $foodId): array
     {
-        // Initialiser MealModel si pas encore fait
-        if ($this->mealModel === null)
-        {
-            $this->mealModel = new \App\Model\MealModel();
-        }
-
         $cacheKey = "food_grade_$foodId";
 
         return $this->cache->remember('food_quality', $cacheKey, function () use ($foodId)
