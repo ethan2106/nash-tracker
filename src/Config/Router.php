@@ -181,6 +181,18 @@ class Router
         $this->routes['walktrack/data'] = [
             'GET' => $this->controller(\App\Controller\WalkTrackController::class, 'getPageData'),
         ];
+        $this->routes['symptoms'] = [
+            'GET' => $this->controller(\App\Controller\SymptomController::class, 'showSymptoms'),
+        ];
+        $this->routes['symptoms/add'] = [
+            'POST' => $this->controller(\App\Controller\SymptomController::class, 'addSymptom'),
+        ];
+        $this->routes['symptoms/delete'] = [
+            'POST' => $this->controller(\App\Controller\SymptomController::class, 'deleteSymptom'),
+        ];
+        $this->routes['api_symptoms'] = [
+            'GET' => $this->controller(\App\Controller\SymptomController::class, 'getSymptoms'),
+        ];
     }
 
     public function dispatch(string $page, string $method): bool

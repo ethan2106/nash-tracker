@@ -97,6 +97,10 @@
                  class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/60 hover:bg-indigo-50 text-indigo-700 font-semibold shadow-sm transition-all border border-indigo-100">
                 <i class="fa-solid fa-file-pdf text-indigo-400" aria-hidden="true"></i><span>Rapports</span>
               </a>
+              <a href="?page=symptoms" role="menuitem" tabindex="0"
+                 class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/60 hover:bg-pink-50 text-pink-700 font-semibold shadow-sm transition-all border border-pink-100">
+                <i class="fa-solid fa-heartbeat text-pink-400" aria-hidden="true"></i><span>Symptômes</span>
+              </a>
             </div>
           </div>
         </div>
